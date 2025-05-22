@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import styles from "./Checkout.module.css"; // ✅ CSS local del módulo
 
-const Checkout = ({ carrito }) => {
-  const navigate = useNavigate();
+// ✅ Rutas corregidas hacia components
+import TarjetaModal from "../../components/TarjetaModal";
+import QRModal from "../../components/QRModal";
 
-  const [form, setForm] = useState({
+const Checkout = ({ carrito, setCarrito }) => {
+  const [envio, setEnvio] = useState({
     departamento: "",
     provincia: "",
     distrito: "",
@@ -14,109 +16,100 @@ const Checkout = ({ carrito }) => {
     dni: "",
   });
 
-  const [error, setError] = useState("");
-  const [formularioGuardado, setFormularioGuardado] = useState(false);
+  const [errores, setErrores] = useState({});
+  const [mostrarMetodoPago, setMostrarMetodoPago] = useState(false);
+  const [metodoSeleccionado, setMetodoSeleccionado] = useState(null);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setEnvio({ ...envio, [e.target.name]: e.target.value });
   };
 
-  const handleGuardar = () => {
-    for (const campo in form) {
-      if (!form[campo]) {
-        setError(`El campo "${campo}" está vacío.`);
-        return;
-      }
-    }
-    setError("");
-    setFormularioGuardado(true);
+  const validar = () => {
+    const camposVacios = {};
+    Object.entries(envio).forEach(([key, value]) => {
+      if (!value) camposVacios[key] = "Este campo es obligatorio";
+    });
+    setErrores(camposVacios);
+    return Object.keys(camposVacios).length === 0;
   };
 
   const subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
 
+  const handleGuardar = () => {
+    if (validar()) {
+      setMostrarMetodoPago(true);
+    }
+  };
+
   return (
-    <div style={{ display: "flex", gap: "3rem", padding: "2rem" }}>
-      <div style={{ flex: 1 }}>
+    <div className={styles.checkoutContainer}>
+      <section className={styles.formSection}>
         <h2>Envío</h2>
-        <select name="departamento" onChange={handleChange} value={form.departamento}>
-          <option value="">Departamento</option>
-          <option value="Lima">Lima</option>
-          <option value="Arequipa">Arequipa</option>
-          <option value="Cusco">Cusco</option>
-        </select>
-        <br />
-        <select name="provincia" onChange={handleChange} value={form.provincia}>
-          <option value="">Provincia</option>
-          <option value="Lima">Lima</option>
-          <option value="Cañete">Cañete</option>
-        </select>
-        <br />
-        <select name="distrito" onChange={handleChange} value={form.distrito}>
-          <option value="">Distrito</option>
-          <option value="Miraflores">Miraflores</option>
-          <option value="Surco">Surco</option>
-        </select>
-        <br />
-        <input
-          name="direccion"
-          placeholder="Dirección"
-          value={form.direccion}
-          onChange={handleChange}
-        /><br />
-        <input
-          name="postal"
-          placeholder="Código Postal"
-          value={form.postal}
-          onChange={handleChange}
-        /><br />
-        <input
-          name="celular"
-          placeholder="Celular"
-          value={form.celular}
-          onChange={handleChange}
-        /><br />
-        <input
-          name="dni"
-          placeholder="Dni"
-          value={form.dni}
-          onChange={handleChange}
-        /><br />
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {["departamento", "provincia", "distrito", "direccion", "postal", "celular", "dni"].map((campo) => (
+          <input
+            key={campo}
+            type="text"
+            name={campo}
+            placeholder={campo.charAt(0).toUpperCase() + campo.slice(1)}
+            value={envio[campo]}
+            onChange={handleChange}
+            className={errores[campo] ? styles.errorInput : ""}
+          />
+        ))}
         <button onClick={handleGuardar}>GUARDAR</button>
+      </section>
 
-        {formularioGuardado && (
-          <div style={{ marginTop: "2rem" }}>
-            <h2>Método de Pago</h2>
-            <button>Crédito o Débito</button>
-            <br />
-            <button>Pagar con QR</button>
-          </div>
-        )}
-      </div>
-
-      <div style={{ flex: 1 }}>
+      <section className={styles.resumenSection}>
         <h2>Resumen</h2>
-        <div style={{ border: "1px solid gray", padding: "1rem" }}>
+        <div className={styles.productos}>
           {carrito.map((item) => (
-            <div key={item.id} style={{ display: "flex", marginBottom: "1rem", gap: "1rem" }}>
-              <img src={item.imagen} alt={item.nombre} width={80} />
+            <div key={item.id} className={styles.item}>
+              <img src={item.imagen} alt={item.nombre} />
               <div>
-                <strong>{item.nombre}</strong>
+                <h4>{item.nombre}</h4>
                 <p>{item.categoria}</p>
-                <p>Talla: {item.talla || "10 US"}</p>
+                <p>Talla: {item.talla}</p>
                 <p style={{ color: "red" }}>S/. {item.precio}</p>
               </div>
             </div>
           ))}
-
-          <hr />
-          <p>Subtotal: <strong>S/. {subtotal.toFixed(2)}</strong></p>
-          <p>Envío: <strong style={{ color: "red" }}>GRATIS</strong></p>
-          <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
-            Total: <span style={{ color: "red" }}>S/. {subtotal.toFixed(2)}</span>
-          </p>
         </div>
-      </div>
+
+        <div className={styles.resumenFinal}>
+          <p>Subtotal: <strong>S/. {subtotal.toFixed(2)}</strong></p>
+          <p>Envío: <span style={{ color: "red" }}>GRATIS</span></p>
+          <h3>Total: <span style={{ color: "red" }}>S/. {subtotal.toFixed(2)}</span></h3>
+        </div>
+
+        {mostrarMetodoPago && (
+          <div className={styles.metodoPago}>
+            <h3>Método de Pago</h3>
+            <button onClick={() => setMetodoSeleccionado("tarjeta")}>Crédito o Débito</button>
+            <button onClick={() => setMetodoSeleccionado("qr")}>Pagar con QR</button>
+          </div>
+        )}
+      </section>
+
+      {metodoSeleccionado === "tarjeta" && (
+        <TarjetaModal
+          total={subtotal}
+          onClose={() => setMetodoSeleccionado(null)}
+          onSuccess={() => {
+            setCarrito([]);
+            window.location.href = "/orden-completada";
+          }}
+        />
+      )}
+      {metodoSeleccionado === "qr" && (
+        <QRModal
+          total={subtotal}
+          onClose={() => setMetodoSeleccionado(null)}
+          onSuccess={() => {
+            setCarrito([]);
+            window.location.href = "/orden-completada";
+          }}
+        />
+      )}
     </div>
   );
 };
