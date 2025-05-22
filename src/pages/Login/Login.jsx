@@ -52,7 +52,7 @@ export default function Login({ onLogin }) {
             required
           />
 
-          {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}}
+          {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}
 
           <a href="#" className="login-forgot">Olvidé mi Contraseña</a>
 
