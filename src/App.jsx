@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import TopBar from "./components/TopBar/TopBar";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
 import SearchResults from "./components/SearchResults/SearchResults";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 
