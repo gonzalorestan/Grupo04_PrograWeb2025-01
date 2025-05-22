@@ -5,12 +5,14 @@
   right: 0;
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 10px 50px;
   border-bottom: 1px solid #ddd;
+  font-family: "Bellota Text", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   background-color: #fff;
-  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
@@ -21,42 +23,43 @@
 .logoImage {
   height: 28px;
   width: auto;
-  display: block;
 }
 
 .nav {
   display: flex;
   align-items: center;
+  gap: 25px;
 }
 
 .navLink {
-  margin-left: 30px;
-  cursor: pointer;
+  font-size: 16px;
   font-weight: 400;
+  color: #222;
+  cursor: pointer;
+  border-bottom: none;
   padding-bottom: 4px;
   transition: all 0.3s ease;
   user-select: none;
 }
 
 .navLink:hover {
-  font-weight: 700;
-  border-bottom: 2px solid black;
+  color: #db2d2d;
 }
 
 .active {
-  font-weight: 700;
-  border-bottom: 2px solid black;
+  color: #db2d2d;
+  text-decoration: underline;
 }
 
 .searchInput {
-  margin-left: 40px;
-  padding: 4px 8px;
+  padding: 6px 10px;
   font-size: 14px;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  outline-offset: 2px;
+  border-radius: 4px;
+  outline: none;
 }
 
+/* Icon container */
 .iconContainer {
   display: flex;
   align-items: center;
@@ -68,12 +71,13 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
-  display: block;
   cursor: pointer;
 }
 
+/* User menu dropdown */
 .userIconContainer {
   position: relative;
+  margin-left: 10px;
 }
 
 .dropdownMenu {
@@ -91,11 +95,15 @@
   gap: 8px;
 }
 
-.loginBtn, .signupBtn, .accountBtn, .signoutBtn {
+.loginBtn,
+.signupBtn,
+.signoutBtn,
+.accountBtn {
   padding: 6px 12px;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .loginBtn {
@@ -122,6 +130,7 @@
   color: red;
 }
 
+/* Submenu general */
 .submenu {
   position: absolute;
   top: 100%;
@@ -149,10 +158,10 @@
 }
 
 .submenuSection h4 {
+  margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 600;
   color: #333;
-  margin: 0 0 8px 0;
 }
 
 .submenuSection ul {
@@ -183,6 +192,7 @@
   color: #000;
 }
 
+/* Tallas */
 .tallas {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -206,6 +216,7 @@
   border-color: #333;
 }
 
+/* Marcas Grid */
 .marcasGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

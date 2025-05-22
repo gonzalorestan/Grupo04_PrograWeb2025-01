@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import products from "../data/products";
+import products from "../../data/products";
 import styles from "./ProductPage.module.css";
 
 const ProductPage = () => {

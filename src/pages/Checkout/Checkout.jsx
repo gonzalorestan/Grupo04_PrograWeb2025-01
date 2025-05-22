@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import styles from "./Checkout.module.css";
+import styles from "./Checkout.module.css"; // ✅ CSS local del módulo
 
-import TarjetaModal from "../components/TarjetaModal";
-import QRModal from "../components/QRModal";
+// ✅ Rutas corregidas hacia components
+import TarjetaModal from "../../components/TarjetaModal";
+import QRModal from "../../components/QRModal";
 
 const Checkout = ({ carrito, setCarrito }) => {
   const [envio, setEnvio] = useState({
