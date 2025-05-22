@@ -125,9 +125,9 @@
   background-color: #333;
 }
 
-/* Explora las categorías - sección con fondo distinto */
+/* Carousel categorías */
 .categoriesSection {
-  background-color: #e4e4e4;  /* Franja gris */
+  background-color: #e4e4e4; /* franja gris */
   padding: 20px 0;
   position: relative;
 }
@@ -137,78 +137,10 @@
   margin-bottom: 15px;
   font-weight: 600;
   color: #333;
+  font-size: 16px;
 }
 
-/* Botones para cambiar pestañas */
-.tabButtons {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.tabButtons button {
-  cursor: pointer;
-  background: none;
-  border: 1px solid transparent;
-  font-weight: 600;
-  padding: 5px 15px;
-  font-size: 14px;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.tabButtons button:hover {
-  border-color: #888;
-}
-
-.activeTab {
-  border-color: #dcb9ff;
-  background-color: #f5e6ff;
-  border-radius: 5px;
-}
-
-/* Carousel horizontal de categorías */
-.categoriesCarousel {
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  gap: 20px;
-  padding: 10px 50px;
-  scroll-snap-type: x mandatory;
-}
-
-/* Cards de categoría */
-.categoryCard {
-  flex: 0 0 auto;
-  width: 140px;
-  height: 160px;
-  border: 1px solid #555;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: #f5f5f5;
-  transition: box-shadow 0.3s ease;
-  scroll-snap-align: center;
-}
-
-.categoryCard:hover {
-  box-shadow: 0 0 8px #dcb9ff;
-}
-
-.categoryImage {
-  max-width: 100%;
-  max-height: 110px;
-  margin-bottom: 10px;
-  object-fit: contain;
-}
-
-.categoryTitle {
-  font-weight: 500;
-  font-size: 14px;
-  color: black;
-}
-
-/* Flechas para carousel categorías */
+/* Flechas para scroll */
 .carouselNavButton {
   position: absolute;
   top: 50%;
@@ -229,6 +161,59 @@
 
 .carouselNavNext {
   right: 10px;
+}
+
+.categoriesCarousel {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 0 60px; /* espacio para flechas */
+  scroll-snap-type: x mandatory;
+  justify-content: center;
+}
+
+/* Card de categoría */
+.categoryCard {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 180px;
+  cursor: pointer;
+  position: relative;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cuadrado con transparencia para el fondo */
+.categoryBackground {
+  position: absolute;
+  top: 25px;
+  width: 110px;
+  height: 110px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* Imagen centrada y sobrepuesta */
+.categoryImage {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  z-index: 2;
+  margin-bottom: 10px;
+}
+
+/* Texto centrado abajo */
+.categoryTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  z-index: 3;
+  user-select: none;
 }
 
 /* Lo más vendido */

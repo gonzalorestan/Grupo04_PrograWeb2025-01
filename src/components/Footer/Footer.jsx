@@ -16,7 +16,12 @@ const sections = [
   },
   {
     title: "SÍGUENOS",
-    links: ["📘", "🐦", "📸", "▶️"],
+    links: [
+      { alt: "Facebook", src: "/resources/fb.png" },
+      { alt: "X", src: "/resources/x.png" },
+      { alt: "Instagram", src: "/resources/ig.png" },
+      { alt: "YouTube", src: "/resources/yt.png" },
+    ],
     isIcons: true,
   },
   {
@@ -35,28 +40,43 @@ const sections = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      {sections.map(({ title, links, isIcons }, i) => (
-        <div key={i} className={styles.footerSection}>
-          <div className={styles.sectionTitle}>{title}</div>
-          {isIcons ? (
-            <div className={styles.iconsContainer}>{links.map((icon, idx) => (
-              <span key={idx} className={styles.icon} role="img" aria-label={icon}>
-                {icon}
-              </span>
-            ))}</div>
-          ) : (
-            links.map((link) => (
-              <a key=      {link} href="#" className={styles.footerLink}>
-                {link}
-              </a>
-            ))
-          )}
+    <>
+      <div className={styles.redBanner}>
+        <div className={styles.redBannerText}>
+          ¡ÚNETE AL CLUB PARA NO PERDERTE DE NADA!
         </div>
-      ))}
-      <div className={styles.footerCopyright}>
-        ©2025 LacedUp Perú SAC, RUC 34935235 Av. 28 de Julio 1011, Miraflores, Lima, Perú
+        <button className={styles.registerButton}>REGÍSTRATE →</button>
       </div>
-    </footer>
+
+      <footer className={styles.footer}>
+        {sections.map(({ title, links, isIcons }, i) => (
+          <div key={i} className={styles.footerSection}>
+            <div className={styles.sectionTitle}>{title}</div>
+            {isIcons ? (
+              <div className={styles.iconsContainer}>
+                {links.map(({ alt, src }, idx) => (
+                  <img
+                    key={idx}
+                    src={src}
+                    alt={alt}
+                    className={styles.iconImage}
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            ) : (
+              links.map((link) => (
+                <a key={link} href="#" className={styles.footerLink}>
+                  {link}
+                </a>
+              ))
+            )}
+          </div>
+        ))}
+        <div className={styles.footerCopyright}>
+          ©2025 LacedUp Perú SAC, RUC 34935235 Av. 28 de Julio 1011, Miraflores, Lima, Perú
+        </div>
+      </footer>
+    </>
   );
 }

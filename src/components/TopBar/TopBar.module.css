@@ -7,12 +7,18 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 20px;
   cursor: pointer;
+}
+
+.logoImage {
+  height: 28px; /* Ajusta a un tamaño más pequeño y estético */
+  width: auto;
+  display: block;
 }
 
 .nav {
@@ -27,6 +33,7 @@
   border-bottom: none;
   padding-bottom: 4px;
   transition: all 0.3s ease;
+  user-select: none;
 }
 
 .navLink:hover {
@@ -45,11 +52,30 @@
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  outline-offset: 2px;
 }
 
-.icon {
+.iconButton {
   margin-left: 20px;
+  background: none;
+  border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px; /* Iconos un poco más grandes */
   user-select: none;
+  padding: 0;
+  line-height: 1;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.iconButton:hover {
+  color: black;
+  outline: none;
+}
+
+.iconImage {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
 }

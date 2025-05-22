@@ -35,37 +35,42 @@ const categoriesData = [
   {
     title: "Running",
     img: "/resources/running.png",
+    color: "#ef1e25",
   },
   {
     title: "Urbanas",
     img: "/resources/urbanas.png",
+    color: "#182a5f",
   },
   {
     title: "Premium",
     img: "/resources/premium.png",
+    color: "#0e3a1e",
   },
   {
     title: "Chunky",
     img: "/resources/chunky.png",
+    color: "#000000",
   },
-];
-
-const moreCategories = [
   {
     title: "Fútbol",
     img: "/resources/futbol.png",
+    color: "#024471",
   },
   {
     title: "Tenis",
     img: "/resources/tenis.png",
+    color: "#006b6c",
   },
   {
     title: "Jordan",
     img: "/resources/jordan.png",
+    color: "#8c3f99",
   },
   {
     title: "Sandalias",
     img: "/resources/sandalias.png",
+    color: "#b7a685",
   },
 ];
 
@@ -110,7 +115,6 @@ const bestSellersData = [
 
 export default function Home({ onShowProduct }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [categoryTab, setCategoryTab] = useState("default");
   const categoriesRef = useRef(null);
 
   const nextSlide = () => {
@@ -122,7 +126,7 @@ export default function Home({ onShowProduct }) {
 
   const scrollCategories = (direction) => {
     if (categoriesRef.current) {
-      const scrollAmount = 160; // ancho + gap aproximado de cada card
+      const scrollAmount = 180;
       if (direction === "left") {
         categoriesRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
       } else {
@@ -187,24 +191,9 @@ export default function Home({ onShowProduct }) {
         </div>
       </section>
 
-      {/* Explora las categorías como carousel con tabs */}
+      {/* Carousel único para todas las categorías */}
       <div className={styles.categoriesSection}>
         <div className={styles.exploreTitle}>EXPLORA LAS CATEGORIAS</div>
-
-        <div className={styles.tabButtons}>
-          <button
-            className={categoryTab === "default" ? styles.activeTab : ""}
-            onClick={() => setCategoryTab("default")}
-          >
-            Principales
-          </button>
-          <button
-            className={categoryTab === "more" ? styles.activeTab : ""}
-            onClick={() => setCategoryTab("more")}
-          >
-            Más categorías
-          </button>
-        </div>
 
         <button
           className={`${styles.carouselNavButton} ${styles.carouselNavPrev}`}
@@ -218,8 +207,12 @@ export default function Home({ onShowProduct }) {
           className={styles.categoriesCarousel}
           ref={categoriesRef}
         >
-          {(categoryTab === "default" ? categoriesData : moreCategories).map((cat) => (
+          {categoriesData.map((cat) => (
             <div key={cat.title} className={styles.categoryCard} title={cat.title}>
+              <div
+                className={styles.categoryBackground}
+                style={{ backgroundColor: hexToRGBA(cat.color, 0.3) }}
+              />
               <img src={cat.img} alt={cat.title} className={styles.categoryImage} />
               <span className={styles.categoryTitle}>{cat.title}</span>
             </div>
@@ -257,4 +250,24 @@ export default function Home({ onShowProduct }) {
       </section>
     </main>
   );
+}
+
+function hexToRGBA(hex, alpha) {
+  let r = 0, g = 0, b = 0;
+
+  if (hex.charAt(0) === '#') {
+    hex = hex.slice(1);
+  }
+
+  if (hex.length === 3) {
+    r = parseInt(hex[0] + hex[0], 16);
+    g = parseInt(hex[1] + hex[1], 16);
+    b = parseInt(hex[2] + hex[2], 16);
+  } else if (hex.length === 6) {
+    r = parseInt(hex.substring(0, 2), 16);
+    g = parseInt(hex.substring(2, 4), 16);
+    b = parseInt(hex.substring(4, 6), 16);
+  }
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }

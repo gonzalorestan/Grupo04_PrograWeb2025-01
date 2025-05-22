@@ -7,8 +7,14 @@ export default function TopBar({ onNavClick, currentPage }) {
   return (
     <div className={styles.topBar}>
       <div className={styles.logo} onClick={() => onNavClick("home")}>
-        LACEDUP
+        <img
+          src="/resources/logo.png"
+          alt="LacedUp Logo"
+          className={styles.logoImage}
+          loading="lazy"
+        />
       </div>
+
       <nav className={styles.nav}>
         {menuItems.map((item) => (
           <div
@@ -21,6 +27,7 @@ export default function TopBar({ onNavClick, currentPage }) {
             {item}
           </div>
         ))}
+
         <input
           type="search"
           placeholder="Buscar"
@@ -28,9 +35,40 @@ export default function TopBar({ onNavClick, currentPage }) {
           onKeyDown={(e) => {
             if (e.key === "Enter") onNavClick("search", e.target.value);
           }}
+          aria-label="Buscar"
         />
-        <div className={styles.icon}>🛒</div>
-        <div className={styles.icon}>👤</div>
+
+        <button
+          type="button"
+          className={styles.iconButton}
+          aria-label="Carrito de compras"
+          onClick={() => {
+            // Acción futura
+          }}
+        >
+          <img
+            src="/resources/carrito.png"
+            alt="Carrito"
+            className={styles.iconImage}
+            loading="lazy"
+          />
+        </button>
+
+        <button
+          type="button"
+          className={styles.iconButton}
+          aria-label="Usuario"
+          onClick={() => {
+            // Acción futura
+          }}
+        >
+          <img
+            src="/resources/user.png"
+            alt="Usuario"
+            className={styles.iconImage}
+            loading="lazy"
+          />
+        </button>
       </nav>
     </div>
   );
