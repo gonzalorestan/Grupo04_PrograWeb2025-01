@@ -10,13 +10,13 @@ import ProductPage from "./pages/ProductPage";
 import ProductDetail from "./pages/ProductDetail";
 import Carrito from "./pages/Carrito";
 import Checkout from "./pages/Checkout";
-
+import OrdenCompletada from "./pages/OrdenCompletada"; 
 
 export default function App() {
   const [page, setPage] = useState("home");
   const [usuarioActivo, setUsuarioActivo] = useState(null);
 
-  // ✅ Estados globales para el carrito y guardados
+  
   const [carrito, setCarrito] = useState([]);
   const [guardados, setGuardados] = useState([]);
 
@@ -49,14 +49,12 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={
-              <Login actualizarUsuarioActivo={actualizarUsuarioActivo} />
-            }
+            element={<Login actualizarUsuarioActivo={actualizarUsuarioActivo} />}
           />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
 
-          {/* ✅ ProductDetail con funciones para carrito y guardados */}
+          {/* ✅ Página de detalle de producto */}
           <Route
             path="/producto/:id"
             element={
@@ -80,12 +78,21 @@ export default function App() {
             }
           />
 
-          {/* ✅ Nueva ruta de checkout con productos del carrito */}
+          {/* ✅ Página de checkout */}
           <Route
             path="/checkout"
-            element={<Checkout carrito={carrito} />}
+            element={
+              <Checkout
+                carrito={carrito}
+                setCarrito={setCarrito}
+              />
+            }
           />
 
+          
+          <Route path="/orden-completada" element={<OrdenCompletada />} />
+
+          {/* Página por defecto si no existe ruta */}
           <Route
             path="*"
             element={
@@ -102,4 +109,3 @@ export default function App() {
     </Router>
   );
 }
-

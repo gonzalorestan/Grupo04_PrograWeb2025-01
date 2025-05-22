@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
+  const navigate = useNavigate();
+
   const moverAGuardados = (id) => {
     const producto = carrito.find((item) => item.id === id);
     if (producto) {
@@ -61,7 +64,8 @@ const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
       <p>Subtotal: S/. {subtotal.toFixed(2)}</p>
       <p>Envío: GRATIS</p>
       <h3>Total: S/. {subtotal.toFixed(2)}</h3>
-      <button>Checkout</button>
+
+      <button onClick={() => navigate("/checkout")}>Checkout</button>
     </div>
   );
 };
