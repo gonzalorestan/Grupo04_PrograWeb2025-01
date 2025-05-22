@@ -289,3 +289,61 @@
 .bestSellerButton:hover {
   background-color: #fee;
 }
+
+/* Nueva grilla de categorías */
+.categoriesGridSection {
+  padding: 40px 20px;
+  background-color: #e4e4e4;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Best sellers carousel */
+.bestSellersSection {
+  margin-top: 40px;
+}
+
+.bestSellersCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+}
+
+.bestSellerNav {
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  user-select: none;
+}
+
+.container {
+  font-family: "Bellota Text", sans-serif; /* Cambiado */
+  padding: 20px;
+  position: relative;
+}
+
+/* Carousel sobresale */
+.carouselImage {
+  width: 500px;
+  height: 420px;
+  object-fit: contain;
+  transform: translateY(10px); /* sobresale visualmente */
+  z-index: 5;
+}
+
+/* Tipografía moderna en título */
+.title {
+  font-family: "Bellota Text", cursive;
+  font-weight: 700;
+  font-size: 38px;
+  color: black;
+}
