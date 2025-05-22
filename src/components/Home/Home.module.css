@@ -1,0 +1,291 @@
+.container {
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  position: relative;
+}
+
+/* Carousel principal */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* Puedes cambiar a center */
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  position: relative;
+  /* background-color dinámico en inline style */
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: black;
+  user-select: none;
+  padding: 0 15px;
+  z-index: 10;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.carouselImage {
+  width: 450px;       /* Tamaño fijo para imagen */
+  height: 350px;      /* Tamaño fijo para imagen */
+  object-fit: contain; /* Mantiene proporción sin distorsión */
+  position: relative;
+  z-index: 5;
+}
+
+.carouselText {
+  max-width: 500px;
+  position: relative;
+  z-index: 5;
+}
+
+.title {
+  font-family: "Monoton", cursive;
+  font-weight: 900;
+  font-size: 36px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+  color: black;
+}
+
+.description {
+  margin-bottom: 25px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: black;
+}
+
+.priceBuy {
+  display: flex;
+  gap: 0;
+}
+
+.price {
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 18px;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.buyButton {
+  border: 1px solid black;
+  background-color: transparent;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  border-left: none;
+  transition: background-color 0.2s ease;
+}
+
+.buyButton:hover {
+  background-color: #eee;
+}
+
+/* Indicadores carousel */
+.indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 8px;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #bbb;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.activeIndicator {
+  background-color: #333;
+}
+
+/* Carousel categorías */
+.categoriesSection {
+  background-color: #e4e4e4; /* franja gris */
+  padding: 20px 0;
+  position: relative;
+}
+
+.exploreTitle {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Flechas para scroll */
+.carouselNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: black;
+  user-select: none;
+  padding: 0 10px;
+  z-index: 10;
+}
+
+.carouselNavPrev {
+  left: 10px;
+}
+
+.carouselNavNext {
+  right: 10px;
+}
+
+.categoriesCarousel {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 0 60px; /* espacio para flechas */
+  scroll-snap-type: x mandatory;
+  justify-content: center;
+}
+
+/* Card de categoría */
+.categoryCard {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 180px;
+  cursor: pointer;
+  position: relative;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cuadrado con transparencia para el fondo */
+.categoryBackground {
+  position: absolute;
+  top: 25px;
+  width: 110px;
+  height: 110px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* Imagen centrada y sobrepuesta */
+.categoryImage {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  z-index: 2;
+  margin-bottom: 10px;
+}
+
+/* Texto centrado abajo */
+.categoryTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  z-index: 3;
+  user-select: none;
+}
+
+/* Lo más vendido */
+.sectionTitle {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.bestSellers {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.bestSellers::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.bestSellerCard {
+  width: 120px;
+  border: 1px solid #555;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.bestSellerCard:hover {
+  box-shadow: 0 0 8px #dcb9ff;
+}
+
+.bestSellerImage {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+}
+
+.bestSellerName {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: black;
+}
+
+.bestSellerCategory {
+  font-size: 10px;
+  color: #888;
+}
+
+.bestSellerPrice {
+  font-weight: 700;
+  color: #d00;
+  margin-top: 5px;
+}
+
+.bestSellerButton {
+  margin-top: 5px;
+  font-size: 12px;
+  background-color: transparent;
+  border: 1px solid #d00;
+  color: #d00;
+  cursor: pointer;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.bestSellerButton:hover {
+  background-color: #fee;
+}
