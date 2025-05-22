@@ -1,0 +1,55 @@
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  border-bottom: 1px solid #ddd;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  margin-left: 30px;
+  cursor: pointer;
+  font-weight: 400;
+  border-bottom: none;
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.navLink:hover {
+  font-weight: 700;
+  border-bottom: 2px solid black;
+}
+
+.active {
+  font-weight: 700;
+  border-bottom: 2px solid black;
+}
+
+.searchInput {
+  margin-left: 40px;
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.icon {
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}

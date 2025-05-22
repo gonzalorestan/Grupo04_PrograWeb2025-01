@@ -1,0 +1,55 @@
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 40px 50px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footerSection {
+  margin-bottom: 20px;
+  min-width: 150px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footerLink {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+  color: #ddd;
+}
+
+.iconsContainer {
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  user-select: none;
+}
+
+.footerCopyright {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 13px;
+}
