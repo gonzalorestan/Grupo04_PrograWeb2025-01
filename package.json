@@ -10,6 +10,10 @@
     "@vitejs/plugin-react": "^4.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+<<<<<<< HEAD
+=======
+    "react-router-dom": "^7.6.0",
+>>>>>>> 9733d6c (Primer commit - menus y login)
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
