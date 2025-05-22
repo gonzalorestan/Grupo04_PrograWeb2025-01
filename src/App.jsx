@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import TopBar from "./components/TopBar/TopBar";
-import Footer from "./components/Footer/Footer";
-import Home from "./components/Home/Home";
-
-export default function App() {
-  const [page, setPage] = useState("home");
-
-  const handleNavClick = (page, query) => {
-    setPage(page);
-  };
-
-  return (
-    <>
-      <TopBar onNavClick={handleNavClick} currentPage={page} />
-      <main>
-        {page === "home" && <Home />}
-        {page !== "home" && page !== "search" && (
-          <h2 style={{ margin: "50px", textAlign: "center" }}>
-            Contenido de la página: {page}
-          </h2>
-        )}
-        {/* Si agregas más componentes, puedes ampliar esta lógica */}
-      </main>
-      <Footer />
-    </>
-=======
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -34,33 +6,34 @@ import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import ProductPage from "./pages/ProductPage";
+import ProductDetail from "./pages/ProductDetail";
+import Carrito from "./pages/Carrito";
+import Checkout from "./pages/Checkout";
+
 
 export default function App() {
   const [page, setPage] = useState("home");
   const [usuarioActivo, setUsuarioActivo] = useState(null);
 
-  // Cargar sesión al iniciar la app
+  // ✅ Estados globales para el carrito y guardados
+  const [carrito, setCarrito] = useState([]);
+  const [guardados, setGuardados] = useState([]);
+
   useEffect(() => {
-    const storedUser = localStorage.getItem("usuarioActivo");
-    if (storedUser) {
-      setUsuarioActivo(JSON.parse(storedUser));
-    } else {
-      setUsuarioActivo(null);
+    const usuarioGuardado = localStorage.getItem("usuarioActivo");
+    if (usuarioGuardado) {
+      setUsuarioActivo(JSON.parse(usuarioGuardado));
     }
   }, []);
 
-  const handleNavClick = (page) => {
-    setPage(page);
+  const handleNavClick = (pagina) => {
+    setPage(pagina);
   };
 
-  // Se llama desde SignUp y Login para actualizar el menú
   const actualizarUsuarioActivo = () => {
-    const storedUser = localStorage.getItem("usuarioActivo");
-    if (storedUser) {
-      setUsuarioActivo(JSON.parse(storedUser));
-    } else {
-      setUsuarioActivo(null);
-    }
+    const usuario = localStorage.getItem("usuarioActivo");
+    setUsuarioActivo(usuario ? JSON.parse(usuario) : null);
   };
 
   return (
@@ -71,13 +44,48 @@ export default function App() {
         usuarioActivo={usuarioActivo}
         actualizarUsuarioActivo={actualizarUsuarioActivo}
       />
-      <main>
+      <main style={{ marginTop: "80px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login onLogin={actualizarUsuarioActivo} />} />
-          <Route path="/register" element={<SignUp onRegister={actualizarUsuarioActivo} />} />
+          <Route
+            path="/login"
+            element={
+              <Login actualizarUsuarioActivo={actualizarUsuarioActivo} />
+            }
+          />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
 
-          {/* Ruta comodín por si hay páginas no controladas */}
+          {/* ✅ ProductDetail con funciones para carrito y guardados */}
+          <Route
+            path="/producto/:id"
+            element={
+              <ProductDetail
+                setCarrito={setCarrito}
+                setGuardados={setGuardados}
+              />
+            }
+          />
+
+          {/* ✅ Página de carrito */}
+          <Route
+            path="/carrito"
+            element={
+              <Carrito
+                carrito={carrito}
+                setCarrito={setCarrito}
+                guardados={guardados}
+                setGuardados={setGuardados}
+              />
+            }
+          />
+
+          {/* ✅ Nueva ruta de checkout con productos del carrito */}
+          <Route
+            path="/checkout"
+            element={<Checkout carrito={carrito} />}
+          />
+
           <Route
             path="*"
             element={
@@ -92,6 +100,6 @@ export default function App() {
       </main>
       <Footer />
     </Router>
->>>>>>> 9733d6c (Primer commit - menus y login)
   );
 }
+

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import styles from "./TopBar.module.css";
-
-export default function TopBar({ onNavClick, currentPage }) {
-  const menuItems = ["HOMBRE", "MUJER", "NIÑOS", "MARCAS"];
-=======
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./TopBar.module.css";
@@ -63,13 +56,18 @@ export default function TopBar({ onNavClick, currentPage, usuarioActivo, actuali
         <div className={styles.submenuSection}>
           <h4>Zapatillas</h4>
           <ul>
-            <li>Running</li><li>Urbanas</li><li>Premium</li><li>Chunky</li>
+            <li onClick={() => navigate("/productos/hombre/running")}>Running</li>
+            <li>Urbanas</li>
+            <li>Premium</li>
+            <li>Chunky</li>
             <li><a href="#">{linkText}</a></li>
             <li><a href="#">Ver Todo Zapatillas</a></li>
           </ul>
         </div>
         <div className={styles.submenuSection}>
-          <ul><li>Sandalias</li><li>Jordan</li><li>Fútbol</li><li>Tenis</li></ul>
+          <ul>
+            <li>Sandalias</li><li>Jordan</li><li>Fútbol</li><li>Tenis</li>
+          </ul>
         </div>
         <div className={styles.submenuSection}>
           <h4>Comprar por Talla</h4>
@@ -106,76 +104,10 @@ export default function TopBar({ onNavClick, currentPage, usuarioActivo, actuali
       </div>
     </div>
   );
->>>>>>> 9733d6c (Primer commit - menus y login)
 
   return (
     <div className={styles.topBar}>
       <div className={styles.logo} onClick={() => onNavClick("home")}>
-<<<<<<< HEAD
-        <img
-          src="/resources/logo.png"
-          alt="LacedUp Logo"
-          className={styles.logoImage}
-          loading="lazy"
-        />
-      </div>
-
-      <nav className={styles.nav}>
-        {menuItems.map((item) => (
-          <div
-            key={item}
-            onClick={() => onNavClick(item.toLowerCase())}
-            className={`${styles.navLink} ${
-              currentPage === item.toLowerCase() ? styles.active : ""
-            }`}
-          >
-            {item}
-          </div>
-        ))}
-
-        <input
-          type="search"
-          placeholder="Buscar"
-          className={styles.searchInput}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") onNavClick("search", e.target.value);
-          }}
-          aria-label="Buscar"
-        />
-
-        <button
-          type="button"
-          className={styles.iconButton}
-          aria-label="Carrito de compras"
-          onClick={() => {
-            // Acción futura
-          }}
-        >
-          <img
-            src="/resources/carrito.png"
-            alt="Carrito"
-            className={styles.iconImage}
-            loading="lazy"
-          />
-        </button>
-
-        <button
-          type="button"
-          className={styles.iconButton}
-          aria-label="Usuario"
-          onClick={() => {
-            // Acción futura
-          }}
-        >
-          <img
-            src="/resources/user.png"
-            alt="Usuario"
-            className={styles.iconImage}
-            loading="lazy"
-          />
-        </button>
-      </nav>
-=======
         <img src="/resources/logo.png" alt="LacedUp Logo" className={styles.logoImage} />
       </div>
 
@@ -224,7 +156,6 @@ export default function TopBar({ onNavClick, currentPage, usuarioActivo, actuali
       {submenuVisible.mujer && renderSubmenu("mujer", ["5.0","5.5","6.0","6.5","7.0","7.5","8.0","8.5","9.0","9.5","10.0","10.5","11.0","11.5","12.0"], "Ver Todo Mujer")}
       {submenuVisible.niños && renderSubmenu("niños", ["1.0","1.5","2.0","2.5","3.0","3.5","4.0","4.5","5.0"], "Ver Todo Niños")}
       {submenuVisible.marcas && renderSubmenuMarcas()}
->>>>>>> 9733d6c (Primer commit - menus y login)
     </div>
   );
 }

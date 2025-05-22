@@ -1,21 +1,16 @@
 .topBar {
-<<<<<<< HEAD
-=======
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
->>>>>>> 9733d6c (Primer commit - menus y login)
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 50px;
   border-bottom: 1px solid #ddd;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
   background-color: #fff;
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
@@ -24,11 +19,7 @@
 }
 
 .logoImage {
-<<<<<<< HEAD
-  height: 28px; /* Ajusta a un tamaño más pequeño y estético */
-=======
   height: 28px;
->>>>>>> 9733d6c (Primer commit - menus y login)
   width: auto;
   display: block;
 }
@@ -42,7 +33,6 @@
   margin-left: 30px;
   cursor: pointer;
   font-weight: 400;
-  border-bottom: none;
   padding-bottom: 4px;
   transition: all 0.3s ease;
   user-select: none;
@@ -67,27 +57,23 @@
   outline-offset: 2px;
 }
 
-<<<<<<< HEAD
-.iconButton {
+.iconContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-left: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 20px; /* Iconos un poco más grandes */
-  user-select: none;
-  padding: 0;
-  line-height: 1;
-  color: #444;
-  transition: color 0.3s ease;
 }
 
-.iconButton:hover {
-  color: black;
-  outline: none;
-=======
+.iconImage {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+}
+
 .userIconContainer {
   position: relative;
-  margin-left: 20px;
 }
 
 .dropdownMenu {
@@ -105,62 +91,35 @@
   gap: 8px;
 }
 
+.loginBtn, .signupBtn, .accountBtn, .signoutBtn {
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
 .loginBtn {
   background-color: white;
   border: 1px solid #333;
   color: #333;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
 .signupBtn {
   background-color: #333;
   color: white;
   border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
 .accountBtn {
   background-color: white;
   border: 1px solid #333;
   color: #333;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
 .signoutBtn {
   background-color: white;
   border: 1px solid red;
   color: red;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: bold;
->>>>>>> 9733d6c (Primer commit - menus y login)
-}
-
-.iconImage {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  display: block;
-<<<<<<< HEAD
-=======
-  cursor: pointer;
-}
-
-.iconContainer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: 20px;
-}
-
-.hoverContainer {
-  position: relative;
 }
 
 .submenu {
@@ -183,9 +142,6 @@
   box-sizing: border-box;
 }
 
-
-
-
 .submenuSection {
   display: flex;
   flex-direction: column;
@@ -193,10 +149,10 @@
 }
 
 .submenuSection h4 {
-  margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 600;
   color: #333;
+  margin: 0 0 8px 0;
 }
 
 .submenuSection ul {
@@ -250,10 +206,9 @@
   border-color: #333;
 }
 
-
 .marcasGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 logos por fila */
+  grid-template-columns: repeat(5, 1fr);
   gap: 40px;
   justify-items: center;
   align-items: center;
@@ -297,5 +252,4 @@
 
 .verTodas a:hover {
   color: #000;
->>>>>>> 9733d6c (Primer commit - menus y login)
 }
