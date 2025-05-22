@@ -1,0 +1,67 @@
+.checkout-container {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.formulario-envio, .resumen-compra {
+  background: #f7f5f8;
+  padding: 1.5rem;
+  border-radius: 10px;
+  flex: 1;
+  max-width: 50%;
+}
+
+.formulario-envio input {
+  width: 100%;
+  margin-bottom: 0.7rem;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formulario-envio .error {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.formulario-envio button {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 5px;
+}
+
+.resumen-lista {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.item-resumen {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.item-resumen img {
+  width: 80px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.precio {
+  font-weight: bold;
+  color: red;
+}
+
+.rojo {
+  color: red;
+}

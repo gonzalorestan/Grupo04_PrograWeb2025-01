@@ -1,0 +1,50 @@
+.sidebar {
+  padding: 15px;
+  font-family: sans-serif;
+}
+
+.item {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.item:hover {
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: bold;
+  color: #e63946;
+}
+
+.colorGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.color {
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.selected {
+  border: 2px solid black;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.selectedBtn {
+  background-color: #000;
+  color: white;
+  border: none;
+}
