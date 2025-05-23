@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="css/Contacto/contacto.css">
+    <link rel="stylesheet" href="css/Contacto/contactoResponsive.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            position: relative;
+            background: #E3E0D3 !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-section {
+            position: relative;
+            background-color: black;
+            color: #1c1e21;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .info-container {
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(227, 224, 211, 1);
+            display: flex;
+            align-items: stretch;
+            padding: 0;
+            margin: 0;
+            border-radius: 25px;
+            width: 900px;
+            height: 300px;
+            box-shadow: 0px 4px 10px #1c1e21;
+            overflow: hidden;
+        }
+
+        .info-container img {
+            width: 450px;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            margin: 0;
+        }
+
+        .info-box {
+            margin-top: auto;
+            margin-bottom: auto;
+            background-color: rgba(227, 224, 211, 1);
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            animation: slideInContact 1s ease-out forwards;
+        }
+
+        .info-box p {
+            font-size: 20px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-box i {
+            font-size: 20px;
+            margin-right: 10px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?..."></iframe>
+        </div>
+        
+        <div class="info-container">
+            <img src="css/Contacto/parking.jpg" alt="Zapas">
+            <div class="info-box">
+                <p><i class="fa-solid fa-house"></i>Santiago de Surco</p>
+                <p><i class="fa-solid fa-calendar-days"></i> Lunes a Sábado de 10:00 am - 5:30 pm</p>
+                <p><i class="fa-solid fa-phone"></i> (+51) 936 555 410</p>
+                <p><i class="fa-solid fa-envelope"></i> PrograWeb</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarError(input, mensaje) {
+            input.setCustomValidity(mensaje);
+        }
+    </script>
+</body>
+</html>
