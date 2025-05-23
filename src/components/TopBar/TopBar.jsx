@@ -71,35 +71,36 @@ export default function TopBar({
     }
   };
 
+  const handleCategoryClick = (genero, categoria) => {
+    navigate(`/productos/${genero}/${categoria}`);
+    setSubmenuVisible({
+      hombre: false,
+      mujer: false,
+      niños: false,
+      marcas: false,
+    });
+  };
+
   const renderSubmenu = (key, tallas, linkText) => (
     <div className={styles.submenu} ref={submenuRefs[key]}>
       <div className={styles.submenuContent}>
         <div className={styles.submenuSection}>
           <h4>Zapatillas</h4>
           <ul>
-            <li>Running</li>
-            <li>Urbanas</li>
-            <li>Premium</li>
-            <li>Chunky</li>
+            {["Running", "Urbanas", "Premium", "Chunky", "Sandalias", "Jordan", "Fútbol", "Tenis"].map((cat) => (
+              <li key={cat} onClick={() => handleCategoryClick(key, cat.toLowerCase())}>
+                {cat}
+              </li>
+            ))}
             <li><a href="#">{linkText}</a></li>
             <li><a href="#">Ver Todo Zapatillas</a></li>
-          </ul>
-        </div>
-        <div className={styles.submenuSection}>
-          <ul>
-            <li>Sandalias</li>
-            <li>Jordan</li>
-            <li>Fútbol</li>
-            <li>Tenis</li>
           </ul>
         </div>
         <div className={styles.submenuSection}>
           <h4>Comprar por Talla</h4>
           <div className={styles.tallas}>
             {tallas.map((t) => (
-              <div key={t} className={styles.tallaBox}>
-                {t}
-              </div>
+              <div key={t} className={styles.tallaBox}>{t}</div>
             ))}
           </div>
         </div>
@@ -110,18 +111,7 @@ export default function TopBar({
   const renderSubmenuMarcas = () => (
     <div className={styles.submenu} ref={submenuRefs.marcas}>
       <div className={`${styles.submenuContent} ${styles.marcasGrid}`}>
-        {[
-          "nike",
-          "adidas",
-          "nb",
-          "vans",
-          "on",
-          "asics",
-          "lv",
-          "gucci",
-          "puma",
-          "reebok",
-        ].map((marca) => (
+        {["nike", "adidas", "nb", "vans", "on", "asics", "lv", "gucci", "puma", "reebok"].map((marca) => (
           <div
             key={marca}
             className={styles.logoContainer}
@@ -151,11 +141,7 @@ export default function TopBar({
   return (
     <div className={styles.topBar}>
       <div className={styles.logo} onClick={() => navigate("/")}>
-        <img
-          src="/resources/logo.png"
-          alt="LacedUp Logo"
-          className={styles.logoImage}
-        />
+        <img src="/resources/logo.png" alt="LacedUp Logo" className={styles.logoImage} />
       </div>
 
       <nav className={styles.nav}>
@@ -163,9 +149,7 @@ export default function TopBar({
           <div
             key={key}
             onClick={() => toggleSubmenu(key)}
-            className={`${styles.navLink} ${
-              currentPage === key ? styles.active : ""
-            }`}
+            className={`${styles.navLink} ${currentPage === key ? styles.active : ""}`}
           >
             {key.toUpperCase()}
           </div>
@@ -179,11 +163,7 @@ export default function TopBar({
         />
 
         <div className={styles.iconContainer}>
-          <img
-            src="/resources/carrito.png"
-            alt="Carrito"
-            className={styles.iconImage}
-          />
+          <img src="/resources/carrito.png" alt="Carrito" className={styles.iconImage} />
           <div className={styles.userIconContainer} ref={menuRef}>
             <img
               src="/resources/user.png"
@@ -196,33 +176,12 @@ export default function TopBar({
                 {usuarioActivo ? (
                   <>
                     <button className={styles.accountBtn}>Mi Cuenta</button>
-                    <button
-                      className={styles.signoutBtn}
-                      onClick={handleLogout}
-                    >
-                      SIGN OUT
-                    </button>
+                    <button className={styles.signoutBtn} onClick={handleLogout}>SIGN OUT</button>
                   </>
                 ) : (
                   <>
-                    <button
-                      className={styles.loginBtn}
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate("/login");
-                      }}
-                    >
-                      LOGIN
-                    </button>
-                    <button
-                      className={styles.signupBtn}
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate("/register");
-                      }}
-                    >
-                      SIGN UP
-                    </button>
+                    <button className={styles.loginBtn} onClick={() => { setMenuOpen(false); navigate("/login"); }}>LOGIN</button>
+                    <button className={styles.signupBtn} onClick={() => { setMenuOpen(false); navigate("/register"); }}>SIGN UP</button>
                   </>
                 )}
               </div>
@@ -231,24 +190,9 @@ export default function TopBar({
         </div>
       </nav>
 
-      {submenuVisible.hombre &&
-        renderSubmenu(
-          "hombre",
-          ["6.0", "6.5", "7.0", "7.5", "8.0", "8.5", "9.0", "9.5", "10.0"],
-          "Ver Todo Hombre"
-        )}
-      {submenuVisible.mujer &&
-        renderSubmenu(
-          "mujer",
-          ["5.0", "5.5", "6.0", "6.5", "7.0", "7.5", "8.0", "8.5"],
-          "Ver Todo Mujer"
-        )}
-      {submenuVisible.niños &&
-        renderSubmenu(
-          "niños",
-          ["1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0", "4.5"],
-          "Ver Todo Niños"
-        )}
+      {submenuVisible.hombre && renderSubmenu("hombre", ["6.0", "6.5", "7.0", "7.5", "8.0", "8.5", "9.0", "9.5", "10.0","10.5","11.0","11.5", "12.0", "12.5","13.0"], "Ver Todo Hombre")}
+      {submenuVisible.mujer && renderSubmenu("mujer", ["5.0", "5.5", "6.0", "6.5", "7.0", "7.5", "8.0", "8.5"], "Ver Todo Mujer")}
+      {submenuVisible.niños && renderSubmenu("niños", ["1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0", "4.5"], "Ver Todo Niños")}
       {submenuVisible.marcas && renderSubmenuMarcas()}
     </div>
   );
