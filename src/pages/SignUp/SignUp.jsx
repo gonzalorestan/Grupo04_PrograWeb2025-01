@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../Context/AuthContext';
+import { registerUser } from "../../services/api";
 
-export default function SignUp({ onRegister }) {
+export default function SignUp({ onRegister ,actualizarUsuarioActivo }) {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [form, setForm] = useState({
     nombre: "",
@@ -21,30 +24,40 @@ export default function SignUp({ onRegister }) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (form.password !== form.confirmPassword) {
       setError("Las contraseñas no coinciden");
       return;
     }
 
-    const newUser = {
-      nombre: form.nombre,
-      apellido: form.apellido,
-      correo: form.correo,
-      dni: form.dni,
-      password: form.password,
-    };
+    try {
+      await registerUser(form);
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    usuarios.push(newUser);
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    localStorage.setItem("usuarioActivo", JSON.stringify(newUser));
+      const newUser = {
+        nombre: form.nombre,
+        apellido: form.apellido,
+        correo: form.correo,
+        dni: form.dni,
+        password: form.password,
+      };
 
-    if (typeof onRegister === "function") onRegister();
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      usuarios.push(newUser);
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+      localStorage.setItem("usuarioActivo", JSON.stringify(newUser));
 
-    navigate("/");
+      actualizarUsuarioActivo(newUser);
+
+      if (typeof onRegister === "function") onRegister();
+          navigate("/");
+      
+    } catch (err) {
+      setError(err.message);
+    }
+    
   };
 
   return (

@@ -1,0 +1,79 @@
+.order-list {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .order-list h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  
+  .orders-table th,
+  .orders-table td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .orders-table th {
+    background-color: #f5f5f5;
+    color: #444;
+    font-weight: 600;
+  }
+  
+  .orders-table tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  
+  .view-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-button:hover {
+    background-color: #45a049;
+  }
+  
+  .pagination {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .pagination button {
+    margin: 0 0.3rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .pagination .active {
+    background-color: #2196f3;
+    color: white;
+    border-color: #2196f3;
+  }
+  
