@@ -13,7 +13,7 @@ const OrdenCompletada = () => {
       justifyContent: "center",
       alignItems: "center",
       height: "50vh",
-      backgroundColor: "#f4f2f9", // opcional para parecerse a tu diseño
+      backgroundColor: "#f4f2f9", 
       textAlign: "center",
     }}
   >
