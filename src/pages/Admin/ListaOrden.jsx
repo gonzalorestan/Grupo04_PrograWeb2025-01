@@ -86,7 +86,7 @@ const ListaOrden = () => {
               <td>
                 <button
                   className={styles.btnDetail}
-                  onClick={() => navegar(`/admin/orders/${orden.id}`)}
+                  onClick={() => navegar(`/admin/ordenes/${orden.id}`)}
                 >
                   Ver Detalle
                 </button>
