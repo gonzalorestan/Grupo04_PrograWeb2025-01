@@ -66,9 +66,9 @@ export default function App() {
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/admin/usuario" element={<UserList />} />
-          <Route path="/admin/listausuario/:id" element={<UserDetail />} />
           <Route path="/admin/orden" element={<OrderList />} />
-          <Route path="/admin/detalleorden/:id" element={<OrderDetail />} />
+          <Route path="/admin/usuarios/:id" element={<DetalleUsuario />} />
+          <Route path="/admin/ordenes/:id" element={<DetalleOrden />} />
           <Route path="/producto/:id" element={<ProductDetail setCarrito={setCarrito} setGuardados={setGuardados} />} />
           <Route path="/carrito" element={<Carrito carrito={carrito} setCarrito={setCarrito} guardados={guardados} setGuardados={setGuardados} />} />
           <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
