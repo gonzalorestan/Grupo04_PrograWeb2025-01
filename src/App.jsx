@@ -65,10 +65,10 @@ export default function App() {
           <Route path="/signup" element={<SignUp actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
-          <Route path="/admin/users" element={<UserList />} />
-          <Route path="/admin/users/:id" element={<UserDetail />} />
-          <Route path="/admin/orders" element={<OrderList />} />
-          <Route path="/admin/orders/:id" element={<OrderDetail />} />
+          <Route path="/admin/usuario" element={<UserList />} />
+          <Route path="/admin/listausuario/:id" element={<UserDetail />} />
+          <Route path="/admin/orden" element={<OrderList />} />
+          <Route path="/admin/detalleorden/:id" element={<OrderDetail />} />
           <Route path="/producto/:id" element={<ProductDetail setCarrito={setCarrito} setGuardados={setGuardados} />} />
           <Route path="/carrito" element={<Carrito carrito={carrito} setCarrito={setCarrito} guardados={guardados} setGuardados={setGuardados} />} />
           <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
