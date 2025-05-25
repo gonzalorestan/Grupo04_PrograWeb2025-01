@@ -12,9 +12,9 @@ import Carrito from "./pages/Carrito"; // este también está suelto
 import Checkout from "./pages/Checkout/Checkout";
 import OrdenCompletada from "./pages/OrdenCompletada"; // este está suelto también
 import UserList from "./pages/Admin/ListaUsuario";
-import UserDetail from "./pages/Admin/DetalleUsuario";
 import OrderList from "./pages/Admin/ListaOrden";
-import OrderDetail from "./pages/Admin/DetalleOrden";
+import DetalleUsuario from './pages/Admin/DetalleUsuario';
+import DetalleOrden from './pages/Admin/DetalleOrden';
 import OrderUserList from "./pages/User/ListaOrdenUsuario";
 import OrderUserDetail from "./pages/User/DetalleOrdenUsuario";
 import ForgotPassword from "./pages/Login/ForgotPassword";
@@ -54,6 +54,7 @@ export default function App() {
 
   return (
     <>
+    
       <TopBar
         usuarioActivo={usuarioActivo}
         actualizarUsuarioActivo={actualizarUsuarioActivo}
@@ -82,6 +83,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      
     </>
   );
 }
