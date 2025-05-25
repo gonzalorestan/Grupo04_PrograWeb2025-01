@@ -73,7 +73,7 @@ const ListaUsuario = () => {
               <td>
                 <button 
                   className={styles.btnDetail}
-                  onClick={() => navegar(`/admin/users/${usuario.id}`)}
+                  onClick={() => navegar(`/admin/usuarios/${usuario.id}`)}
                 >
                   Ver Detalle
                 </button>
