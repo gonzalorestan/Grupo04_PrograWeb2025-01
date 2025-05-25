@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./TopBar.module.css";
+import { useAuth } from "../../pages/Context/AuthContext";
 
 export default function TopBar({
   onNavClick,
@@ -8,6 +9,8 @@ export default function TopBar({
   usuarioActivo,
   actualizarUsuarioActivo,
 }) {
+
+  const { logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [submenuVisible, setSubmenuVisible] = useState({
     hombre: false,
@@ -48,10 +51,7 @@ export default function TopBar({
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("usuarioActivo");
-    setMenuOpen(false);
-    actualizarUsuarioActivo?.();
-    navigate("/");
+    logout();
   };
 
   const toggleSubmenu = (key) => {
@@ -163,7 +163,9 @@ export default function TopBar({
         />
 
         <div className={styles.iconContainer}>
+          <div onClick={() => navigate("/carrito")} style={{ cursor: "pointer" }}>
           <img src="/resources/carrito.png" alt="Carrito" className={styles.iconImage} />
+          </div>
           <div className={styles.userIconContainer} ref={menuRef}>
             <img
               src="/resources/user.png"
@@ -175,13 +177,15 @@ export default function TopBar({
               <div className={styles.dropdownMenu}>
                 {usuarioActivo ? (
                   <>
-                    <button className={styles.accountBtn}>Mi Cuenta</button>
+                    <button className={styles.accountBtn} onClick={() => { setMenuOpen(false); navigate("/user/orders"); }}>Mi Cuenta</button>
+                    <button className={styles.accountBtn} onClick={() => { setMenuOpen(false); navigate("/user/editar-perfil"); }}>Datos de registro</button>
+                    <button className={styles.accountBtn} onClick={() => { setMenuOpen(false); navigate("/user/cambiar-password"); }}>Cambiar Password</button>
                     <button className={styles.signoutBtn} onClick={handleLogout}>SIGN OUT</button>
                   </>
                 ) : (
                   <>
                     <button className={styles.loginBtn} onClick={() => { setMenuOpen(false); navigate("/login"); }}>LOGIN</button>
-                    <button className={styles.signupBtn} onClick={() => { setMenuOpen(false); navigate("/register"); }}>SIGN UP</button>
+                    <button className={styles.signupBtn} onClick={() => { setMenuOpen(false); navigate("/SignUp"); }}>SIGN UP</button>
                   </>
                 )}
               </div>

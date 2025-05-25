@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import TopBar from "./components/TopBar/TopBar";
 import Footer from "./components/Footer/Footer";
@@ -11,26 +11,50 @@ import ProductDetail from "./pages/ProductDetail"; // este ya está suelto
 import Carrito from "./pages/Carrito"; // este también está suelto
 import Checkout from "./pages/Checkout/Checkout";
 import OrdenCompletada from "./pages/OrdenCompletada"; // este está suelto también
+import UserList from "./pages/Admin/ListaUsuario";
+import OrderList from "./pages/Admin/ListaOrden";
+import DetalleUsuario from './pages/Admin/DetalleUsuario';
+import DetalleOrden from './pages/Admin/DetalleOrden';
+import OrderUserList from "./pages/User/ListaOrdenUsuario";
+import OrderUserDetail from "./pages/User/DetalleOrdenUsuario";
+import ForgotPassword from "./pages/Login/ForgotPassword";
+import PrivateRoute from "./pages/Components/PrivateRoute"
+import CambiarPassword from "./pages/User/CambiarPassword"
+import EditarPerfil from "./pages/User/EditarPerfil"
+
 
 export default function App() {
-  const [usuarioActivo, setUsuarioActivo] = useState(null);
+  const [usuarioActivo, setUsuarioActivo] = useState(() => {
+    const guardado = localStorage.getItem("usuarioActivo");
+    return guardado ? JSON.parse(guardado) : null;
+  });
+
   const [carrito, setCarrito] = useState([]);
   const [guardados, setGuardados] = useState([]);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("usuarioActivo");
-    if (storedUser) {
-      setUsuarioActivo(JSON.parse(storedUser));
-    }
+    const handleStorageChange = () => {
+      const user = JSON.parse(localStorage.getItem("usuarioActivo"));
+      setUsuarioActivo(user);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  const actualizarUsuarioActivo = () => {
-    const storedUser = localStorage.getItem("usuarioActivo");
-    setUsuarioActivo(storedUser ? JSON.parse(storedUser) : null);
+  const actualizarUsuarioActivo = (usuario) => {
+    if (usuario) {
+      localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+      setUsuarioActivo(usuario);
+    } else {
+      localStorage.removeItem("usuarioActivo");
+      setUsuarioActivo(null);
+    }
   };
 
   return (
-    <Router>
+    <>
+    
       <TopBar
         usuarioActivo={usuarioActivo}
         actualizarUsuarioActivo={actualizarUsuarioActivo}
@@ -39,19 +63,28 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup" element={<SignUp actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
-
-
+          <Route path="/admin/usuario" element={<UserList />} />
+          <Route path="/admin/orden" element={<OrderList />} />
+          <Route path="/admin/usuarios/:id" element={<DetalleUsuario />} />
+          <Route path="/admin/ordenes/:id" element={<DetalleOrden />} />
           <Route path="/producto/:id" element={<ProductDetail setCarrito={setCarrito} setGuardados={setGuardados} />} />
           <Route path="/carrito" element={<Carrito carrito={carrito} setCarrito={setCarrito} guardados={guardados} setGuardados={setGuardados} />} />
           <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
           <Route path="/orden-completada" element={<OrdenCompletada />} />
+          <Route path="/user/orders" element={ <OrderUserList /> } />
+          <Route path="/user/orders/:id" element={<OrderUserDetail /> } />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/user/editar-perfil" element={ <EditarPerfil /> } />
+          <Route path="/user/cambiar-password" element={ <CambiarPassword />} />
           <Route path="*" element={<h2 style={{ margin: "50px", textAlign: "center" }}>Página no encontrada.</h2>} />
         </Routes>
       </main>
       <Footer />
-    </Router>
+      
+    </>
   );
 }
+

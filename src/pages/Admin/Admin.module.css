@@ -1,0 +1,83 @@
+.adminMenu {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.nav {
+  margin-top: 10px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  background: #2c3e50;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navLink:hover {
+  color: #3498db;
+}
+
+.adminContent {
+  margin-top: 20px;
+}
+
+.adminTableContainer {
+  margin-top: 20px;
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.adminTable th, .adminTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.adminTable th {
+  background-color: #3498db;
+  color: white;
+}
+
+.btnDetail {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btnActivate {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btnDeactivate, .btnCancel {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}

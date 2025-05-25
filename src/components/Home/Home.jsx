@@ -49,12 +49,12 @@ const bestSellersData = [
   { name: "Nike Zoom Winflo", category: "Running", price: 679, img: "/resources/NikeZoomWinflo.png" },
   { name: "Nike Air Zoom Structure 20", category: "Running", price: 529, img: "/resources/NikeAirMaxStructure20.png" },
   { name: "Nike Zoom 2K", category: "Chunky", price: 439, img: "/resources/NikeZoom2k.png" },
-  { name: "Nike Air Max Plus", category: "Urbanas", price: 519, img: "/resources/NikeAirMaxPlus.png" },
-  { name: "Nike Blazer Mid '77", category: "Premium", price: 489, img: "/resources/NikeBlazerMid.png" },
-  { name: "Nike Waffle Trainer 2", category: "Retro", price: 469, img: "/resources/NikeWaffleTrainer2.png" },
-  { name: "Nike Air Force 1", category: "Urbanas", price: 599, img: "/resources/NikeAirForce1.png" },
-  { name: "Nike Air Max 97", category: "Running", price: 709, img: "/resources/NikeAirMax97.png" },
-  { name: "Nike Air VaporMax", category: "Premium", price: 799, img: "/resources/NikeVaporMax.png" },
+  { name: "Nike Air Max 2015", category: "Running", price: 519, img: "/resources/NikeAirMax2015.png" },
+  { name: "Nike Airmax 2021", category: "Running", price: 489, img: "/resources/NikeAirMax2021.png" },
+  { name: "Nike React Flyknit", category: "Running", price: 469, img: "/resources/NikeReactFlyknit.png" },
+  { name: "Adidas Supernova", category: "Tenis", price: 599, img: "/resources/AdidasSupernova.png" },
+  { name: "Nike Air Max 270", category: "Running", price: 709, img: "/resources/NikeAirmax270.png" },
+  { name: "Lv Trainer Denim", category: "Chunky", price: 799, img: "/resources/LVTrainerDenim.png" },
 ];
 
 export default function Home({ onShowProduct }) {

@@ -101,6 +101,7 @@ const Checkout = ({ carrito, setCarrito }) => {
         />
       )}
       {metodoSeleccionado === "qr" && (
+        
         <QRModal
           total={subtotal}
           onClose={() => setMetodoSeleccionado(null)}

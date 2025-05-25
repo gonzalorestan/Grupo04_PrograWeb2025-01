@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./Carrito.module.css";
 
 const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
   const navigate = useNavigate();
@@ -31,41 +32,56 @@ const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
   const subtotal = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>Carrito ({carrito.length} productos)</h2>
-      {carrito.map((item) => (
-        <div key={item.id} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-          <img src={item.imagen} alt={item.nombre} style={{ width: "80px", marginRight: "1rem" }} />
-          <div style={{ flex: 1 }}>
-            <h4>{item.nombre}</h4>
-            <p>{item.categoria} - Talla: {item.talla}</p>
-            <p>S/. {item.precio}</p>
+    <div className={styles.carritoContainer}>
+      <div className={styles.columnaProductos}>
+        <h2 className={styles.tituloSeccion}>Carrito ({carrito.length} productos)</h2>
+        {carrito.map((item) => (
+          <div key={item.id} className={styles.itemProducto}>
+            <img src={item.imagen} alt={item.nombre} className={styles.imagenProducto} />
+            <div className={styles.detalles}>
+              <div className={styles.nombreProducto}>{item.nombre}</div>
+              <div className={styles.categoriaTalla}>
+                {item.categoria} - Talla: {item.talla}
+              </div>
+              <div className={styles.precio}>S/. {item.precio}</div>
+            </div>
+            <div className={styles.botonesAccion}>
+              <button className={styles.boton} onClick={() => moverAGuardados(item.id)}>Guardar</button>
+              <button className={styles.boton} onClick={() => eliminar(item.id, "carrito")}>🗑</button>
+            </div>
           </div>
-          <button onClick={() => moverAGuardados(item.id)}>Guardar</button>
-          <button onClick={() => eliminar(item.id, "carrito")}>🗑</button>
-        </div>
-      ))}
+        ))}
 
-      <h2>Guardados ({guardados.length} productos)</h2>
-      {guardados.map((item) => (
-        <div key={item.id} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-          <img src={item.imagen} alt={item.nombre} style={{ width: "80px", marginRight: "1rem" }} />
-          <div style={{ flex: 1 }}>
-            <h4>{item.nombre}</h4>
-            <p>{item.categoria} - Talla: {item.talla}</p>
-            <p>S/. {item.precio}</p>
+        <h2 className={styles.tituloSeccion}>Guardados ({guardados.length} productos)</h2>
+        {guardados.map((item) => (
+          <div key={item.id} className={styles.itemProducto}>
+            <img src={item.imagen} alt={item.nombre} className={styles.imagenProducto} />
+            <div className={styles.detalles}>
+              <div className={styles.nombreProducto}>{item.nombre}</div>
+              <div className={styles.categoriaTalla}>
+                {item.categoria} - Talla: {item.talla}
+              </div>
+              <div className={styles.precio}>S/. {item.precio}</div>
+            </div>
+            <div className={styles.botonesAccion}>
+              <button className={styles.boton} onClick={() => subirAlCarrito(item.id)}>Subir al carrito</button>
+              <button className={styles.boton} onClick={() => eliminar(item.id, "guardado")}>🗑</button>
+            </div>
           </div>
-          <button onClick={() => subirAlCarrito(item.id)}>Subir al carrito</button>
-          <button onClick={() => eliminar(item.id, "guardado")}>🗑</button>
+        ))}
+      </div>
+
+      <div className={styles.columnaResumen}>
+        <div className={styles.resumen}>
+          <h3>Resumen</h3>
+          <p>Subtotal: <span style={{ color: "#c00" }}>S/. {subtotal.toFixed(2)}</span></p>
+          <p>Envío: <span style={{ color: "#c00" }}>GRATIS</span></p>
+          <h3>Total: <span style={{ color: "#c00" }}>S/. {subtotal.toFixed(2)}</span></h3>
+          <button className={styles.checkoutButton} onClick={() => navigate("/checkout")}>
+            Checkout
+          </button>
         </div>
-      ))}
-
-      <h2>Resumen</h2>
-      <p>Subtotal: S/. {subtotal.toFixed(2)}</p>
-      <p>Envío: GRATIS</p>
-      <h3>Total: S/. {subtotal.toFixed(2)}</h3>
-
-      <button onClick={() => navigate("/checkout")}>Checkout</button>
+      </div>
     </div>
   );
 };
