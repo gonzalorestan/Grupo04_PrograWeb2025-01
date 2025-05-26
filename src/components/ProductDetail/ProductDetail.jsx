@@ -1,14 +1,9 @@
 import React from "react";
 import styles from "./ProductDetail.module.css";
 
-export default function ProductDetail({ product, onClose }) {
-  if (!product) return null;
-
+export default function ProductDetail({ product }) {
   return (
     <div className={styles.container}>
-      <button onClick={onClose} style={{ marginBottom: 20, cursor: "pointer" }}>
-        ← Volver
-      </button>
       <div className={styles.imageSection}>
         <img src={product.img} alt={product.name} className={styles.image} />
       </div>

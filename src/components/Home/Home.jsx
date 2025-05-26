@@ -54,9 +54,8 @@ const bestSellersData = [
   { name: "Nike React Flyknit", category: "Running", price: 469, img: "/resources/NikeReactFlyknit.png" },
   { name: "Adidas Supernova", category: "Tenis", price: 599, img: "/resources/AdidasSupernova.png" },
   { name: "Nike Air Max 270", category: "Running", price: 709, img: "/resources/NikeAirmax270.png" },
-  { name: "Lv Trainer Denim", category: "Chunky", price: 799, img: "/resources/LVTrainerDenim.png" },
+  { name: "Lv Trainer Denim", category: "Chunky", price: 799, img: "/resources/LVTrainerDenim.png" },
 ];
-
 export default function Home({ onShowProduct }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentBestSellerSlide, setCurrentBestSellerSlide] = useState(0);
@@ -70,41 +69,16 @@ export default function Home({ onShowProduct }) {
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
-  const nextBestSellerSlide = () =>
-    setCurrentBestSellerSlide((prev) => (prev + 1) % bestSellerSlides.length);
-  const prevBestSellerSlide = () =>
-    setCurrentBestSellerSlide((prev) => (prev - 1 + bestSellerSlides.length) % bestSellerSlides.length);
-
-  function hexToRGBA(hex, alpha) {
-    let r = 0,
-      g = 0,
-      b = 0;
-    if (hex.charAt(0) === "#") hex = hex.slice(1);
-    if (hex.length === 3) {
-      r = parseInt(hex[0] + hex[0], 16);
-      g = parseInt(hex[1] + hex[1], 16);
-      b = parseInt(hex[2] + hex[2], 16);
-    } else if (hex.length === 6) {
-      r = parseInt(hex.substring(0, 2), 16);
-      g = parseInt(hex.substring(2, 4), 16);
-      b = parseInt(hex.substring(4, 6), 16);
-    }
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  }
+  const nextBestSellerSlide = () => setCurrentBestSellerSlide((prev) => (prev + 1) % bestSellerSlides.length);
+  const prevBestSellerSlide = () => setCurrentBestSellerSlide((prev) => (prev - 1 + bestSellerSlides.length) % bestSellerSlides.length);
 
   return (
     <main className={styles.container}>
       {/* Carousel principal */}
       <section className={styles.carousel} style={{ backgroundColor: slides[currentSlide].bgColor }}>
-        <button className={`${styles.navButton} ${styles.prev}`} onClick={prevSlide}>
-          ‹
-        </button>
+        <button className={`${styles.navButton} ${styles.prev}`} onClick={prevSlide}>‹</button>
 
-        <img
-          src={slides[currentSlide].img}
-          alt={slides[currentSlide].title}
-          className={styles.carouselImage}
-        />
+        <img src={slides[currentSlide].img} alt={slides[currentSlide].title} className={styles.carouselImage} />
 
         <div className={styles.carouselText}>
           <h1 className={styles.title}>{slides[currentSlide].title}</h1>
@@ -117,17 +91,11 @@ export default function Home({ onShowProduct }) {
           </div>
         </div>
 
-        <button className={`${styles.navButton} ${styles.next}`} onClick={nextSlide}>
-          ›
-        </button>
+        <button className={`${styles.navButton} ${styles.next}`} onClick={nextSlide}>›</button>
 
         <div className={styles.indicators}>
           {slides.map((_, idx) => (
-            <span
-              key={idx}
-              className={`${styles.indicator} ${idx === currentSlide ? styles.activeIndicator : ""}`}
-              onClick={() => setCurrentSlide(idx)}
-            />
+            <span key={idx} className={`${styles.indicator} ${idx === currentSlide ? styles.activeIndicator : ""}`} onClick={() => setCurrentSlide(idx)} />
           ))}
         </div>
       </section>
@@ -150,16 +118,10 @@ export default function Home({ onShowProduct }) {
       <section className={styles.bestSellersSection}>
         <h2 className={styles.sectionTitle}>LO MÁS VENDIDO</h2>
         <div className={styles.bestSellersCarousel}>
-          <button className={styles.bestSellerNav} onClick={prevBestSellerSlide}>
-            ‹
-          </button>
+          <button className={styles.bestSellerNav} onClick={prevBestSellerSlide}>‹</button>
           <div className={styles.bestSellers}>
             {bestSellerSlides[currentBestSellerSlide].map((item) => (
-              <div
-                key={item.name}
-                className={styles.bestSellerCard}
-                onClick={() => onShowProduct(item)}
-              >
+              <div key={item.name} className={styles.bestSellerCard} onClick={() => onShowProduct(item)}>
                 <img src={item.img} alt={item.name} className={styles.bestSellerImage} />
                 <div className={styles.bestSellerName}>{item.name}</div>
                 <div className={styles.bestSellerCategory}>{item.category}</div>
@@ -168,11 +130,24 @@ export default function Home({ onShowProduct }) {
               </div>
             ))}
           </div>
-          <button className={styles.bestSellerNav} onClick={nextBestSellerSlide}>
-            ›
-          </button>
+          <button className={styles.bestSellerNav} onClick={nextBestSellerSlide}>›</button>
         </div>
       </section>
     </main>
   );
+}
+
+function hexToRGBA(hex, alpha) {
+  let r = 0, g = 0, b = 0;
+  if (hex.charAt(0) === "#") hex = hex.slice(1);
+  if (hex.length === 3) {
+    r = parseInt(hex[0] + hex[0], 16);
+    g = parseInt(hex[1] + hex[1], 16);
+    b = parseInt(hex[2] + hex[2], 16);
+  } else if (hex.length === 6) {
+    r = parseInt(hex.substring(0, 2), 16);
+    g = parseInt(hex.substring(2, 4), 16);
+    b = parseInt(hex.substring(4, 6), 16);
+  }
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
