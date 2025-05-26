@@ -1,24 +1,10 @@
 import React from "react";
 import styles from "./SearchResults.module.css";
-
-const dummyData = [
-  {
-    name: "Nike Air Max 90",
-    category: "Running",
-    price: 459,
-    img: "/resources/NikeAirMax90.png",
-  },
-  {
-    name: "Nike React Presto",
-    category: "Urbanas",
-    price: 499,
-    img: "/resources/NikeReactPresto.png",
-  },
-];
+import products from "../../data/products"; // Ajusta la ruta según tu estructura
 
 export default function SearchResults({ query, onShowProduct }) {
-  const filtered = dummyData.filter((p) =>
-    p.name.toLowerCase().includes(query.toLowerCase())
+  const filtered = products.filter((p) =>
+    p.nombre.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -30,13 +16,13 @@ export default function SearchResults({ query, onShowProduct }) {
         ) : (
           filtered.map((item) => (
             <div
-              key={item.name}
+              key={item.id}
               className={styles.resultCard}
               onClick={() => onShowProduct(item)}
             >
-              <img src={item.img} alt={item.name} className={styles.image} />
-              <div className={styles.name}>{item.name}</div>
-              <div className={styles.price}>S/. {item.price}</div>
+              <img src={item.imagen} alt={item.nombre} className={styles.image} />
+              <div className={styles.name}>{item.nombre}</div>
+              <div className={styles.price}>S/. {item.precio}</div>
             </div>
           ))
         )}

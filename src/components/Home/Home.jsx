@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Home.module.css";
+import products from "../../data/products";
 
 const slides = [
   {
@@ -42,20 +43,24 @@ const categoriesData = [
   { title: "Sandalias", img: "/resources/sandalias.png", color: "#b7a685" },
 ];
 
-const bestSellersData = [
-  { name: "Nike Air Max 90", category: "Running", price: 459, img: "/resources/NikeAirMax90.png" },
-  { name: "Nike React Presto", category: "Urbanas", price: 499, img: "/resources/NikeReactPresto.png" },
-  { name: "Nike Campus", category: "Running", price: 299, img: "/resources/NikeCampus.png" },
-  { name: "Nike Zoom Winflo", category: "Running", price: 679, img: "/resources/NikeZoomWinflo.png" },
-  { name: "Nike Air Zoom Structure 20", category: "Running", price: 529, img: "/resources/NikeAirMaxStructure20.png" },
-  { name: "Nike Zoom 2K", category: "Chunky", price: 439, img: "/resources/NikeZoom2k.png" },
-  { name: "Nike Air Max 2015", category: "Running", price: 519, img: "/resources/NikeAirMax2015.png" },
-  { name: "Nike Airmax 2021", category: "Running", price: 489, img: "/resources/NikeAirMax2021.png" },
-  { name: "Nike React Flyknit", category: "Running", price: 469, img: "/resources/NikeReactFlyknit.png" },
-  { name: "Adidas Supernova", category: "Tenis", price: 599, img: "/resources/AdidasSupernova.png" },
-  { name: "Nike Air Max 270", category: "Running", price: 709, img: "/resources/NikeAirmax270.png" },
-  { name: "Lv Trainer Denim", category: "Chunky", price: 799, img: "/resources/LVTrainerDenim.png" },
-];
+// Filtramos los bestSellers de products.json para sincronizar datos
+const bestSellersData = products.filter(p =>
+  [
+    "Nike Air Max 90",
+    "Nike React Presto",
+    "Nike Campus",
+    "Nike Zoom Winflo",
+    "Nike Air Zoom Structure 20",
+    "Nike Zoom 2K",
+    "Nike Air Max 2015",
+    "Nike Air Max 2021",
+    "Nike React Flyknit",
+    "Adidas Supernova",
+    "Nike Air Max 270",
+    "Lv Trainer Denim",
+  ].includes(p.nombre)
+);
+
 export default function Home({ onShowProduct }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentBestSellerSlide, setCurrentBestSellerSlide] = useState(0);
@@ -66,36 +71,70 @@ export default function Home({ onShowProduct }) {
     bestSellerSlides.push(bestSellersData.slice(i, i + bestSellersPerPage));
   }
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  const nextSlide = () =>
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
-  const nextBestSellerSlide = () => setCurrentBestSellerSlide((prev) => (prev + 1) % bestSellerSlides.length);
-  const prevBestSellerSlide = () => setCurrentBestSellerSlide((prev) => (prev - 1 + bestSellerSlides.length) % bestSellerSlides.length);
+  const nextBestSellerSlide = () =>
+    setCurrentBestSellerSlide((prev) => (prev + 1) % bestSellerSlides.length);
+  const prevBestSellerSlide = () =>
+    setCurrentBestSellerSlide(
+      (prev) => (prev - 1 + bestSellerSlides.length) % bestSellerSlides.length
+    );
 
   return (
     <main className={styles.container}>
       {/* Carousel principal */}
-      <section className={styles.carousel} style={{ backgroundColor: slides[currentSlide].bgColor }}>
-        <button className={`${styles.navButton} ${styles.prev}`} onClick={prevSlide}>‹</button>
+      <section
+        className={styles.carousel}
+        style={{ backgroundColor: slides[currentSlide].bgColor }}
+      >
+        <button
+          className={`${styles.navButton} ${styles.prev}`}
+          onClick={prevSlide}
+        >
+          ‹
+        </button>
 
-        <img src={slides[currentSlide].img} alt={slides[currentSlide].title} className={styles.carouselImage} />
+        <img
+          src={slides[currentSlide].img}
+          alt={slides[currentSlide].title}
+          className={styles.carouselImage}
+        />
 
         <div className={styles.carouselText}>
           <h1 className={styles.title}>{slides[currentSlide].title}</h1>
-          <p className={styles.description}>{slides[currentSlide].description}</p>
+          <p className={styles.description}>
+            {slides[currentSlide].description}
+          </p>
           <div className={styles.priceBuy}>
             <div className={styles.price}>S/. {slides[currentSlide].price}</div>
-            <button className={styles.buyButton} onClick={() => onShowProduct(slides[currentSlide])}>
+            <button
+              className={styles.buyButton}
+              onClick={() => onShowProduct(slides[currentSlide])}
+            >
               COMPRAR
             </button>
           </div>
         </div>
 
-        <button className={`${styles.navButton} ${styles.next}`} onClick={nextSlide}>›</button>
+        <button
+          className={`${styles.navButton} ${styles.next}`}
+          onClick={nextSlide}
+        >
+          ›
+        </button>
 
         <div className={styles.indicators}>
           {slides.map((_, idx) => (
-            <span key={idx} className={`${styles.indicator} ${idx === currentSlide ? styles.activeIndicator : ""}`} onClick={() => setCurrentSlide(idx)} />
+            <span
+              key={idx}
+              className={`${styles.indicator} ${
+                idx === currentSlide ? styles.activeIndicator : ""
+              }`}
+              onClick={() => setCurrentSlide(idx)}
+            />
           ))}
         </div>
       </section>
@@ -105,9 +144,28 @@ export default function Home({ onShowProduct }) {
         <h2 className={styles.exploreTitle}>EXPLORA LAS CATEGORIAS</h2>
         <div className={styles.categoriesGrid}>
           {categoriesData.map((cat) => (
-            <div key={cat.title} className={styles.categoryCard} title={cat.title}>
-              <div className={styles.categoryBackground} style={{ backgroundColor: hexToRGBA(cat.color, 0.3) }} />
-              <img src={cat.img} alt={cat.title} className={styles.categoryImage} />
+            <div
+              key={cat.title}
+              className={styles.categoryCard}
+              title={cat.title}
+              onClick={() =>
+                onShowProduct({
+                  nombre: cat.title,
+                  img: cat.img,
+                  categoria: cat.title,
+                  precio: 0,
+                })
+              }
+            >
+              <div
+                className={styles.categoryBackground}
+                style={{ backgroundColor: hexToRGBA(cat.color, 0.3) }}
+              />
+              <img
+                src={cat.img}
+                alt={cat.title}
+                className={styles.categoryImage}
+              />
               <span className={styles.categoryTitle}>{cat.title}</span>
             </div>
           ))}
@@ -118,19 +176,37 @@ export default function Home({ onShowProduct }) {
       <section className={styles.bestSellersSection}>
         <h2 className={styles.sectionTitle}>LO MÁS VENDIDO</h2>
         <div className={styles.bestSellersCarousel}>
-          <button className={styles.bestSellerNav} onClick={prevBestSellerSlide}>‹</button>
+          <button
+            className={styles.bestSellerNav}
+            onClick={prevBestSellerSlide}
+          >
+            ‹
+          </button>
           <div className={styles.bestSellers}>
             {bestSellerSlides[currentBestSellerSlide].map((item) => (
-              <div key={item.name} className={styles.bestSellerCard} onClick={() => onShowProduct(item)}>
-                <img src={item.img} alt={item.name} className={styles.bestSellerImage} />
-                <div className={styles.bestSellerName}>{item.name}</div>
-                <div className={styles.bestSellerCategory}>{item.category}</div>
-                <div className={styles.bestSellerPrice}>S/. {item.price}</div>
+              <div
+                key={item.nombre}
+                className={styles.bestSellerCard}
+                onClick={() => onShowProduct(item)}
+              >
+                <img
+                  src={item.imagen}
+                  alt={item.nombre}
+                  className={styles.bestSellerImage}
+                />
+                <div className={styles.bestSellerName}>{item.nombre}</div>
+                <div className={styles.bestSellerCategory}>{item.categoria}</div>
+                <div className={styles.bestSellerPrice}>S/. {item.precio}</div>
                 <button className={styles.bestSellerButton}>AGREGAR</button>
               </div>
             ))}
           </div>
-          <button className={styles.bestSellerNav} onClick={nextBestSellerSlide}>›</button>
+          <button
+            className={styles.bestSellerNav}
+            onClick={nextBestSellerSlide}
+          >
+            ›
+          </button>
         </div>
       </section>
     </main>
@@ -138,7 +214,9 @@ export default function Home({ onShowProduct }) {
 }
 
 function hexToRGBA(hex, alpha) {
-  let r = 0, g = 0, b = 0;
+  let r = 0,
+    g = 0,
+    b = 0;
   if (hex.charAt(0) === "#") hex = hex.slice(1);
   if (hex.length === 3) {
     r = parseInt(hex[0] + hex[0], 16);

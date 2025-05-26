@@ -1,4 +1,12 @@
+function generarStock() {
+  return {
+    "6.0": 5, "6.5": 5, "7.0": 5, "7.5": 5, "8.0": 5, "8.5": 5, "9.0": 5,
+    "9.5": 5, "10.0": 5, "10.5": 5, "11.0": 5, "11.5": 5, "12.0": 5, "12.5": 5, "13.0": 5,
+  };
+}
+
 const products = [
+  // From your detailed products.js list (running hombre mostly)
   {
     id: 1,
     nombre: "Nike Air Max 90",
@@ -9,6 +17,7 @@ const products = [
     precio: 459,
     imagen: "/resources/NikeAirMax90.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 2,
@@ -20,6 +29,7 @@ const products = [
     precio: 529,
     imagen: "/resources/NikeAirMaxStructure20.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 3,
@@ -31,6 +41,7 @@ const products = [
     precio: 299,
     imagen: "/resources/NikeCampus.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 4,
@@ -42,6 +53,7 @@ const products = [
     precio: 679,
     imagen: "/resources/NikeZoomWinflo.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 5,
@@ -53,6 +65,7 @@ const products = [
     precio: 679,
     imagen: "/resources/NikeAirMax2015.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 6,
@@ -64,6 +77,7 @@ const products = [
     precio: 479,
     imagen: "/resources/NikeReactFlyknit.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 7,
@@ -75,6 +89,7 @@ const products = [
     precio: 229,
     imagen: "/resources/revolu-removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 8,
@@ -86,6 +101,7 @@ const products = [
     precio: 349,
     imagen: "/resources/free-removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 9,
@@ -97,6 +113,7 @@ const products = [
     precio: 739,
     imagen: "/resources/zegama-removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 10,
@@ -108,6 +125,7 @@ const products = [
     precio: 999,
     imagen: "/resources/alphafly-removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 11,
@@ -119,6 +137,7 @@ const products = [
     precio: 689,
     imagen: "/resources/pegasus-removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 12,
@@ -130,6 +149,7 @@ const products = [
     precio: 629,
     imagen: "/resources/invincible-removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 13,
@@ -141,6 +161,7 @@ const products = [
     precio: 799,
     imagen: "/resources/NikeAirMax2021.png",
     stock: generarStock(),
+    bestseller: true,
   },
   {
     id: 14,
@@ -152,6 +173,7 @@ const products = [
     precio: 1199,
     imagen: "/resources/vaporfly_removebg.png",
     stock: generarStock(),
+    bestseller: false,
   },
   {
     id: 15,
@@ -163,27 +185,102 @@ const products = [
     precio: 799,
     imagen: "/resources/NikeAirMax270.png",
     stock: generarStock(),
+    bestseller: true,
   },
-];
 
-function generarStock() {
-  return {
-    "6.0": 5,
-    "6.5": 5,
-    "7.0": 5,
-    "7.5": 5,
-    "8.0": 5,
-    "8.5": 5,
-    "9.0": 5,
-    "9.5": 5,
-    "10.0": 5,
-    "10.5": 5,
-    "11.0": 5,
-    "11.5": 5,
-    "12.0": 5,
-    "12.5": 5,
-    "13.0": 5,
-  };
-}
+  // From Home.jsx slides (featured)
+  {
+    id: 16,
+    nombre: "JORDAN 1 VARSITY PURPLE",
+    genero: "hombre",
+    categoria: "jordan",
+    color: "morado",
+    marca: "Jordan",
+    precio: 799,
+    imagen: "/resources/AJN.png",
+    stock: generarStock(),
+    bestseller: false,
+    slide: true,
+  },
+  {
+    id: 17,
+    nombre: "NIKE AIR MAX PRE-DAY LX",
+    genero: "hombre",
+    categoria: "running",
+    color: "blanco",
+    marca: "Nike",
+    precio: 600,
+    imagen: "/resources/NAMPD-LX.png",
+    stock: generarStock(),
+    bestseller: false,
+    slide: true,
+  },
+  {
+    id: 18,
+    nombre: "NIKE AIR ZOOM PEGASUS",
+    genero: "hombre",
+    categoria: "running",
+    color: "blanco",
+    marca: "Nike",
+    precio: 850,
+    imagen: "/resources/pegasus.png",
+    stock: generarStock(),
+    bestseller: false,
+    slide: true,
+  },
+
+  // From Home.jsx best sellers (some duplicates above, skip duplicates)
+  // Added those unique from best sellers not in detail product list
+  {
+    id: 19,
+    nombre: "Nike React Presto",
+    genero: "hombre",
+    categoria: "urbanas",
+    color: "rojo",
+    marca: "Nike",
+    precio: 499,
+    imagen: "/resources/NikeReactPresto.png",
+    stock: generarStock(),
+    bestseller: true,
+  },
+  {
+    id: 20,
+    nombre: "Nike Zoom 2K",
+    genero: "hombre",
+    categoria: "chunky",
+    color: "naranja",
+    marca: "Nike",
+    precio: 439,
+    imagen: "/resources/NikeZoom2k.png",
+    stock: generarStock(),
+    bestseller: true,
+  },
+  {
+    id: 21,
+    nombre: "Adidas Supernova",
+    genero: "hombre",
+    categoria: "tenis",
+    color: "azul",
+    marca: "Adidas",
+    precio: 599,
+    imagen: "/resources/AdidasSupernova.png",
+    stock: generarStock(),
+    bestseller: true,
+  },
+  {
+    id: 22,
+    nombre: "Lv Trainer Denim",
+    genero: "hombre",
+    categoria: "chunky",
+    color: "azul",
+    marca: "LV",
+    precio: 799,
+    imagen: "/resources/LVTrainerDenim.png",
+    stock: generarStock(),
+    bestseller: true,
+  },
+
+  // You can add more from categories or other sources here as needed
+];
 
 export default products;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import TopBar from "./components/TopBar/TopBar";
 import Footer from "./components/Footer/Footer";
@@ -7,10 +7,10 @@ import Home from "./components/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import ProductPage from "./pages/ProductPage/ProductPage";
-import ProductDetail from "./pages/ProductDetail"; // este ya está suelto
-import Carrito from "./pages/Carrito"; // este también está suelto
+import ProductDetail from "./pages/ProductDetail";
+import Carrito from "./pages/Carrito";
 import Checkout from "./pages/Checkout/Checkout";
-import OrdenCompletada from "./pages/OrdenCompletada"; // este está suelto también
+import OrdenCompletada from "./pages/OrdenCompletada";
 import UserList from "./pages/Admin/ListaUsuario";
 import OrderList from "./pages/Admin/ListaOrden";
 import DetalleUsuario from './pages/Admin/DetalleUsuario';
@@ -22,7 +22,6 @@ import PrivateRoute from "./pages/Components/PrivateRoute"
 import CambiarPassword from "./pages/User/CambiarPassword"
 import EditarPerfil from "./pages/User/EditarPerfil"
 
-
 export default function App() {
   const [usuarioActivo, setUsuarioActivo] = useState(() => {
     const guardado = localStorage.getItem("usuarioActivo");
@@ -31,6 +30,8 @@ export default function App() {
 
   const [carrito, setCarrito] = useState([]);
   const [guardados, setGuardados] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -52,19 +53,29 @@ export default function App() {
     }
   };
 
+  // Función que redirige al detalle de producto
+  const handleShowProduct = (product) => {
+    navigate(`/producto/${product.id}`);
+  };
+
   return (
     <>
-    
       <TopBar
         usuarioActivo={usuarioActivo}
         actualizarUsuarioActivo={actualizarUsuarioActivo}
       />
       <main style={{ marginTop: "80px" }}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route 
+            path="/" 
+            element={
+              <Home 
+                onShowProduct={handleShowProduct} 
+              />
+            } 
+          />
           <Route path="/login" element={<Login actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
           <Route path="/signup" element={<SignUp actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
-          <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/admin/usuario" element={<UserList />} />
           <Route path="/admin/orden" element={<OrderList />} />
@@ -83,8 +94,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      
     </>
   );
 }
-

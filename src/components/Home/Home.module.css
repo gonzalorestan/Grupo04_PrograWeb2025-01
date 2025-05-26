@@ -8,12 +8,11 @@
 .carousel {
   display: flex;
   align-items: center;
-  justify-content: space-around; /* Puedes cambiar a center */
+  justify-content: space-around;
   padding: 30px;
   border-radius: 10px;
   margin-bottom: 40px;
   position: relative;
-  /* background-color dinámico en inline style */
 }
 
 .navButton {
@@ -39,9 +38,9 @@
 }
 
 .carouselImage {
-  width: 450px;       /* Tamaño fijo para imagen */
-  height: 350px;      /* Tamaño fijo para imagen */
-  object-fit: contain; /* Mantiene proporción sin distorsión */
+  width: 450px;
+  height: 350px;
+  object-fit: contain;
   position: relative;
   z-index: 5;
 }
@@ -125,11 +124,10 @@
   background-color: #333;
 }
 
-/* Carousel categorías */
-.categoriesSection {
-  background-color: #e4e4e4; /* franja gris */
-  padding: 20px 0;
-  position: relative;
+/* Categorías Grid */
+.categoriesGridSection {
+  background-color: #e4e4e4;
+  padding: 40px 20px;
 }
 
 .exploreTitle {
@@ -140,37 +138,11 @@
   font-size: 16px;
 }
 
-/* Flechas para scroll */
-.carouselNavButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 30px;
-  cursor: pointer;
-  color: black;
-  user-select: none;
-  padding: 0 10px;
-  z-index: 10;
-}
-
-.carouselNavPrev {
-  left: 10px;
-}
-
-.carouselNavNext {
-  right: 10px;
-}
-
-.categoriesCarousel {
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  gap: 20px;
-  padding: 0 60px; /* espacio para flechas */
-  scroll-snap-type: x mandatory;
-  justify-content: center;
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  justify-items: center;
 }
 
 /* Card de categoría */
@@ -187,7 +159,6 @@
   justify-content: center;
 }
 
-/* Cuadrado con transparencia para el fondo */
 .categoryBackground {
   position: absolute;
   top: 25px;
@@ -197,7 +168,6 @@
   z-index: 1;
 }
 
-/* Imagen centrada y sobrepuesta */
 .categoryImage {
   position: relative;
   width: 110px;
@@ -207,7 +177,6 @@
   margin-bottom: 10px;
 }
 
-/* Texto centrado abajo */
 .categoryTitle {
   font-weight: 600;
   font-size: 14px;
@@ -224,16 +193,42 @@
   color: black;
 }
 
+.bestSellersSection {
+  margin-top: 40px;
+}
+
+.bestSellersCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+  padding: 0 40px; /* espacio para las flechas */
+}
+
+.bestSellerNav {
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  user-select: none;
+}
+
 .bestSellers {
   display: flex;
-  overflow-x: auto;
   gap: 20px;
+  justify-content: flex-start; /* para que empiece al inicio */
+  overflow-x: auto;
+  max-width: calc(100% - 80px); /* menos el padding total de 40px + 40px */
+  margin: 0 auto;
   padding-bottom: 10px;
-  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 .bestSellers::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .bestSellerCard {
@@ -288,62 +283,4 @@
 
 .bestSellerButton:hover {
   background-color: #fee;
-}
-
-/* Nueva grilla de categorías */
-.categoriesGridSection {
-  padding: 40px 20px;
-  background-color: #e4e4e4;
-}
-
-.categoriesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
-
-/* Best sellers carousel */
-.bestSellersSection {
-  margin-top: 40px;
-}
-
-.bestSellersCarousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  position: relative;
-}
-
-.bestSellerNav {
-  font-size: 30px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #333;
-  user-select: none;
-}
-
-.container {
-  font-family: "Bellota Text", sans-serif; /* Cambiado */
-  padding: 20px;
-  position: relative;
-}
-
-/* Carousel sobresale */
-.carouselImage {
-  width: 500px;
-  height: 420px;
-  object-fit: contain;
-  transform: translateY(10px); /* sobresale visualmente */
-  z-index: 5;
-}
-
-/* Tipografía moderna en título */
-.title {
-  font-family: "Bellota Text", cursive;
-  font-weight: 700;
-  font-size: 38px;
-  color: black;
 }
