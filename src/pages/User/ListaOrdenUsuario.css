@@ -76,4 +76,20 @@
     color: white;
     border-color: #2196f3;
   }
+  .account-actions {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+  }
   
+  .account-actions button {
+    padding: 8px 12px;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .account-actions button:hover {
+    background-color: #d5d5d5;
+  }
