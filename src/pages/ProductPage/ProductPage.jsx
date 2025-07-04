@@ -40,7 +40,7 @@ const ProductPage = () => {
   const generosUI = ["Hombre", "Mujer", "Niños"];
   const coloresUI = ["rojo", "azul", "negro", "amarillo", "verde", "naranja", "rosado", "morado", "blanco", "marrón"];
   const tallasUI = ["6.0", "6.5", "7.0", "7.5", "8.0", "8.5", "9.0", "9.5", "10.0", "10.5", "11.0", "11.5", "12.0", "12.5", "13.0"];
-  const marcasUI = ["Nike", "Adidas", "NB", "Vans", "On", "Asics", "Gucci", "LV", "Reebok", "Asics"];
+  const marcasUI = ["Nike", "Adidas", "NB", "Vans", "On", "Asics", "Gucci", "LV", "Reebok", "Puma"];
 
   return (
     <div className={styles.container}>

@@ -18,6 +18,7 @@ const products = [
     imagen: "/resources/NikeAirMax90.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Air Max 90 son unas zapatillas icónicas diseñadas para brindar comodidad y estilo en cada paso. Su amortiguación Air Max proporciona una pisada suave, mientras que su diseño clásico en color negro las hace versátiles para cualquier ocasión deportiva o urbana."
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const products = [
     imagen: "/resources/NikeAirMaxStructure20.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Air Zoom Structure 20 ofrecen soporte y estabilidad para corredores exigentes. Su tecnología de amortiguación y su estructura firme ayudan a mantener el pie seguro durante entrenamientos intensos, mientras que el color morado aporta un toque moderno."
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ const products = [
     imagen: "/resources/NikeCampus.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Campus son zapatillas deportivas diseñadas para quienes buscan ligereza y comodidad en sus actividades diarias. Su color amarillo vibrante y su diseño ergonómico las convierten en una excelente opción tanto para correr como para el uso casual."
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ const products = [
     imagen: "/resources/NikeZoomWinflo.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Zoom Winflo están pensadas para corredores que buscan velocidad y confort. Su tecnología Zoom Air proporciona una respuesta rápida en cada zancada, y su diseño azul resalta en cualquier pista o calle."
   },
   {
     id: 5,
@@ -66,6 +70,7 @@ const products = [
     imagen: "/resources/NikeAirMax2015.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Air Max 2015 combinan innovación y estilo con su amortiguación Air Max de largo completo y su atractivo color rosado. Ideales para quienes buscan rendimiento y un look llamativo en sus entrenamientos."
   },
   {
     id: 6,
@@ -78,6 +83,7 @@ const products = [
     imagen: "/resources/NikeReactFlyknit.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike React Flyknit ofrecen una experiencia de carrera ligera y flexible gracias a su tejido Flyknit y su espuma React. El color azul y su diseño moderno las hacen perfectas para quienes buscan innovación y estilo."
   },
   {
     id: 7,
@@ -90,6 +96,7 @@ const products = [
     imagen: "/resources/revolu-removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Revolution 7 son zapatillas versátiles y cómodas, ideales para entrenamientos diarios o caminatas. Su diseño en negro combina con cualquier atuendo y su suela proporciona una excelente tracción."
   },
   {
     id: 8,
@@ -102,6 +109,7 @@ const products = [
     imagen: "/resources/free-removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Free Run 5.0 están diseñadas para ofrecer una sensación natural al correr, gracias a su suela flexible y ligera. El color negro aporta elegancia y facilidad para combinar en cualquier ocasión."
   },
   {
     id: 9,
@@ -114,6 +122,7 @@ const products = [
     imagen: "/resources/zegama-removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Zegama 2 son ideales para quienes buscan rendimiento en terrenos variados. Su diseño robusto y su color amarillo brillante aseguran visibilidad y durabilidad en cada aventura."
   },
   {
     id: 10,
@@ -126,6 +135,7 @@ const products = [
     imagen: "/resources/alphafly-removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Alphafly están pensadas para corredores de alto rendimiento que buscan superar sus límites. Su avanzada tecnología de amortiguación y su diseño blanco las convierten en una opción premium para competencias."
   },
   {
     id: 11,
@@ -138,6 +148,7 @@ const products = [
     imagen: "/resources/pegasus-removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Pegasus 41 ofrecen una combinación perfecta de amortiguación y respuesta, ideales para corredores que buscan comodidad en distancias largas. Su diseño en azul y detalles reflectantes aseguran visibilidad y estilo."
   },
   {
     id: 12,
@@ -150,6 +161,7 @@ const products = [
     imagen: "/resources/invincible-removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Invincible 3 están diseñadas para brindar una sensación de ingravidez en cada paso, gracias a su tecnología de amortiguación avanzada. Su color blanco y diseño elegante las hacen perfectas para cualquier corredor."
   },
   {
     id: 13,
@@ -162,6 +174,7 @@ const products = [
     imagen: "/resources/NikeAirMax2021.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Air Max 2021 combinan un diseño moderno con la clásica amortiguación Air Max, ofreciendo comodidad y estilo. Su color gris las hace versátiles para cualquier atuendo deportivo o casual."
   },
   {
     id: 14,
@@ -174,6 +187,7 @@ const products = [
     imagen: "/resources/vaporfly_removebg.png",
     stock: generarStock(),
     bestseller: false,
+    descripcion: "Las Nike Vaporfly 3 son unas zapatillas de alto rendimiento, diseñadas para corredores que buscan velocidad y eficiencia. Su tecnología avanzada y su llamativo color fucsia aseguran que destacarás en cada carrera."
   },
   {
     id: 15,
@@ -186,6 +200,7 @@ const products = [
     imagen: "/resources/NikeAirMax270.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Air Max 270 ofrecen una gran amortiguación y un estilo moderno, ideales para el uso diario y actividades deportivas. Su diseño en blanco y detalles en color las hacen fácilmente combinables."
   },
 
   
@@ -201,6 +216,7 @@ const products = [
     stock: generarStock(),
     bestseller: false,
     slide: true,
+    descripcion: "Las Jordan 1 Varsity Purple son unas zapatillas que combinan la herencia del baloncesto con un estilo urbano. Su color morado vibrante y su diseño clásico las convierten en un must-have para los amantes de las sneakers."
   },
   {
     id: 17,
@@ -214,6 +230,7 @@ const products = [
     stock: generarStock(),
     bestseller: false,
     slide: true,
+    descripcion: "Las Nike Air Max Pre-Day LX reinterpretan un clásico con un enfoque moderno. Su diseño en blanco y detalles en color ofrecen un look fresco, mientras que su comodidad es ideal para el uso diario."
   },
   {
     id: 18,
@@ -227,6 +244,7 @@ const products = [
     stock: generarStock(),
     bestseller: false,
     slide: true,
+    descripcion: "Las Nike Air Zoom Pegasus son conocidas por su versatilidad y comodidad. Ideales para correr o para el uso diario, su diseño en blanco las hace fácilmente combinables con cualquier atuendo."
   },
 
   //mas vendidos
@@ -241,6 +259,7 @@ const products = [
     imagen: "/resources/NikeReactPresto.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike React Presto combinan un diseño audaz con una comodidad excepcional. Su tecnología React ofrece una pisada suave y receptiva, mientras que su color rojo vibrante asegura que destacarás en cualquier multitud."
   },
   {
     id: 20,
@@ -253,6 +272,7 @@ const products = [
     imagen: "/resources/NikeZoom2k.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Nike Zoom 2K son unas zapatillas que rinden homenaje a los diseños de los 2000, con una silueta chunky y detalles modernos. Su color naranja y su comodidad las hacen perfectas para el uso diario."
   },
   {
     id: 21,
@@ -265,6 +285,7 @@ const products = [
     imagen: "/resources/AdidasSupernova.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Adidas Supernova están diseñadas para ofrecer una gran amortiguación y soporte, ideales para corredores que buscan comodidad en cada zancada. Su diseño en azul y detalles reflectantes aseguran visibilidad y estilo."
   },
   {
     id: 22,
@@ -277,6 +298,7 @@ const products = [
     imagen: "/resources/LVTrainerDenim.png",
     stock: generarStock(),
     bestseller: true,
+    descripcion: "Las Lv Trainer Denim combinan la elegancia de Louis Vuitton con la comodidad de una zapatilla deportiva. Su diseño en denim azul y detalles en cuero las hacen únicas y sofisticadas."
   },
 
   //categoria hombre urbanas
@@ -292,6 +314,7 @@ const products = [
   imagen: "/resources/adidasadvantage20.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Advantage 2.0 son unas zapatillas que combinan un diseño clásico con detalles modernos. Su color blanco y su suela de goma las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 24,
@@ -304,6 +327,7 @@ const products = [
   imagen: "/resources/adidascourt30.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas VI Court 3.0 son unas zapatillas inspiradas en el mundo del tenis, con un diseño limpio y clásico. Su color verde y detalles en blanco las convierten en una opción fresca y deportiva."
 },
 {
   id: 25,
@@ -316,6 +340,7 @@ const products = [
   imagen: "/resources/adidasvlcourt.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas VL Court son unas zapatillas de estilo retro, ideales para quienes buscan comodidad y un look clásico. Su diseño en blanco con detalles en color las hace fácilmente combinables."
 },
 {
   id: 26,
@@ -328,6 +353,7 @@ const products = [
   imagen: "/resources/vansoldschool.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Vans Old School son unas zapatillas clásicas que nunca pasan de moda. Su diseño en negro y blanco y su característica línea lateral las convierten en un ícono del estilo urbano."
 },
 {
   id: 27,
@@ -340,6 +366,7 @@ const products = [
   imagen: "/resources/vanssk8.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Vans SK8 HI son unas zapatillas de caña alta que ofrecen un gran soporte y protección. Su diseño en rojo y negro y suela blanca las hacen destacar en cualquier conjunto urbano."
 },
 {
   id: 28,
@@ -352,6 +379,7 @@ const products = [
   imagen: "/resources/nikeairforce1low.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Air Force 1 Low son un clásico atemporal, conocidas por su comodidad y estilo. Su diseño en blanco las hace versátiles para cualquier ocasión, ya sea deportiva o casual."
 },
 {
   id: 29,
@@ -364,6 +392,7 @@ const products = [
   imagen: "/resources/nikecourtlegacy.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Court Legacy son unas zapatillas que rinden homenaje a las clásicas de tenis, con un diseño limpio y elegante. Su color blanco y detalles en cuero las hacen perfectas para un look sofisticado y deportivo."
 },
 {
   id: 30,
@@ -376,6 +405,7 @@ const products = [
   imagen: "/resources/nikecourtvision.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Court Vision combinan un diseño retro de baloncesto con la comodidad moderna. Su color marrón y detalles en blanco las hacen ideales para un look urbano y desenfadado."
 },
 {
   id: 31,
@@ -388,6 +418,7 @@ const products = [
   imagen: "/resources/nikecourtvisionpremium.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Court Vision Premium ofrecen un estilo clásico con materiales de alta calidad. Su diseño en blanco y detalles en color las convierten en una opción elegante para el uso diario."
 },
 {
   id: 32,
@@ -400,6 +431,7 @@ const products = [
   imagen: "/resources/ontherogeradvantage.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las On The Roger Advantage son unas zapatillas que combinan la herencia del tenis con un diseño moderno. Su color blanco y detalles en negro las hacen versátiles y elegantes."
 },
 {
   id: 33,
@@ -412,6 +444,7 @@ const products = [
   imagen: "/resources/ontherogercentercourt.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las On The Roger Center Court están diseñadas para ofrecer un gran soporte y comodidad. Su diseño en blanco y detalles en color las convierten en una opción elegante para el uso diario."
 },
 {
   id: 34,
@@ -424,6 +457,7 @@ const products = [
   imagen: "/resources/pumasuedexl.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Puma Suede son unas zapatillas clásicas que aportan un toque retro a cualquier atuendo. Su diseño en rojo y suela blanca las hacen destacar en el mundo urbano."
 },
 //categoria hombre premium
 {
@@ -437,6 +471,7 @@ const products = [
   imagen: "/resources/lvclassic.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Louis Vuitton LV Classic son el epítome de la elegancia y el lujo. Hechas con los mejores materiales y con un diseño atemporal, estas zapatillas son una declaración de estilo."
 },
 {
   id: 36,
@@ -449,6 +484,7 @@ const products = [
   imagen: "/resources/lvrunnertatic.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Louis Vuitton LV Runner Tatic combinan un diseño deportivo con la elegancia característica de la marca. Su color azul y detalles en cuero las hacen perfectas para un look sofisticado y activo."
 },
 {
   id: 37,
@@ -461,6 +497,7 @@ const products = [
   imagen: "/resources/lvskate.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Louis Vuitton LV Skate son unas zapatillas que combinan la herencia del skate con el lujo de Louis Vuitton. Su diseño en verde y detalles en cuero las hacen únicas y exclusivas."
 },
 {
   id: 38,
@@ -473,6 +510,7 @@ const products = [
   imagen: "/resources/lvtrainermaxi.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Louis Vuitton LV Trainer Maxi son el máximo exponente del lujo y la comodidad. Su diseño en morado y detalles en dorado las convierten en unas zapatillas realmente exclusivas."
 },
 {
   id: 39,
@@ -485,6 +523,7 @@ const products = [
   imagen: "/resources/lvrunaway.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Louis Vuitton Run Away son unas zapatillas que combinan un diseño moderno y deportivo con la elegancia clásica de Louis Vuitton. Su color azul y detalles en cuero las hacen perfectas para cualquier ocasión."
 },
 {
   id: 40,
@@ -497,6 +536,7 @@ const products = [
   imagen: "/resources/gucciscreener.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Gucci Screener Sneaker son unas zapatillas que combinan el estilo retro con la elegancia moderna. Su diseño en blanco y detalles en color las hacen ideales para un look sofisticado y desenfadado."
 },
 {
   id: 41,
@@ -509,6 +549,7 @@ const products = [
   imagen: "/resources/gucciggscreener.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Gucci GG Screener Sneaker son unas zapatillas que destacan por su diseño audaz y su comodidad. Su color verde y detalles en dorado las convierten en una opción única y lujosa."
 },
 {
   id: 42,
@@ -521,6 +562,7 @@ const products = [
   imagen: "/resources/gucciacesneakerwithweb.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Gucci Ace Sneaker with Web son unas zapatillas que combinan el estilo clásico de Gucci con un toque moderno. Su diseño en azul y detalles en la suela las hacen perfectas para cualquier ocasión."
 },
 {
   id: 43,
@@ -533,6 +575,7 @@ const products = [
   imagen: "/resources/guccicub3dsneaker.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Gucci Cub3D Sneaker son unas zapatillas que destacan por su diseño innovador y su gran comodidad. Su color blanco y detalles en negro las convierten en una opción moderna y elegante."
 },
 {
   id: 44,
@@ -545,6 +588,7 @@ const products = [
   imagen: "/resources/guccig75sneaker.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Gucci G75 Sneaker son unas zapatillas que combinan un diseño clásico con detalles modernos. Su color blanco y detalles en dorado las hacen ideales para un look sofisticado."
 },
 {
   id: 45,
@@ -557,6 +601,7 @@ const products = [
   imagen: "/resources/lvtrainermarron.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Louis Vuitton LV Trainer son unas zapatillas que combinan la elegancia de Louis Vuitton con la comodidad moderna. Su diseño en marrón y detalles en dorado las hacen perfectas para un look sofisticado."
 },
 {
   id: 46,
@@ -569,6 +614,7 @@ const products = [
   imagen: "/resources/guccireweb.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Gucci Re Web son unas zapatillas que destacan por su diseño audaz y su gran comodidad. Su color marrón y detalles en dorado las convierten en una opción única y lujosa."
 },
 
 //categoria hombre chunky
@@ -583,6 +629,7 @@ const products = [
   imagen: "/resources/nikeairmonarchiv.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Air Monarch IV son unas zapatillas que ofrecen una gran comodidad y soporte, ideales para el uso diario y actividades deportivas. Su diseño en blanco y detalles en color las hacen fácilmente combinables."
 },
 {
   id: 48,
@@ -595,6 +642,7 @@ const products = [
   imagen: "/resources/brown.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Forum Puffed son unas zapatillas que combinan un diseño retro con la comodidad moderna. Su color blanco y detalles en la suela las hacen perfectas para un look urbano y desenfadado."
 },
 {
   id: 49,
@@ -607,6 +655,7 @@ const products = [
   imagen: "/resources/adidascampus00s.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Campus 00S son unas zapatillas que rinden homenaje a los diseños clásicos de Adidas, con un toque moderno. Su color marrón y detalles en blanco las hacen ideales para el uso diario."
 },
 {
   id: 50,
@@ -619,6 +668,7 @@ const products = [
   imagen: "/resources/nb530falabella.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las NB 530 son unas zapatillas que combinan un diseño clásico con la comodidad moderna. Su color marrón y detalles en la suela las hacen perfectas para un look urbano y desenfadado."
 },
 {
   id: 51,
@@ -631,6 +681,7 @@ const products = [
   imagen: "/resources/nbclassics530ripley.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las NB Classics 530 son unas zapatillas que ofrecen un gran confort y un estilo atemporal. Su diseño en blanco y detalles en color las hacen fácilmente combinables con cualquier atuendo."
 },
 {
   id: 52,
@@ -643,6 +694,7 @@ const products = [
   imagen: "/resources/reebokroadprime.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Reebok Road Prime son unas zapatillas que combinan un diseño deportivo con la comodidad necesaria para el uso diario. Su color negro y detalles en blanco las hacen versátiles y fáciles de combinar."
 },
 
 //categoria hombre sandalias
@@ -657,6 +709,7 @@ const products = [
   imagen: "/resources/nikeairmaxcirro.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Air Max Cirro son unas sandalias que ofrecen una gran comodidad y un ajuste seguro. Su diseño en negro y detalles en color las hacen ideales para el uso diario y actividades al aire libre."
 },
 {
   id: 54,
@@ -669,6 +722,7 @@ const products = [
   imagen: "/resources/nikeoffcourtadjust.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Offcourt Adjust son unas sandalias que combinan un diseño moderno con la comodidad necesaria para el uso diario. Su color marrón y detalles en la suela las hacen perfectas para un look urbano."
 },
 {
   id: 55,
@@ -681,6 +735,7 @@ const products = [
   imagen: "/resources/nikeoffcourt.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Offcourt son unas sandalias que ofrecen un gran confort y un estilo deportivo. Su diseño en negro y detalles en blanco las hacen fácilmente combinables con cualquier atuendo."
 },
 {
   id: 56,
@@ -693,6 +748,7 @@ const products = [
   imagen: "/resources/adidassandaliasadilettelumia.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Sandalias Adilette Lumia son ideales para quienes buscan comodidad y estilo. Su diseño en negro y detalles en color las hacen perfectas para el uso diario y actividades al aire libre."
 },
 {
   id: 57,
@@ -705,6 +761,7 @@ const products = [
   imagen: "/resources/adidassandaliasadilette22.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Sandalias Adilette 22 son unas sandalias cómodas y versátiles, ideales para el uso diario y actividades deportivas. Su diseño en negro y detalles en color las hacen fácilmente combinables."
 },
 {
   id: 58,
@@ -717,6 +774,7 @@ const products = [
   imagen: "/resources/reebokclassicslides.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Reebok Classic Slides son unas sandalias que ofrecen una gran comodidad y un estilo clásico. Su diseño en blanco y detalles en color las hacen ideales para el uso diario."
 },
 {
   id: 59,
@@ -729,6 +787,7 @@ const products = [
   imagen: "/resources/nbfreshfoamrcvrslide.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las NB Fresh Foam RCVR Slide son ideales para quienes buscan comodidad y soporte. Su diseño en blanco y detalles en color las hacen perfectas para el uso diario y actividades al aire libre."
 },
 {
   id: 60,
@@ -741,6 +800,7 @@ const products = [
   imagen: "/resources/adidassandaliasadiletteshower.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Sandalias Adilette Shower son unas sandalias ligeras y cómodas, ideales para usar después del deporte o en casa. Su diseño en blanco y detalles en color las hacen fácilmente combinables."
 },
 {
   id: 61,
@@ -753,6 +813,7 @@ const products = [
   imagen: "/resources/adidassandaliasadilettelite.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Sandalias Adilette Lite son unas sandalias que combinan un diseño ligero y cómodo con un estilo moderno. Su color rojo y detalles en blanco las hacen destacar en cualquier ocasión."
 },
 
 //categoria hombre Jordan
@@ -768,6 +829,7 @@ const products = [
   imagen: "/resources/airjordan1midse.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 1 Mid SE son unas zapatillas que combinan el estilo clásico de Jordan con un toque moderno. Su color rosado y detalles en negro las hacen ideales para quienes buscan destacar."
 },
 {
   id: 63,
@@ -780,6 +842,7 @@ const products = [
   imagen: "/resources/airjordan1mid.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 1 Mid son unas zapatillas icónicas que ofrecen un gran soporte y comodidad. Su diseño en blanco y detalles en color las hacen perfectas para cualquier ocasión."
 },
 {
   id: 64,
@@ -792,6 +855,7 @@ const products = [
   imagen: "/resources/airjordan1low.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 1 Low son unas zapatillas que combinan el estilo clásico de Jordan con la comodidad moderna. Su color verde y detalles en blanco las hacen ideales para un look fresco y deportivo."
 },
 {
   id: 65,
@@ -804,6 +868,7 @@ const products = [
   imagen: "/resources/airjordan1zoomcmft2.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 1 Zoom CMFT 2 son unas zapatillas que ofrecen un gran confort y un estilo moderno. Su diseño en azul y detalles en negro las hacen perfectas para el uso diario."
 },
 {
   id: 66,
@@ -816,6 +881,7 @@ const products = [
   imagen: "/resources/airjordan2origins.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 2 Origins son unas zapatillas que rinden homenaje a las raíces de la línea Jordan. Su diseño en blanco y detalles en rojo las hacen destacar con un estilo clásico y elegante."
 },
 {
   id: 67,
@@ -828,6 +894,7 @@ const products = [
   imagen: "/resources/airjordan4retro.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 4 Retro son unas zapatillas que combinan el estilo clásico de Jordan con la comodidad moderna. Su diseño en blanco y detalles en negro las hacen ideales para cualquier ocasión."
 },
 {
   id: 68,
@@ -840,6 +907,7 @@ const products = [
   imagen: "/resources/airjordan5retrose.png", 
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 5 Retro SE son unas zapatillas que ofrecen un gran soporte y una amortiguación excepcional. Su diseño en azul y detalles en blanco las hacen destacar en cualquier situación."
 },
 {
   id: 69,
@@ -852,6 +920,7 @@ const products = [
   imagen: "/resources/airjordan6retro.png", 
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Air Jordan 6 Retro son unas zapatillas que combinan el estilo clásico de Jordan con la tecnología moderna. Su diseño en negro y detalles en rojo las hacen ideales para un look sofisticado y deportivo."
 },
 
 //categoria hombre futbol
@@ -867,6 +936,7 @@ const products = [
   imagen: "/resources/adidas_copa_pure_3_club_pasto_sintetico.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Adidas Chimpunes Copa Pure 3 Club Pasto Sintético están diseñados para ofrecer un gran control y comodidad en el campo. Su diseño en azul y detalles en blanco aseguran un look profesional."
 },
 {
   id: 71,
@@ -879,6 +949,7 @@ const products = [
   imagen: "/resources/adidas_f50_club.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Adidas Chimpunes F50 Club están diseñados para ofrecer una gran ligereza y velocidad en el campo. Su diseño en azul y detalles en amarillo aseguran que destacarás en cada jugada."
 },
 {
   id: 72,
@@ -891,6 +962,7 @@ const products = [
   imagen: "/resources/nike_phantom_gx2_elite_haaland.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Nike Phantom GX 2 Elite Erling Haaland están diseñados para ofrecer un ajuste perfecto y un gran control del balón. Su diseño en azul y detalles en negro las hacen ideales para el juego profesional."
 },
 {
   id: 73,
@@ -903,6 +975,7 @@ const products = [
   imagen: "/resources/adidas_copa_pure_ii1_cesped_natural.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Adidas Chimpunes Copa Pure II.1 Césped Natural Sec están diseñados para ofrecer un gran toque y control del balón en el campo. Su diseño en azul y detalles en blanco aseguran un look clásico y profesional."
 },
 {
   id: 74,
@@ -915,6 +988,7 @@ const products = [
   imagen: "/resources/puma_future_ultimate_fg_ag.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Puma Future Ultimate FG/AG están diseñados para ofrecer una gran tracción y estabilidad en el campo. Su diseño en azul y detalles en negro las hacen ideales para el juego en césped natural o artificial."
 },
 {
   id: 75,
@@ -927,6 +1001,7 @@ const products = [
   imagen: "/resources/adidas_predator_elite_lengueta.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Zapatillas Predator Elite están diseñadas para ofrecer un gran control y precisión en el campo. Su diseño en rojo y detalles en negro aseguran que destacarás en cada jugada."
 },
 {
   id: 76,
@@ -939,6 +1014,7 @@ const products = [
   imagen: "/resources/puma_future_7_ultimate.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Puma Future 7 Ultimate están diseñados para ofrecer una gran comodidad y un ajuste seguro. Su diseño en rosado y detalles en negro las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 77,
@@ -951,6 +1027,7 @@ const products = [
   imagen: "/resources/nike_mercurial_superfly10_mbappe.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Mercurial Superfly 10 Academy Kylian Mbappé están diseñadas para ofrecer un gran soporte y una excelente tracción en el campo. Su diseño en morado y detalles en negro las hacen destacar en cualquier partido."
 },
 {
   id: 78,
@@ -963,6 +1040,7 @@ const products = [
   imagen: "/resources/puma_king_ultimate_art_of_football.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Los Puma King Ultimate Art of Football FG/AG están diseñados para ofrecer un gran toque y control del balón. Su diseño en negro y detalles en dorado las hacen ideales para el juego profesional."
 },
 
 //categoria hombre tenis
@@ -977,6 +1055,7 @@ const products = [
   imagen: "/resources/adidas_adizero_ubersonic_4_1.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Adizero Ubersonic 4.1 son unas zapatillas ligeras y rápidas, ideales para jugadores de tenis que buscan velocidad y agilidad en la cancha. Su diseño en blanco y detalles en color las hacen destacar."
 },
 {
   id: 80,
@@ -989,6 +1068,7 @@ const products = [
   imagen: "/resources/nike_gp_challenge_pro_premium.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike GP Challenge Pro Premium son unas zapatillas que ofrecen un gran soporte y comodidad para el tenis. Su diseño en marrón y detalles en blanco las hacen ideales para un look clásico y deportivo."
 },
 {
   id: 81,
@@ -1001,6 +1081,7 @@ const products = [
   imagen: "/resources/nikecourt_zoom_pro.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las NikeCourt Zoom Pro son unas zapatillas que combinan un diseño moderno con la tecnología necesaria para el tenis. Su color negro y detalles en blanco las hacen fácilmente combinables."
 },
 {
   id: 82,
@@ -1013,6 +1094,7 @@ const products = [
   imagen: "/resources/nikecourt_lite_4_heritage.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las NikeCourt Lite 4 Heritage son unas zapatillas que ofrecen un gran confort y un estilo clásico. Su diseño en blanco y detalles en color las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 83,
@@ -1025,6 +1107,7 @@ const products = [
   imagen: "/resources/nike_vapor_lite_3.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Vapor Lite 3 son unas zapatillas que combinan un diseño ligero y cómodo con un estilo moderno. Su color blanco y detalles en negro las hacen destacar en cualquier ocasión."
 },
 {
   id: 84,
@@ -1037,6 +1120,7 @@ const products = [
   imagen: "/resources/on_the_roger_pro_2.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las The Roger Pro 2 son unas zapatillas diseñadas para ofrecer un gran soporte y comodidad en la cancha. Su diseño en rosado y detalles en blanco las hacen destacar con un estilo moderno."
 },
 {
   id: 85,
@@ -1049,6 +1133,7 @@ const products = [
   imagen: "/resources/on_the_roger_pro.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las The Roger Pro son unas zapatillas que combinan un diseño clásico con la tecnología moderna. Su color blanco y detalles en negro las hacen ideales para un look sofisticado y deportivo."
 },
 {
   id: 86,
@@ -1061,6 +1146,7 @@ const products = [
   imagen: "/resources/on_the_roger_advantage_pro.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las The Roger Advantage Pro son unas zapatillas que ofrecen un gran confort y un estilo elegante. Su diseño en blanco y detalles en color las hacen perfectas para el uso diario y actividades deportivas."
 },
 
 //MUJER
@@ -1078,6 +1164,7 @@ const products = [
   imagen: "/resources/adidas_running_galaxy_7.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Zapatillas de Running Galaxy 7 están diseñadas para ofrecer una gran comodidad y soporte en cada zancada. Su diseño en negro y detalles en color las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 88,
@@ -1090,6 +1177,7 @@ const products = [
   imagen: "/resources/nike_interact_run.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Interact Run son unas zapatillas que combinan un diseño moderno con la tecnología necesaria para el running. Su color rosado y detalles en blanco las hacen destacar en cualquier ocasión."
 },
 {
   id: 89,
@@ -1102,6 +1190,7 @@ const products = [
   imagen: "/resources/adidas_duramo_rc.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Adidas Duramo RC son unas zapatillas ligeras y cómodas, ideales para quienes buscan un buen rendimiento en sus actividades deportivas. Su diseño en azul y detalles en blanco las hacen fácilmente combinables."
 },
 {
   id: 90,
@@ -1114,6 +1203,7 @@ const products = [
   imagen: "/resources/nike_winflo_11.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Winflo 11 están diseñadas para ofrecer una gran amortiguación y soporte en cada zancada. Su diseño en blanco y detalles en color las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 91,
@@ -1126,6 +1216,7 @@ const products = [
   imagen: "/resources/asics_gt1000_12_pale_apricot.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las ASICS GT-1000 12 están diseñadas para ofrecer un gran soporte y estabilidad en cada paso. Su diseño en rosado y detalles en blanco las hacen ideales para quienes buscan comodidad y estilo."
 },
 {
   id: 92,
@@ -1138,6 +1229,7 @@ const products = [
   imagen: "/resources/asics_magic_speed_4_white_black.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las ASICS Magic Speed 4 White/Black son unas zapatillas que combinan un diseño moderno con la tecnología necesaria para el running. Su color blanco y detalles en negro las hacen destacar en cualquier ocasión."
 },
 {
   id: 93,
@@ -1150,6 +1242,7 @@ const products = [
   imagen: "/resources/on_cloudmonster.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las On Cloudmonster son unas zapatillas que ofrecen una gran comodidad y un estilo moderno. Su diseño en rosado y detalles en blanco las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 94,
@@ -1162,6 +1255,7 @@ const products = [
   imagen: "/resources/on_cloudflow_5.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las On Cloudflow 5 son unas zapatillas que combinan un diseño ligero y cómodo con un gran soporte. Su color amarillo y detalles en negro las hacen destacar en cualquier situación."
 },
 {
   id: 95,
@@ -1174,6 +1268,7 @@ const products = [
   imagen: "/resources/on_cloud_6_waterproof.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las On Cloud 6 Waterproof son ideales para quienes buscan una zapatilla resistente al agua sin sacrificar el estilo. Su diseño en morado y detalles en blanco las hacen perfectas para cualquier clima."
 },
 
 //categoria mujer urbano
@@ -1189,6 +1284,7 @@ const products = [
   imagen: "/resources/nike_waffle_debut.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Waffle Debut son unas zapatillas que combinan un diseño clásico con la comodidad moderna. Su color negro y detalles en blanco las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 97,
@@ -1201,6 +1297,7 @@ const products = [
   imagen: "/resources/nike_air_max_sc.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Air Max SC son unas zapatillas que ofrecen una gran amortiguación y un estilo moderno. Su diseño en blanco y detalles en negro las hacen fácilmente combinables con cualquier atuendo."
 },
 {
   id: 98,
@@ -1213,6 +1310,7 @@ const products = [
   imagen: "/resources/nike_court_royale_2.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Court Royale 2 son unas zapatillas que combinan un diseño clásico de tenis con la comodidad moderna. Su color rosado y detalles en blanco las hacen ideales para un look fresco y deportivo."
 },
 {
   id: 99,
@@ -1225,6 +1323,7 @@ const products = [
   imagen: "/resources/nike_gamma_force.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Nike Gamma Force son unas zapatillas que ofrecen un gran soporte y una excelente tracción. Su diseño en blanco y detalles en color las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 100,
@@ -1237,6 +1336,7 @@ const products = [
   imagen: "/resources/puma_carina_street.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Puma Carina Street son unas zapatillas que combinan un diseño retro con la comodidad moderna. Su color rosado y detalles en blanco las hacen ideales para el uso diario y actividades deportivas."
 },
 {
   id: 101,
@@ -1249,6 +1349,7 @@ const products = [
   imagen: "/resources/reebok_classics_princess.png",
   stock: generarStock(),
   bestseller: false,
+  descripcion: "Las Zapatillas Classics Princess de Reebok son ideales para quienes buscan un estilo clásico y elegante. Su diseño en blanco y detalles en color las hacen fácilmente combinables con cualquier atuendo."
 },
 
 // categoria mujer premium
@@ -1263,7 +1364,8 @@ const products = [
     precio: 3400.00,
     imagen: "/resources/lv_sneakerina.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las LV Sneakerina son unas zapatillas que combinan la elegancia de Louis Vuitton con un diseño moderno y deportivo. Su color marrón y detalles en dorado las hacen ideales para un look sofisticado."
   },
   {
     id: 103,
@@ -1275,7 +1377,8 @@ const products = [
     precio: 3800.00,
     imagen: "/resources/lv_olympia_sneaker_white.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las LV Olympia Sneaker son unas zapatillas que ofrecen un gran soporte y una comodidad excepcional. Su diseño en negro y detalles en blanco las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 104,
@@ -1287,7 +1390,8 @@ const products = [
     precio: 3960.00,
     imagen: "/resources/lv_olympia_sneaker_V2.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las LV Olympia V2 son unas zapatillas que combinan el estilo clásico de Louis Vuitton con un toque moderno. Su color negro y detalles en dorado las hacen ideales para un look sofisticado y elegante."
   },
   {
     id: 105,
@@ -1299,7 +1403,8 @@ const products = [
     precio: 3600.00,
     imagen: "/resources/gucci_re_motion.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Re-Motion son unas zapatillas que ofrecen un gran confort y un estilo moderno. Su diseño en blanco y detalles en negro las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 106,
@@ -1311,7 +1416,8 @@ const products = [
     precio: 3180.00,
     imagen: "/resources/gucci_g75.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci G75 son unas zapatillas que combinan un diseño clásico con detalles modernos. Su color blanco y detalles en dorado las hacen ideales para un look sofisticado."
   },
   {
     id: 107,
@@ -1323,7 +1429,8 @@ const products = [
     precio: 3960.00,
     imagen: "/resources/gucci_2_0.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci 2.0 son unas zapatillas que destacan por su diseño audaz y su gran comodidad. Su color blanco y detalles en negro las convierten en una opción única y lujosa."
   },
 
 // categoria mujer chunky
@@ -1338,7 +1445,8 @@ const products = [
     precio: 303.00,
     imagen: "/resources/adidas_ozgaia.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Ozgaia son unas zapatillas que combinan un diseño moderno y audaz con la comodidad necesaria para el uso diario. Su color blanco y detalles en negro las hacen destacar en cualquier ocasión."
   },
   {
     id: 109,
@@ -1350,7 +1458,8 @@ const products = [
     precio: 349.30,
     imagen: "/resources/puma_rsx_efekt_premium.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma RS-X Efekt Premium son unas zapatillas que ofrecen un gran confort y un estilo moderno. Su diseño en blanco y detalles en color las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 110,
@@ -1362,7 +1471,8 @@ const products = [
     precio: 418.00,
     imagen: "/resources/puma_pulsar_wedge_pearl.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma Pulsar Wedge Pearl son unas zapatillas que combinan un diseño elegante con la comodidad necesaria para el uso diario. Su color blanco y detalles en dorado las hacen ideales para un look sofisticado."
   },
   {
     id: 111,
@@ -1374,7 +1484,8 @@ const products = [
     precio: 509.91,
     imagen: "/resources/nike_tc_7900.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma TC 7900 son unas zapatillas que ofrecen un gran soporte y una excelente tracción. Su diseño en blanco y detalles en negro las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 112,
@@ -1386,7 +1497,8 @@ const products = [
     precio: 399.99,
     imagen: "/resources/nike_urbanas_fj3794_102.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma FJ3794-102 son unas zapatillas que combinan un diseño moderno con la tecnología necesaria para el uso diario. Su color blanco y detalles en negro las hacen fácilmente combinables."
   },
   {
     id: 113,
@@ -1398,7 +1510,8 @@ const products = [
     precio: 419.90,
     imagen: "/resources/nb_urbanas_530.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma 530 son unas zapatillas que ofrecen un gran confort y un estilo clásico. Su diseño en blanco y detalles en color las hacen ideales para el uso diario y actividades deportivas."
   },
 
 //categoria mujer sandalias
@@ -1413,7 +1526,8 @@ const products = [
     precio: 119.90,
     imagen: "/resources/nike_victori_one.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Victori One son unas sandalias que combinan un diseño moderno con la comodidad necesaria para el uso diario. Su color negro y detalles en blanco las hacen ideales para cualquier ocasión."
   },
   {
     id: 115,
@@ -1425,7 +1539,8 @@ const products = [
     precio: 249.90,
     imagen: "/resources/nike_calm.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Calm son unas sandalias que ofrecen un gran confort y un estilo elegante. Su diseño en negro y detalles en dorado las hacen ideales para el uso diario y actividades al aire libre."
   },
   {
     id: 116,
@@ -1437,7 +1552,8 @@ const products = [
     precio: 279.00,
     imagen: "/resources/adidas_adilette_22_xlg.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Adilette 22 XLG son unas sandalias que combinan un diseño clásico con la comodidad moderna. Su color rosado y detalles en blanco las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 117,
@@ -1449,7 +1565,8 @@ const products = [
     precio: 99.00,
     imagen: "/resources/adidas_adilette_aqua.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Adilette Aqua son unas sandalias ligeras y cómodas, ideales para usar después del deporte o en casa. Su diseño en rosado y detalles en blanco las hacen fácilmente combinables."
   },
   {
     id: 118,
@@ -1461,7 +1578,8 @@ const products = [
     precio: 39.00,
     imagen: "/resources/puma_leadcat_2_0_elevate.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma Leadcat 2.0 Elevate son unas sandalias que ofrecen un gran confort y un estilo moderno. Su diseño en rosado y detalles en blanco las hacen ideales para el uso diario y actividades al aire libre."
   },
   {
     id: 119,
@@ -1473,7 +1591,8 @@ const products = [
     precio: 151.96, 
     imagen: "/resources/nb_200_xl.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las NB 200 XL son unas sandalias que combinan un diseño moderno con la comodidad necesaria para el uso diario. Su color rosado y detalles en blanco las hacen ideales para cualquier ocasión."
   },
 
 //categoria mujer Jordan
@@ -1489,7 +1608,8 @@ const products = [
     precio: 999.00,
     imagen: "/resources/jordan_4_retro_seafoam_sail.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Jordan 4 Retro Seafoam Sail son unas zapatillas que combinan el estilo clásico de Jordan con un toque moderno. Su diseño en azul y detalles en blanco las hacen ideales para quienes buscan destacar."
   },
   {
     id: 121,
@@ -1501,7 +1621,8 @@ const products = [
     precio: 449.50,
     imagen: "/resources/air_jordan_5_retro_low.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Air Jordan 5 Retro Low son unas zapatillas que ofrecen un gran soporte y una comodidad excepcional. Su diseño en negro y detalles en rojo las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 122,
@@ -1513,7 +1634,8 @@ const products = [
     precio: 473.40,
     imagen: "/resources/air_jordan_1_high_method_of_make.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Air Jordan 1 High Method of Make son unas zapatillas que combinan el estilo clásico de Jordan con un diseño moderno y audaz. Su color rojo y detalles en negro las hacen ideales para quienes buscan destacar."
   },
   {
     id: 123,
@@ -1525,7 +1647,8 @@ const products = [
     precio: 499.50,
     imagen: "/resources/jordan_air_11_retro_animal_instinct.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Jordan Air 11 Retro Animal Instinct son unas zapatillas que ofrecen un gran confort y un estilo audaz. Su diseño en negro con detalles en animal print las hacen ideales para quienes buscan destacar."
   },
   {
     id: 124,
@@ -1537,7 +1660,8 @@ const products = [
     precio: 413.40,
     imagen: "/resources/air_jordan_1_elevate_low.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Air Jordan 1 Elevate Low son unas zapatillas que combinan el estilo clásico de Jordan con un diseño moderno y audaz. Su color amarillo y detalles en negro las hacen ideales para quienes buscan destacar."
   },
   {
     id: 125,
@@ -1549,7 +1673,8 @@ const products = [
     precio: 629.00,
     imagen: "/resources/jordan_1_low_ruby.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Jordan 1 Low Ruby son unas zapatillas que ofrecen un gran soporte y una comodidad excepcional. Su diseño en rojo y detalles en dorado las hacen ideales para el uso diario y actividades deportivas."
   },
 
 //categoria mujer futbol
@@ -1565,7 +1690,8 @@ const products = [
     precio: 80.00,
     imagen: "/resources/puma_attacanto_tt_jr.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Los Puma Attacanto TT son unos chimpunes diseñados para ofrecer un gran control y comodidad en el campo. Su diseño en blanco y detalles en negro aseguran un look profesional."
   },
   {
     id: 127,
@@ -1577,7 +1703,8 @@ const products = [
     precio: 111.92,
     imagen: "/resources/puma_vitoria_tt_jr.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Los Puma Vitoria TT son unos chimpunes que combinan un diseño clásico con la comodidad moderna. Su color negro y detalles en blanco las hacen ideales para el uso diario y actividades deportivas."
   },
   {
     id: 128,
@@ -1589,7 +1716,8 @@ const products = [
     precio: 259.00,
     imagen: "/resources/adidas_f50_sparkfusion_club_tf.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas F50 Sparkfusion Club TF son unas zapatillas de fútbol diseñadas para ofrecer velocidad y control en campos de césped sintético. Su color morado y detalles modernos las hacen destacar en la cancha."
   },
   {
     id: 129,
@@ -1601,7 +1729,8 @@ const products = [
     precio: 249.00,
     imagen: "/resources/adidas_f50_messi_club_tf.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Los Adidas Chimpunes F50 Messi Club están diseñados para terreno firme y multiterreno, ofreciendo velocidad y precisión inspiradas en el legendario Messi. Su diseño en blanco y detalles modernos los hacen ideales para jugadoras exigentes."
   },
   {
     id: 130,
@@ -1613,7 +1742,8 @@ const products = [
     precio: 450.00,
     imagen: "/resources/nike_tiempo_legend_10_academy_rosado.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Tiempo Legend 10 Academy Rosado ofrecen un ajuste cómodo y un excelente control del balón. Su color rosado y detalles en blanco las hacen destacar en la cancha y brindan un toque femenino y moderno."
   },
   {
     id: 131,
@@ -1625,11 +1755,9 @@ const products = [
     precio: 450.00,
     imagen: "/resources/nike_tiempo_legend_10_academy_negro.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Tiempo Legend 10 Academy Negro están diseñadas para jugadoras que buscan durabilidad y control. Su diseño en negro con detalles en blanco aporta elegancia y versatilidad en cualquier partido."
   },
-
-//categoria mujer tenis
-
   {
     id: 132,
     nombre: "NIKECOURT LITE 4",
@@ -1640,7 +1768,8 @@ const products = [
     precio: 203.40,
     imagen: "/resources/nikecourt_lite_4.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las NikeCourt Lite 4 son unas zapatillas de tenis que ofrecen soporte y comodidad para jugadoras de todos los niveles. Su diseño en blanco y materiales resistentes aseguran un rendimiento óptimo en la cancha."
   },
   {
     id: 133,
@@ -1652,7 +1781,8 @@ const products = [
     precio: 699.90,
     imagen: "/resources/nikecourt_zoom_nxt.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las NikeCourt Zoom NXT combinan tecnología avanzada y ligereza para un juego rápido y ágil. Su diseño en blanco y detalles modernos las hacen ideales para jugadoras que buscan innovación y estilo."
   },
   {
     id: 134,
@@ -1664,7 +1794,8 @@ const products = [
     precio: 324.50,
     imagen: "/resources/adidas_barricade_13_tennis.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Barricade 13 Tennis están diseñadas para brindar estabilidad y soporte en cada movimiento. Su diseño en blanco y materiales de alta calidad las hacen perfectas para partidos intensos."
   },
   {
     id: 135,
@@ -1676,7 +1807,8 @@ const products = [
     precio: 181.93,
     imagen: "/resources/adidas_gamecourt_2_0.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Gamecourt 2.0 ofrecen comodidad y tracción para jugadoras de tenis. Su diseño en negro y materiales transpirables aseguran frescura y rendimiento durante todo el partido."
   },
   {
     id: 136,
@@ -1688,7 +1820,8 @@ const products = [
     precio: 167.40,
     imagen: "/resources/adidas_game_spec_2.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Game Spec 2 son ideales para jugadoras que buscan ligereza y soporte en la cancha. Su diseño en blanco y detalles modernos las hacen versátiles y cómodas para cualquier partido."
   },
   {
     id: 137,
@@ -1700,14 +1833,9 @@ const products = [
     precio: 169.50,
     imagen: "/resources/adidas_avaflash_low.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Avaflash Low ofrecen una gran amortiguación y estabilidad para jugadoras de tenis. Su diseño en negro y materiales resistentes aseguran durabilidad y estilo en la cancha."
   },
-
-
-//categorio niños
-
-//categoria niños running
-
   {
     id: 138,
     nombre: "NIKE REVOLUTION 7",
@@ -1718,7 +1846,8 @@ const products = [
     precio: 113.40,
     imagen: "/resources/nike_revolution_7.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Revolution 7 para niños ofrecen comodidad y soporte para actividades diarias y deportivas. Su diseño en negro es versátil y fácil de combinar."
   },
   {
     id: 139,
@@ -1730,7 +1859,8 @@ const products = [
     precio: 109.50,
     imagen: "/resources/nike_varsity_leather.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Varsity Leather para niños combinan durabilidad y estilo clásico. Su diseño en blanco y materiales resistentes las hacen ideales para el uso diario y el deporte."
   },
   {
     id: 140,
@@ -1742,7 +1872,8 @@ const products = [
     precio: 104.30,
     imagen: "/resources/adidas_tensaur_sport_2_0_shoes_kids.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Tensaur Sport 2.0 para niños ofrecen soporte y comodidad en cada paso. Su diseño en blanco es fácil de combinar y perfecto para la escuela o actividades deportivas."
   },
   {
     id: 141,
@@ -1754,7 +1885,8 @@ const products = [
     precio: 159.20,
     imagen: "/resources/adidas_runfalcon_3_0_x_marvel_spider_man.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Runfalcon 3.0 X Marvel Spider-Man para niños destacan por su diseño inspirado en el superhéroe. Ofrecen comodidad y estilo para los pequeños fanáticos de Marvel."
   },
   {
     id: 142,
@@ -1766,7 +1898,8 @@ const products = [
     precio: 349.00,
     imagen: "/resources/air_max_system_bp.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Air Max System BP para niños ofrecen amortiguación y soporte en cada paso. Su diseño en blanco y detalles modernos las hacen ideales para el uso diario."
   },
   {
     id: 143,
@@ -1778,11 +1911,9 @@ const products = [
     precio: 118.30,
     imagen: "/resources/adidas_zapatillas_tensaur_run_2_0.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Tensaur Run 2.0 para niños están diseñadas para ofrecer comodidad y durabilidad. Su diseño en negro es práctico y fácil de combinar para cualquier ocasión."
   },
-
-//categoria niños urbano
-
   {
     id: 144,
     nombre: "ADIDAS ZAPATILLAS GRAND COURT SPIDER-MAN",
@@ -1793,7 +1924,8 @@ const products = [
     precio: 114.95,
     imagen: "/resources/adidas_zapatillas_grand_court_spider_man.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Grand Court Spider-Man para niños combinan el estilo clásico con detalles del superhéroe favorito. Ideales para el día a día y para los fanáticos de Marvel."
   },
   {
     id: 145,
@@ -1805,7 +1937,8 @@ const products = [
     precio: 119.92,
     imagen: "/resources/adidas_advantage_base_2_0.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Advantage Base 2.0 para niños ofrecen un diseño clásico y cómodo. Perfectas para el uso diario y para combinar con cualquier atuendo."
   },
   {
     id: 146,
@@ -1817,7 +1950,8 @@ const products = [
     precio: 94.50,
     imagen: "/resources/adidas_grand_court_lifestyle.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Grand Court Lifestyle para niños presentan un diseño colorido y divertido. Son cómodas y resistentes, ideales para el uso diario y actividades escolares."
   },
   {
     id: 147,
@@ -1829,7 +1963,8 @@ const products = [
     precio: 199.00,
     imagen: "/resources/nike_court_borough_low_recraft.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Court Borough Low Recraft para niños ofrecen un estilo urbano y moderno. Su diseño en rojo y materiales resistentes las hacen ideales para el uso diario."
   },
   {
     id: 148,
@@ -1841,7 +1976,8 @@ const products = [
     precio: 389.00,
     imagen: "/resources/nike_air_max_excee.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Air Max Excee para niños combinan la clásica amortiguación Air Max con un diseño moderno. Son cómodas y versátiles para cualquier ocasión."
   },
   {
     id: 149,
@@ -1853,12 +1989,10 @@ const products = [
     precio: 139.30,
     imagen: "/resources/nike_court_legacy.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Court Legacy para niños presentan un diseño clásico inspirado en el tenis. Son cómodas y fáciles de combinar para el día a día."
   },
-
-  //categoria niños premium
-
-{
+  {
     id: 150,
     nombre: "GUCCI ZAPATILLA INFANTIL G74",
     genero: "niños",
@@ -1868,7 +2002,8 @@ const products = [
     precio: 1720.00,
     imagen: "/resources/gucci_zapatilla_infantil_g74.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Zapatilla Infantil G74 ofrecen lujo y estilo para los más pequeños. Su diseño en marrón y materiales premium las hacen únicas y sofisticadas."
   },
   {
     id: 151,
@@ -1880,7 +2015,8 @@ const products = [
     precio: 1640.00,
     imagen: "/resources/gucci_zapatilla_screener_infantil.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Zapatilla Screener Infantil destacan por su diseño retro y detalles en verde. Son cómodas y exclusivas, ideales para ocasiones especiales."
   },
   {
     id: 152,
@@ -1892,7 +2028,8 @@ const products = [
     precio: 1240.00,
     imagen: "/resources/gucci_zapatilla_ace_infantil.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Zapatilla Ace Infantil combinan el estilo clásico de la marca con detalles en azul. Son cómodas y elegantes para los más pequeños."
   },
   {
     id: 153,
@@ -1904,7 +2041,8 @@ const products = [
     precio: 1320.00,
     imagen: "/resources/gucci_zapatilla_tennis_1977_infantil.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Zapatilla Tennis 1977 Infantil ofrecen un diseño vintage y materiales de alta calidad. Son ideales para niños que buscan comodidad y distinción."
   },
   {
     id: 154,
@@ -1916,7 +2054,8 @@ const products = [
     precio: 1880.00,
     imagen: "/resources/gucci_zapatilla_infantil_re_web_1.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Zapatilla Infantil G75 presentan un diseño elegante y detalles exclusivos en azul. Perfectas para niños que buscan un toque de lujo en su calzado."
   },
   {
     id: 155,
@@ -1928,12 +2067,10 @@ const products = [
     precio: 1880.00,
     imagen: "/resources/gucci_zapatilla_infantil_re_web_2.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Gucci Zapatilla Infantil Re-Web combinan el diseño clásico de Gucci con detalles modernos en blanco. Son cómodas y sofisticadas para cualquier ocasión."
   },
-
-//categoria niños chunky
-
- {
+  {
     id: 156,
     nombre: "NB ZAPATILLAS 530 BUNGEE",
     genero: "niños",
@@ -1943,7 +2080,8 @@ const products = [
     precio: 183.49,
     imagen: "/resources/new_balance_zapatillas_530_bungee.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las NB Zapatillas 530 Bungee para niños ofrecen comodidad y soporte en cada paso. Su diseño chunky en blanco es moderno y fácil de combinar."
   },
   {
     id: 157,
@@ -1955,11 +2093,9 @@ const products = [
     precio: 110.00,
     imagen: "/resources/adidas_zapatillas_adifom_superstar_360_ninos.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Adifom Superstar 360 para niños destacan por su diseño chunky y comodidad. Son ideales para el uso diario y para quienes buscan un estilo moderno."
   },
-
-//categoria niños sandalias
-
   {
     id: 158,
     nombre: "NIKE KAWA",
@@ -1970,7 +2106,8 @@ const products = [
     precio: 59.95,
     imagen: "/resources/nike_kawa.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Kawa para niños son sandalias ligeras y cómodas, ideales para la piscina, la playa o el uso diario en casa."
   },
   {
     id: 159,
@@ -1982,7 +2119,8 @@ const products = [
     precio: 67.96,
     imagen: "/resources/nike_sunray_adjust_5_v2.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Sunray Adjust 5 V2 para niños ofrecen un ajuste seguro y fácil de poner. Su diseño en rosado es divertido y cómodo para los días de verano."
   },
   {
     id: 160,
@@ -1994,12 +2132,10 @@ const products = [
     precio: 89.40,
     imagen: "/resources/nike_kawa_se.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Kawa SE para niños son sandalias versátiles y cómodas, perfectas para el uso diario y actividades al aire libre."
   },
-
-// categoria niños Jordan
-
-   {
+  {
     id: 161,
     nombre: "AIR JORDAN 1 LOW",
     genero: "niños",
@@ -2009,7 +2145,8 @@ const products = [
     precio: 529.00,
     imagen: "/resources/air_jordan_1_low.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Air Jordan 1 Low para niños combinan el icónico estilo Jordan con comodidad y soporte. Su diseño en blanco es elegante y fácil de combinar."
   },
   {
     id: 162,
@@ -2021,7 +2158,8 @@ const products = [
     precio: 413.40,
     imagen: "/resources/jordan_stadium_90.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Jordan Stadium 90 para niños ofrecen un diseño moderno y detalles llamativos en rojo. Son cómodas y resistentes para el uso diario."
   },
   {
     id: 163,
@@ -2033,12 +2171,10 @@ const products = [
     precio: 559.00,
     imagen: "/resources/jordan_4_rm_pine_green.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Jordan 4 RM Pine Green para niños destacan por su diseño icónico y detalles en verde. Ofrecen soporte y estilo para los pequeños fanáticos de Jordan."
   },
-
-//categoria niños futbol
-
- {
+  {
     id: 164,
     nombre: "NIKE JR. PHANTOM GX 2 CLUB",
     genero: "niños",
@@ -2048,7 +2184,8 @@ const products = [
     precio: 183.20,
     imagen: "/resources/nike_jr_phantom_gx_2_club.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Jr. Phantom GX 2 Club para niños están diseñadas para ofrecer control y precisión en el campo. Su diseño en rosado es moderno y atractivo."
   },
   {
     id: 165,
@@ -2060,7 +2197,8 @@ const products = [
     precio: 119.40,
     imagen: "/resources/adidas_predator_club_tf_j.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Predator Club TF J para niños ofrecen tracción y control en campos sintéticos. Su diseño en blanco es clásico y fácil de combinar."
   },
   {
     id: 166,
@@ -2072,7 +2210,8 @@ const products = [
     precio: 139.00,
     imagen: "/resources/puma_victoria.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Puma Victoria para niños están diseñadas para brindar comodidad y soporte en el campo. Su diseño en negro es elegante y resistente."
   },
   {
     id: 167,
@@ -2084,7 +2223,8 @@ const products = [
     precio: 169.00,
     imagen: "/resources/nike_jr_tiempo_legend_10_club.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Jr. Tiempo Legend 10 Club para niños ofrecen un ajuste cómodo y control del balón. Su diseño en rojo es llamativo y moderno."
   },
   {
     id: 168,
@@ -2096,7 +2236,8 @@ const products = [
     precio: 99.50,
     imagen: "/resources/adidas_chimpunes_messi_f50_club_multiterreno_kids.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Los Adidas Chimpunes Messi F50 Club Multiterreno Kids están inspirados en el legendario Messi. Ofrecen velocidad y control para los pequeños futbolistas."
   },
   {
     id: 169,
@@ -2108,11 +2249,10 @@ const products = [
     precio: 183.20,
     imagen: "/resources/nike_jr_mercurial_vapor_16_club.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Nike Jr. Mercurial Vapor 16 Club para niños ofrecen velocidad y tracción en el campo. Su diseño en azul es moderno y deportivo."
   },
-
-//categoria niños tenis
-
+  // ...existing code...
   {
     id: 170,
     nombre: "ADIDAS BARRICADE",
@@ -2123,7 +2263,8 @@ const products = [
     precio: 149.40,
     imagen: "/resources/adidas_barricade.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Barricade para niños ofrecen soporte y durabilidad en la cancha de tenis. Su diseño en blanco es clásico y funcional."
   },
   {
     id: 171,
@@ -2135,7 +2276,8 @@ const products = [
     precio: 139.93,
     imagen: "/resources/adidas_zapatillas_courtflash_tennis.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Courtflash Tennis para niños son ligeras y cómodas, ideales para partidos de tenis y actividades deportivas. Su diseño en azul es fresco y juvenil."
   },
   {
     id: 172,
@@ -2147,9 +2289,9 @@ const products = [
     precio: 94.50,
     imagen: "/resources/adidas_grand_court_lifestyle.png",
     stock: generarStock(),
-    bestseller: false
+    bestseller: false,
+    descripcion: "Las Adidas Grand Court Lifestyle para niños ofrecen un diseño moderno y cómodo para el día a día. Su color rosado es alegre y fácil de combinar."
   }
-
 ];
 
 export default products;

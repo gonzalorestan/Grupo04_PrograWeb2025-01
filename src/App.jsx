@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import ProductPage from "./pages/ProductPage/ProductPage";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Carrito from "./pages/Carrito";
 import Checkout from "./pages/Checkout/Checkout";
 import OrdenCompletada from "./pages/OrdenCompletada";
