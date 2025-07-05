@@ -18,11 +18,14 @@ import DetalleOrden from './pages/Admin/DetalleOrden';
 import OrderUserList from "./pages/User/ListaOrdenUsuario";
 import OrderUserDetail from "./pages/User/DetalleOrdenUsuario";
 import ForgotPassword from "./pages/Login/ForgotPassword";
-import CambiarPassword from "./pages/User/CambiarPassword"
+import CambiarPassword from "./pages/User/CambiarPassword";
 import VerificarCodigo from "./pages/Login/VerificarCodigo";
 import CambiarPasswordLogin from "./pages/Login/CambiarPassword";
+import EditarPerfil from "./pages/User/EditarPerfil";
+import ListaCategoria from "./pages/Admin/ListaCategoria";
+import AgregarCategoria from "./pages/Admin/AgregarCategoria";
+import Dashboard from "./pages/Admin/Dashboard";
 import SearchPage from "./pages/SearchPage";
-import MiCuenta from "./pages/User/MiCuenta";
 
 export default function App() {
   const [usuarioActivo, setUsuarioActivo] = useState(() => {
@@ -55,7 +58,6 @@ export default function App() {
     }
   };
 
-  // Función que redirige al detalle de producto
   const handleShowProduct = (product) => {
     navigate(`/producto/${product.id}`);
   };
@@ -70,34 +72,49 @@ export default function App() {
         <Routes>
           <Route 
             path="/" 
-            element={
-              <Home 
-                onShowProduct={handleShowProduct} 
-              />
-            } 
+            element={<Home onShowProduct={handleShowProduct} />} 
           />
           <Route path="/login" element={<Login actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
           <Route path="/signup" element={<SignUp actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
+          
+          {/* Productos */}
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
           <Route path="/productos/:genero" element={<ProductPage />} />
           <Route path="/productos/marca/:marca" element={<ProductPage />} />
           <Route path="/productos" element={<ProductPage />} />
+
+          {/* Admin */}
           <Route path="/admin/usuario" element={<UserList />} />
           <Route path="/admin/orden" element={<OrderList />} />
           <Route path="/admin/usuarios/:id" element={<DetalleUsuario />} />
           <Route path="/admin/ordenes/:id" element={<DetalleOrden />} />
+          <Route path="/admin/categorias" element={<ListaCategoria />} />
+          <Route path="/admin/categorias/agregar" element={<AgregarCategoria />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+
+          {/* Producto detalle */}
           <Route path="/producto/:id" element={<ProductDetail setCarrito={setCarrito} setGuardados={setGuardados} />} />
+
+          {/* Carrito y orden */}
           <Route path="/carrito" element={<Carrito carrito={carrito} setCarrito={setCarrito} guardados={guardados} setGuardados={setGuardados} />} />
           <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
           <Route path="/orden-completada" element={<OrdenCompletada />} />
-          <Route path="/user/orders" element={<MiCuenta />} />
-          <Route path="/user/orders/:id" element={<OrderUserDetail /> } />
+
+          {/* Usuario */}
+          <Route path="/user/orders" element={<OrderUserList />} />
+          <Route path="/user/orders/:id" element={<OrderUserDetail />} />
+          <Route path="/user/editar-perfil" element={<EditarPerfil />} />
+          <Route path="/user/cambiar-password" element={<CambiarPassword />} />
+
+          {/* Login y recuperación */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/user/cambiar-password" element={ <CambiarPassword />} />
           <Route path="/verificarcodigo" element={<VerificarCodigo />} />
           <Route path="/cambiarcontraseña" element={<CambiarPasswordLogin />} />
+
+          {/* Búsqueda */}
           <Route path="/search" element={<SearchPage onShowProduct={handleShowProduct} />} />
-          <Route path="/user/mi-cuenta" element={ <MiCuenta /> } />
+
+          {/* 404 */}
           <Route path="*" element={<h2 style={{ margin: "50px", textAlign: "center" }}>Página no encontrada.</h2>} />
         </Routes>
       </main>
