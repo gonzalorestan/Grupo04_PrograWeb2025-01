@@ -4,13 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState("");
-    const [status, setStatus] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await requestPasswordReset(email);
-        // Simula "enviado"
+         // Simula "enviado"
         localStorage.setItem("recoveryEmail", email); 
         navigate("/verificarcodigo"); 
     };
@@ -30,7 +29,6 @@ export default function ForgotPassword() {
                         />
                         <button className="login-submit" type="submit">Enviar</button>
                     </form>
-                    {status && <p>{status}</p>}
                 </div>
             </div>
         </div>

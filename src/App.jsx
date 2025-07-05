@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import ProductPage from "./pages/ProductPage/ProductPage";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Carrito from "./pages/Carrito";
 import Checkout from "./pages/Checkout/Checkout";
 import OrdenCompletada from "./pages/OrdenCompletada";
@@ -18,10 +18,10 @@ import DetalleOrden from './pages/Admin/DetalleOrden';
 import OrderUserList from "./pages/User/ListaOrdenUsuario";
 import OrderUserDetail from "./pages/User/DetalleOrdenUsuario";
 import ForgotPassword from "./pages/Login/ForgotPassword";
-import PrivateRoute from "./pages/Components/PrivateRoute"
 import CambiarPassword from "./pages/User/CambiarPassword"
 import VerificarCodigo from "./pages/Login/VerificarCodigo";
 import CambiarPasswordLogin from "./pages/Login/CambiarPassword";
+
 import EditarPerfil from "./pages/User/EditarPerfil"
 
 export default function App() {

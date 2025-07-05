@@ -76,6 +76,7 @@
     color: white;
     border-color: #2196f3;
   }
+
   .account-actions {
     margin-bottom: 20px;
     display: flex;
@@ -93,3 +94,4 @@
   .account-actions button:hover {
     background-color: #d5d5d5;
   }
+  

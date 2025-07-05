@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SearchResults.module.css";
-import products from "../../data/products"; // Ajusta la ruta según tu estructura
+import products from "../../data/products";
 
 export default function SearchResults({ query, onShowProduct }) {
   const filtered = products.filter((p) =>

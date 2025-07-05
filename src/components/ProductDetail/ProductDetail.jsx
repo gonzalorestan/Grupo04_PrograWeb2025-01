@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import products from "../../data/products"; // <- from data folder
+import products from "../../data/products";
+import styles from "./ProductDetail.module.css";
 
 const ProductDetail = ({ setCarrito, setGuardados }) => {
   const { id } = useParams();
@@ -12,7 +13,20 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
 
   const handleAgregar = () => {
     if (selectedSize) {
-      setCarrito((prev) => [...prev, { ...product, talla: selectedSize, cantidad: 1 }]);
+      setCarrito((prev) => {
+        const idx = prev.findIndex(
+          (item) => item.id === product.id && item.talla === selectedSize
+        );
+        if (idx !== -1) {
+          // Si ya existe, aumenta la cantidad
+          return prev.map((item, i) =>
+            i === idx ? { ...item, cantidad: item.cantidad + 1 } : item
+          );
+        } else {
+          // Si no existe, lo agrega
+          return [...prev, { ...product, talla: selectedSize, cantidad: 1 }];
+        }
+      });
       navigate("/carrito");
     }
   };
@@ -24,63 +38,42 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
   };
 
   return (
-    <div style={{ display: "flex", padding: "2rem", gap: "3rem" }}>
-      <button onClick={() => navigate(-1)} style={{ position: "absolute", top: 20, left: 20 }}>
-        ⬅ Volver
-      </button>
-      <img src={product.imagen} alt={product.nombre} style={{ width: "400px", objectFit: "contain" }} />
-      <div>
-        <h2>{product.nombre}</h2>
-        <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>{product.categoria}</p>
-        <p style={{ color: "red", fontSize: "1.5rem" }}>S/. {product.precio}</p>
+    <div className={styles.container}>
+      <button onClick={() => navigate(-1)} className={styles.volverBtn}>⬅ Volver</button>
 
-        <p>Elige tu Talla:</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", maxWidth: "20rem" }}>
-          {Object.keys(product.stock).map((talla) => (
-            <button
-              key={talla}
-              onClick={() => setSelectedSize(talla)}
-              style={{
-                padding: "0.5rem",
-                border: "1px solid #aaa",
-                borderRadius: "5px",
-                backgroundColor: selectedSize === talla ? "#ddd" : "white",
-                cursor: "pointer",
-                minWidth: "40px",
-              }}
-            >
-              {talla}
-            </button>
-          ))}
+      <div className={styles.imageSection}>
+        <img src={product.imagen} alt={product.nombre} className={styles.image} />
+      </div>
+
+      <div className={styles.detailsWrapper}>
+        <div className={styles.infoSection}>
+          <h2 className={styles.name}>{product.nombre}</h2>
+          <p className={styles.category}>{product.categoria}</p>
+          <p className={styles.price}>S/. {product.precio}</p>
+
+          <p>Elige tu Talla:</p>
+          <div className={styles.tallas}>
+            {Object.keys(product.stock).map((talla) => (
+              <button
+                key={talla}
+                onClick={() => setSelectedSize(talla)}
+                className={`${styles.tallaBtn} ${selectedSize === talla ? styles.tallaSeleccionada : ""}`}
+              >
+                {talla}
+              </button>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+            <button onClick={handleAgregar} className={styles.addButton}>AGREGAR</button>
+            <button onClick={handleGuardar} className={styles.saveButton}>GUARDAR</button>
+          </div>
         </div>
-
-        <button
-          style={{
-            marginTop: "1rem",
-            padding: "0.7rem 2rem",
-            border: "1px solid red",
-            background: "white",
-            color: "red",
-            cursor: "pointer",
-          }}
-          onClick={handleAgregar}
-        >
-          AGREGAR
-        </button>
-
-        <button
-          style={{
-            marginTop: "0.5rem",
-            padding: "0.5rem 2rem",
-            border: "1px solid gray",
-            background: "white",
-            color: "gray",
-            cursor: "pointer",
-          }}
-          onClick={handleGuardar}
-        >
-          GUARDAR
-        </button>
+        {/* Bloque de descripción dentro de detailsWrapper */}
+        <div className={styles.descripcionBox}>
+          <h3 className={styles.descripcionTitulo}>Descripción del Producto</h3>
+          <p className={styles.descripcionTexto}>{product.descripcion || 'Sin descripción disponible'}</p>
+        </div>
       </div>
     </div>
   );

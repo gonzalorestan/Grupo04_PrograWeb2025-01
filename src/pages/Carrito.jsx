@@ -46,6 +46,11 @@ const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
               <div className={styles.precio}>S/. {item.precio}</div>
             </div>
             <div className={styles.botonesAccion}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <button className={styles.boton} onClick={() => setCarrito(carrito.map(item2 => item2.id === item.id && item2.talla === item.talla ? { ...item2, cantidad: item2.cantidad - 1 } : item2))} disabled={item.cantidad <= 1}>−</button>
+                <span style={{ minWidth: 24, textAlign: 'center' }}>{item.cantidad}</span>
+                <button className={styles.boton} onClick={() => setCarrito(carrito.map(item2 => item2.id === item.id && item2.talla === item.talla ? { ...item2, cantidad: item2.cantidad + 1 } : item2))}>+</button>
+              </div>
               <button className={styles.boton} onClick={() => moverAGuardados(item.id)}>Guardar</button>
               <button className={styles.boton} onClick={() => eliminar(item.id, "carrito")}>🗑</button>
             </div>

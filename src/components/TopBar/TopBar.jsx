@@ -51,9 +51,7 @@ export default function TopBar({
 
   const handleLogout = () => {
     logout();
-    actualizarUsuarioActivo(null);
     setMenuOpen(false);
-    navigate("/");
   };
 
   const toggleSubmenu = (key) => {
@@ -217,50 +215,68 @@ export default function TopBar({
               className={styles.iconImage}
               onClick={() => setMenuOpen(!menuOpen)}
             />
-           {menuOpen && (
+            {menuOpen && (
               <div className={styles.dropdownMenu}>
-                    {usuarioActivo ? (
-                <>
-                  <button
-                    className={styles.accountBtn}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate("/user/orders");
-                    }}
-                  >
-                    Mi Cuenta
-                  </button>
-                  <button
-                    className={styles.signoutBtn}
-                    onClick={handleLogout}
-                  >
-                    SIGN OUT
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    className={styles.loginBtn}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate("/login");
-                    }}
-                  >
-                    LOGIN
-                  </button>
-                  <button
-                    className={styles.signupBtn}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate("/SignUp");
-                    }}
-                  >
-                    SIGN UP
-                  </button>
-                </>
-              )}
-            </div>
-          )}
+                {usuarioActivo ? (
+                  <>
+                    <button
+                      className={styles.accountBtn}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate("/user/orders");
+                      }}
+                    >
+                      Mi Cuenta
+                    </button>
+                    <button
+                      className={styles.accountBtn}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate("/user/editar-perfil");
+                      }}
+                    >
+                      Datos de registro
+                    </button>
+                    <button
+                      className={styles.accountBtn}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate("/user/cambiar-password");
+                      }}
+                    >
+                      Cambiar Password
+                    </button>
+                    <button
+                      className={styles.signoutBtn}
+                      onClick={handleLogout}
+                    >
+                      SIGN OUT
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className={styles.loginBtn}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate("/login");
+                      }}
+                    >
+                      LOGIN
+                    </button>
+                    <button
+                      className={styles.signupBtn}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate("/SignUp");
+                      }}
+                    >
+                      SIGN UP
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </nav>
