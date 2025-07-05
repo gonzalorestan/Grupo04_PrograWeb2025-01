@@ -37,6 +37,15 @@ const OrderList = () => {
 
     return (
         <div className="order-list">
+                       <h1>Mi Cuenta</h1>
+            <div className="account-actions">
+                <button onClick={() => navigate("/user/editar-perfil")}>
+                    Datos de registro
+                </button>
+                <button onClick={() => navigate("/user/cambiar-password")}>
+                    Cambiar Password
+                </button>
+            </div>
             <h1>Lista de Órdenes</h1>
 
             <table className="orders-table">

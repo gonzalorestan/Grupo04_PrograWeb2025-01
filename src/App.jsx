@@ -18,8 +18,10 @@ import DetalleOrden from './pages/Admin/DetalleOrden';
 import OrderUserList from "./pages/User/ListaOrdenUsuario";
 import OrderUserDetail from "./pages/User/DetalleOrdenUsuario";
 import ForgotPassword from "./pages/Login/ForgotPassword";
-import PrivateRoute from "./pages/Components/PrivateRoute"
 import CambiarPassword from "./pages/User/CambiarPassword"
+import VerificarCodigo from "./pages/Login/VerificarCodigo";
+import CambiarPasswordLogin from "./pages/Login/CambiarPassword";
+
 import EditarPerfil from "./pages/User/EditarPerfil"
 
 export default function App() {
@@ -90,6 +92,8 @@ export default function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/user/editar-perfil" element={ <EditarPerfil /> } />
           <Route path="/user/cambiar-password" element={ <CambiarPassword />} />
+          <Route path="/verificarcodigo" element={<VerificarCodigo />} />
+          <Route path="/cambiarcontraseña" element={<CambiarPasswordLogin />} />
           <Route path="*" element={<h2 style={{ margin: "50px", textAlign: "center" }}>Página no encontrada.</h2>} />
         </Routes>
       </main>
