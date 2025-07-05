@@ -26,6 +26,11 @@ import ListaCategoria from "./pages/Admin/ListaCategoria";
 import AgregarCategoria from "./pages/Admin/AgregarCategoria";
 import Dashboard from "./pages/Admin/Dashboard";
 import SearchPage from "./pages/SearchPage";
+import ListaProducto from "./pages/Admin/ListaProducto";
+import RegistrarProducto from "./pages/Admin/RegistrarProducto";
+import DetalleProducto from "./pages/Admin/DetalleProducto";
+import EditarProducto from './pages/Admin/EditarProducto';
+import AgregarProducto from './pages/Admin/AgregarProducto';
 
 export default function App() {
   const [usuarioActivo, setUsuarioActivo] = useState(() => {
@@ -91,6 +96,11 @@ export default function App() {
           <Route path="/admin/categorias" element={<ListaCategoria />} />
           <Route path="/admin/categorias/agregar" element={<AgregarCategoria />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/productos" element={<ListaProducto />} />
+          <Route path="/admin/productos/registrar" element={<RegistrarProducto />} />
+          <Route path="/admin/productos/agregar" element={<AgregarProducto />} />
+          <Route path="/admin/productos/:id" element={<DetalleProducto />} />
+          <Route path="/admin/productos/editar/:id" element={<EditarProducto />} />
 
           {/* Producto detalle */}
           <Route path="/producto/:id" element={<ProductDetail setCarrito={setCarrito} setGuardados={setGuardados} />} />
