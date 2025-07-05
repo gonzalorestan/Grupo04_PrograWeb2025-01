@@ -1,74 +1,44 @@
-import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {getCurrentUser, loginUser} from '../../services/api';
+import React, { createContext, useState, useEffect } from "react";
+import { loginUser as loginUsuario, registerUser, obtenerPerfil } from '../Api/usuarioService';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
-    const logout = useCallback(() => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('usuarioActivo');
-        setUser(null);
-        navigate('/login');
-    }, [navigate]);
+export const AuthProvider = ({ children }) => {
+    const [usuario, setUsuario] = useState(null);
+    const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
-        const checkAuth = async () => {
-            const token = localStorage.getItem('token');
-            const storedUser = localStorage.getItem('usuarioActivo');
-
-            if (token && storedUser) {
+        const verificarAutenticacion = async () => {
+            const token = localStorage.getItem("token");
+            if (token) {
                 try {
-                    const userData = await getCurrentUser(token);
-                    setUser({...userData, ...JSON.parse(storedUser)});
+                    const perfil = await obtenerPerfil();
+                    setUsuario(perfil.data);
                 } catch (error) {
-                    console.warn('Token invalido, manteniendo sesion local');
-                    setUser(JSON.parse(storedUser));
+                    console.error("Error al verificar autenticación:", error);
+                    localStorage.removeItem("token");
                 }
             }
-            setLoading(false);
+            setCargando(false);
         };
 
-        checkAuth();
-    }, [logout]);
+        verificarAutenticacion();
+    }, []);
 
     const login = async (email, password) => {
-        try {
-            const data = await loginUser(email, password);
-            localStorage.setItem('token', data.accessToken);
+        const respuesta = await loginUsuario({ email, password });
+        localStorage.setItem("token", respuesta.data.token);
+        setUsuario(respuesta.data);
+    };
 
-            const userData = {
-                email: data.email,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                image: data.image,
-                id: data.id,
-                username: data.username
-            };
-
-            localStorage.setItem('usuarioActivo', JSON.stringify(userData));
-            setUser(userData);
-            return userData;
-        } catch (error) {
-            throw error;
-        }
+    const logout = () => {
+        localStorage.removeItem("token");
+        setUsuario(null);
     };
 
     return (
-        <AuthContext.Provider value={{user, login, logout, loading}}>
+        <AuthContext.Provider value={{ usuario, cargando, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
 };
-
-export function useAuth() {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('Error AuthProvider');
-    }
-    return context;
-}
