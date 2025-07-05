@@ -2252,7 +2252,6 @@ const products = [
     bestseller: false,
     descripcion: "Las Nike Jr. Mercurial Vapor 16 Club para niños ofrecen velocidad y tracción en el campo. Su diseño en azul es moderno y deportivo."
   },
-  // ...existing code...
   {
     id: 170,
     nombre: "ADIDAS BARRICADE",
@@ -2295,3 +2294,10 @@ const products = [
 ];
 
 export default products;
+
+export const updateProduct = (updatedProduct) => {
+  const index = products.findIndex((product) => product.id === updatedProduct.id);
+  if (index !== -1) {
+    products[index] = updatedProduct;
+  }
+};
