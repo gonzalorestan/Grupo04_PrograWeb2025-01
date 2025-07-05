@@ -3,7 +3,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../Context/AuthContext';
 
-export default function Login({ onLogin , actualizarUsuarioActivo }) {
+export default function Login({ onLogin, actualizarUsuarioActivo }) {
   const navigate = useNavigate();
   const { login, user, loading } = useAuth();
   const [correo, setCorreo] = useState("");
@@ -21,17 +21,26 @@ export default function Login({ onLogin , actualizarUsuarioActivo }) {
     e.preventDefault();
     setError("");
 
-    try{
+    try {
       const usuarioLogeado = await login(correo, password);
+      console.log("Usuario logeado:", usuarioLogeado);
+
       if (usuarioLogeado) {
         localStorage.setItem("usuarioActivo", JSON.stringify(usuarioLogeado));
+
         if (typeof actualizarUsuarioActivo === "function") {
           actualizarUsuarioActivo(usuarioLogeado);
         }
-        navigate("/");
+
+        if (usuarioLogeado.rol === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/");
+        }
       }
     } catch (err) {
-      setError(err.mensaje);
+      console.log(err);
+      setError(err.message);
     }
 
     if (loading) return <div>Cargando...</div>
@@ -48,7 +57,7 @@ export default function Login({ onLogin , actualizarUsuarioActivo }) {
           <label>Correo</label>
           <input
             type="email"
-            placeholder="usuario @gmail.com"
+            placeholder="usuario@gmail.com"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
             required
