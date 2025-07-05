@@ -21,6 +21,7 @@ import ForgotPassword from "./pages/Login/ForgotPassword";
 import CambiarPassword from "./pages/User/CambiarPassword"
 import VerificarCodigo from "./pages/Login/VerificarCodigo";
 import CambiarPasswordLogin from "./pages/Login/CambiarPassword";
+import SearchPage from "./pages/SearchPage";
 
 import EditarPerfil from "./pages/User/EditarPerfil"
 
@@ -79,6 +80,9 @@ export default function App() {
           <Route path="/login" element={<Login actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
           <Route path="/signup" element={<SignUp actualizarUsuarioActivo={actualizarUsuarioActivo} />} />
           <Route path="/productos/:genero/:categoria" element={<ProductPage />} />
+          <Route path="/productos/:genero" element={<ProductPage />} />
+          <Route path="/productos/marca/:marca" element={<ProductPage />} />
+          <Route path="/productos" element={<ProductPage />} />
           <Route path="/admin/usuario" element={<UserList />} />
           <Route path="/admin/orden" element={<OrderList />} />
           <Route path="/admin/usuarios/:id" element={<DetalleUsuario />} />
@@ -94,6 +98,7 @@ export default function App() {
           <Route path="/user/cambiar-password" element={ <CambiarPassword />} />
           <Route path="/verificarcodigo" element={<VerificarCodigo />} />
           <Route path="/cambiarcontraseña" element={<CambiarPasswordLogin />} />
+          <Route path="/search" element={<SearchPage onShowProduct={handleShowProduct} />} />
           <Route path="*" element={<h2 style={{ margin: "50px", textAlign: "center" }}>Página no encontrada.</h2>} />
         </Routes>
       </main>

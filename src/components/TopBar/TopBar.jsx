@@ -66,15 +66,40 @@ export default function TopBar({
 
   const handleSearch = (e) => {
     if (e.key === "Enter") {
+      const value = e.target.value;
       if (typeof onNavClick === "function") {
-        onNavClick(e.target.value);
+        onNavClick(value);
       }
-      navigate("/search");
+      navigate(`/search?q=${encodeURIComponent(value)}`);
     }
   };
 
   const handleCategoryClick = (genero, categoria) => {
     navigate(`/productos/${genero}/${categoria}`);
+    setSubmenuVisible({
+      hombre: false,
+      mujer: false,
+      niños: false,
+      marcas: false,
+    });
+  };
+
+  const handleBrandClick = (brand) => {
+    navigate(`/productos/marca/${brand}`);
+    setSubmenuVisible({
+      hombre: false,
+      mujer: false,
+      niños: false,
+      marcas: false,
+    });
+  };
+
+  const handleVerTodo = (tipo) => {
+    if (tipo === "hombre" || tipo === "mujer" || tipo === "niños") {
+      navigate(`/productos/${tipo}/`);
+    } else {
+      navigate(`/productos/`);
+    }
     setSubmenuVisible({
       hombre: false,
       mujer: false,
@@ -107,10 +132,14 @@ export default function TopBar({
               </li>
             ))}
             <li>
-              <a href="#">{linkText}</a>
+              <a href="#" onClick={() => handleVerTodo(key)}>
+                {linkText}
+              </a>
             </li>
             <li>
-              <a href="#">Ver Todo Zapatillas</a>
+              <a href="#" onClick={() => handleVerTodo("todas")}>
+                Ver Todo Zapatillas
+              </a>
             </li>
           </ul>
         </div>
@@ -118,7 +147,20 @@ export default function TopBar({
           <h4>Comprar por Talla</h4>
           <div className={styles.tallas}>
             {tallas.map((t) => (
-              <div key={t} className={styles.tallaBox}>
+              <div
+                key={t}
+                className={styles.tallaBox}
+                onClick={() => {
+                  navigate(`/productos?talla=${encodeURIComponent(t)}`);
+                  setSubmenuVisible({
+                    hombre: false,
+                    mujer: false,
+                    niños: false,
+                    marcas: false,
+                  });
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 {t}
               </div>
             ))}
@@ -131,27 +173,12 @@ export default function TopBar({
   const renderSubmenuMarcas = () => (
     <div className={styles.submenu} ref={submenuRefs.marcas}>
       <div className={`${styles.submenuContent} ${styles.marcasGrid}`}>
-        {[
-          "nike",
-          "adidas",
-          "nb",
-          "vans",
-          "on",
-          "asics",
-          "lv",
-          "gucci",
-          "puma",
-          "reebok",
-        ].map((marca) => (
+        {["nike", "adidas", "nb", "vans", "on", "asics", "lv", "gucci", "puma", "reebok"].map((marca) => (
           <div
             key={marca}
             className={styles.logoContainer}
-            onMouseEnter={(e) =>
-              (e.currentTarget.querySelector("img").src = `/resources/logos-marcas/${marca}-negro.png`)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.querySelector("img").src = `/resources/logos-marcas/${marca}-blanco.png`)
-            }
+            onClick={() => handleBrandClick(marca)}
+            style={{ cursor: "pointer" }}
           >
             <img
               src={`/resources/logos-marcas/${marca}-blanco.png`}

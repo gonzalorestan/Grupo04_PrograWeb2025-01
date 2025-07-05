@@ -1,19 +1,48 @@
-import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import products from "../../data/products"; // from data folder
 import styles from "./ProductPage.module.css";
 
 const ProductPage = () => {
-  const { genero, categoria } = useParams();
+  const { genero, categoria, marca } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Leer talla desde query string
+  function getQueryParam(param) {
+    const params = new URLSearchParams(location.search);
+    return params.get(param);
+  }
+
+  const tallaQuery = getQueryParam("talla");
 
   const [filters, setFilters] = useState({
     categoria: categoria ? [categoria] : [],
     genero: genero ? [genero] : [],
     color: [],
-    talla: [],
-    marca: [],
+    talla: tallaQuery ? [tallaQuery] : [],
+    marca: marca ? [capitalize(marca)] : [],
   });
+
+  // Capitaliza la marca para que coincida con el formato de products
+  function capitalize(str) {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  // Sincroniza los filtros con los parámetros de la URL
+  useEffect(() => {
+    setFilters((prev) => ({
+      ...prev,
+      categoria: categoria ? [categoria] : [],
+      genero: genero ? [genero] : [],
+      marca: marca ? [capitalize(marca)] : [],
+      talla: tallaQuery ? [tallaQuery] : [],
+    }));
+  }, [genero, categoria, marca, tallaQuery]);
+
+  // Si no hay género, categoría ni marca, mostrar todo
+  const mostrarTodo = !genero && !categoria && !marca;
 
   const toggleFilter = (type, value) => {
     setFilters((prev) => ({
@@ -27,10 +56,10 @@ const ProductPage = () => {
   // Filter products based on filters (keys as in products.js)
   const filtered = products.filter((prod) => {
     return (
-      (!filters.genero.length || filters.genero.includes(prod.genero)) &&
+      (mostrarTodo || !filters.genero.length || filters.genero.includes(prod.genero)) &&
       (!filters.categoria.length || filters.categoria.includes(prod.categoria)) &&
       (!filters.color.length || filters.color.includes(prod.color)) &&
-      (!filters.marca.length || filters.marca.includes(prod.marca)) &&
+      (!filters.marca.length || filters.marca.some(fm => fm.toLowerCase() === prod.marca.toLowerCase())) &&
       (!filters.talla.length || filters.talla.some((t) => prod.stock[t] > 0))
     );
   });
@@ -123,7 +152,19 @@ const ProductPage = () => {
 
       <main className={styles.catalogo}>
         <h2>
-          {categoria?.toUpperCase()} - {genero?.toUpperCase()}
+          {(() => {
+            if (marca) {
+              return `Productos de ${capitalize(marca)}`;
+            } else if (genero && categoria) {
+              return `${capitalize(categoria)} para ${capitalize(genero)}`;
+            } else if (genero) {
+              return `Productos para ${capitalize(genero)}`;
+            } else if (categoria) {
+              return `${capitalize(categoria)}`;
+            } else {
+              return "Todos los productos";
+            }
+          })()}
         </h2>
         <div className={styles.productGrid}>
           {filtered.map((prod) => (
