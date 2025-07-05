@@ -1,0 +1,83 @@
+* [33m028a3ec[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mLuis[m[33m, [m[1;31morigin/Luis[m[33m)[m Pruebas-backend
+*   [33m21aef52[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #7 from gonzalorestan/Diegov2
+[32m|[m[33m\[m  
+[32m|[m * [33m789d560[m Yoha casate conmigo
+[32m|[m[32m/[m  
+*   [33mc629f3a[m Merge pull request #6 from gonzalorestan/Diegov2
+[34m|[m[35m\[m  
+[34m|[m * [33m3997252[m Yohabesame
+* [35m|[m [33m1abdf21[m Update Login.jsx
+* [35m|[m [33mada8553[m Update AuthContext.jsx
+* [35m|[m [33mb1e2cdb[m Update api.js
+[35m|[m[35m/[m  
+* [33ma567ef8[m Add files via upload
+* [33m565e582[m Delete src/Context/ContextoCategoria.jsx
+* [33m082f002[m Add files via upload
+* [33m08648ad[m Update index.js
+* [33m635da58[m Update App.jsx
+* [33maeb6660[m Delete src/pages/Admin/readme.nd
+* [33meeafd52[m Add files via upload
+*   [33m06e833a[m Merge pull request #5 from gonzalorestan/matias-v2
+[36m|[m[1;31m\[m  
+[36m|[m * [33m59a1c80[m cambios en editar perfil jsx y css, nuevo mi cuenta jsx, cambios en topbar para que funcione el dashboard de usuario
+* [1;31m|[m [33m0706119[m Create readme.nd
+* [1;31m|[m [33m528a16c[m Delete src/pages/Admin/ListaUsuario.jsx
+* [1;31m|[m [33m6f2132a[m Delete src/pages/Admin/ListaOrden.jsx
+* [1;31m|[m [33m73e6de6[m Delete src/pages/Admin/DetalleUsuario.jsx
+* [1;31m|[m [33m9e1259c[m Delete src/pages/Admin/DetalleOrden.jsx
+* [1;31m|[m [33mfb7d79c[m Delete src/pages/Admin/Admin.module.css
+* [1;31m|[m [33mc8ea789[m Add files via upload
+[1;31m|[m[1;31m/[m  
+* [33mf25a550[m mejorando front en general
+* [33m8d5bd60[m mejorando el topbar
+* [33ma9c11a7[m Subiendo cambios grandes.
+*   [33mf42ec8e[m Merge branch 'main' of https://github.com/gonzalorestan/Grupo04_PrograWeb2025-01
+[1;32m|[m[1;33m\[m  
+[1;32m|[m *   [33m64e39a7[m Merge pull request #3 from gonzalorestan/Justin
+[1;32m|[m [1;34m|[m[1;35m\[m  
+[1;32m|[m [1;34m|[m * [33m9ba8a82[m login y Recuperacion de contraseña
+[1;32m|[m [1;34m|[m[1;34m/[m  
+* [1;34m/[m [33m92f18aa[m hola
+[1;34m|[m[1;34m/[m  
+* [33m3ea2c2c[m Volviendo a probar
+* [33mce88892[m Probando de nuevo
+* [33mdfa8f94[m nada
+* [33m2673254[m arreglando cosas
+* [33mcf5700b[m arreglando home.jsx
+*   [33me08731d[m probando 2
+[1;36m|[m[31m\[m  
+[1;36m|[m *   [33m6afcd35[m[33m ([m[1;31morigin/Yohamin[m[33m)[m Subiendo proyecto completo
+[1;36m|[m [32m|[m[33m\[m  
+[1;36m|[m * [33m|[m [33m162d5aa[m iniciar sesion, carrito, checkout
+* [33m|[m [33m|[m [33m9e7a587[m antes de actualizar
+[33m|[m [33m|[m[33m/[m  
+[33m|[m[33m/[m[33m|[m   
+* [33m|[m [33mb19cc4b[m probando de nuevo
+* [33m|[m [33m402df70[m login error
+* [33m|[m [33m502dc00[m reestructurando carpetas
+* [33m|[m [33mf64ef8f[m arreglando topbar y app.jsx
+* [33m|[m [33mb424f86[m probando
+[34m|[m[33m\[m[33m|[m 
+[34m|[m * [33m45b92ba[m Subiendo todo el proyecto desde cero
+* [35m|[m [33m3bbbaaa[m probando
+* [35m|[m [33mf4b4ea5[m arreglo topbar y su css
+* [35m|[m   [33m52345c1[m Merge branch 'main' of https://github.com/gonzalorestan/Grupo04_PrograWeb2025-01
+[36m|[m[1;31m\[m [35m\[m  
+[36m|[m * [35m|[m [33m367c3e9[m Merge pull request #2 from gonzalorestan/matias
+[36m|[m [1;32m|[m[35m\[m[35m|[m 
+[36m|[m [1;32m|[m * [33m13b80a1[m[33m ([m[1;31morigin/matias[m[33m)[m Tu mensaje de commit
+[36m|[m [1;32m|[m[1;32m/[m  
+* [1;32m/[m [33mba56e54[m cambio de carousel a explora las categorias y se agregaron productos en forma de carousel. se cambió de letra a bellota text.
+[1;32m|[m[1;32m/[m  
+* [33m68b2e4d[m topbar agregar imagenes y al foot
+* [33m6ec964c[m sad
+*   [33m14379b3[m[33m ([m[1;31morigin/seuz[m[33m)[m Merge pull request #1 from gonzalorestan/Luis
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m855d639[m React
+[1;34m|[m[1;34m/[m  
+* [33m5284a54[m[33m ([m[1;31morigin/Gonzalo[m[33m)[m Add files via upload
+* [33m58bdab1[m Create README.md
+* [33m8239dd7[m[33m ([m[1;32mmain[m[33m)[m OrdenCompletada.jsx
+* [33mf9419a4[m  cambie la  ordencompletada
+* [33m8b98abc[m agregue el css del carrito
+* [33m9733d6c[m[33m ([m[1;31morigin/master[m[33m)[m Primer commit - menus y login
