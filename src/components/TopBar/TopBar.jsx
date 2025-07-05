@@ -51,6 +51,7 @@ export default function TopBar({
 
   const handleLogout = () => {
     logout();
+    actualizarUsuarioActivo(null); 
     setMenuOpen(false);
   };
 
@@ -254,24 +255,6 @@ export default function TopBar({
                       }}
                     >
                       Mi Cuenta
-                    </button>
-                    <button
-                      className={styles.accountBtn}
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate("/user/editar-perfil");
-                      }}
-                    >
-                      Datos de registro
-                    </button>
-                    <button
-                      className={styles.accountBtn}
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate("/user/cambiar-password");
-                      }}
-                    >
-                      Cambiar Password
                     </button>
                     <button
                       className={styles.signoutBtn}
