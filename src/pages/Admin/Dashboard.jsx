@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Admin.module.css';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const totalVentasHoy = 1500;
   const totalOrdenesHoy = 23;
   const totalUsuarios = 452;
@@ -17,6 +20,7 @@ const Dashboard = () => {
           <li><Link to="/admin/categorias" className={styles.navLink}>Categorías</Link></li>
           <li><Link to="/admin/orden" className={styles.navLink}>Órdenes</Link></li>
           <li><Link to="/admin/usuario" className={styles.navLink}>Usuarios</Link></li>
+          <li><Link to="/admin/productos" className={styles.navLink}>Productos</Link></li>
         </ul>
       </nav>
 
