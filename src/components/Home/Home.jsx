@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 import products from "../../data/products";
 
@@ -62,6 +63,7 @@ const bestSellersData = products.filter(p =>
 );
 
 export default function Home({ onShowProduct }) {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentBestSellerSlide, setCurrentBestSellerSlide] = useState(0);
 
@@ -112,7 +114,15 @@ export default function Home({ onShowProduct }) {
             <div className={styles.price}>S/. {slides[currentSlide].price}</div>
             <button
               className={styles.buyButton}
-              onClick={() => onShowProduct(slides[currentSlide])}
+              onClick={() => {
+                // Buscar el producto real por nombre (title)
+                const prod = products.find(p => p.nombre.toLowerCase() === slides[currentSlide].title.toLowerCase());
+                if (prod) {
+                  navigate(`/producto/${prod.id}`);
+                } else {
+                  alert('Producto no encontrado');
+                }
+              }}
             >
               COMPRAR
             </button>
@@ -148,14 +158,7 @@ export default function Home({ onShowProduct }) {
               key={cat.title}
               className={styles.categoryCard}
               title={cat.title}
-              onClick={() =>
-                onShowProduct({
-                  nombre: cat.title,
-                  img: cat.img,
-                  categoria: cat.title,
-                  precio: 0,
-                })
-              }
+              onClick={() => navigate(`/productos/${cat.title.toLowerCase()}`)}
             >
               <div
                 className={styles.categoryBackground}

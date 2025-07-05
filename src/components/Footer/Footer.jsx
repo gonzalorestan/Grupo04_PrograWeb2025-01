@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Footer.module.css";
 
 const secciones = [
@@ -39,13 +40,15 @@ const secciones = [
 ];
 
 export default function PieDePagina() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={styles.redBanner}>
         <div className={styles.redBannerText}>
           ¡ÚNETE AL CLUB PARA NO PERDERTE DE NADA!
         </div>
-        <button className={styles.registerButton}>REGÍSTRATE →</button>
+        <button className={styles.registerButton} onClick={() => navigate('/signup')}>REGÍSTRATE →</button>
       </div>
 
       <footer className={styles.footer}>
@@ -54,22 +57,49 @@ export default function PieDePagina() {
             <div className={styles.sectionTitle}>{titulo}</div>
             {esIconos ? (
               <div className={styles.iconsContainer}>
-                {enlaces.map(({ alt, src }, idx) => (
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={alt}
-                    className={styles.iconImage}
-                    loading="lazy"
-                  />
-                ))}
+                {enlaces.map(({ alt, src }, idx) => {
+                  let url = "#";
+                  if (alt === "Facebook") url = "https://facebook.com";
+                  if (alt === "Instagram") url = "https://instagram.com";
+                  if (alt === "YouTube") url = "https://youtube.com";
+                  if (alt === "X") url = "https://x.com";
+                  return (
+                    <a key={idx} href={url} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={src}
+                        alt={alt}
+                        className={styles.iconImage}
+                        loading="lazy"
+                      />
+                    </a>
+                  );
+                })}
               </div>
             ) : (
-              enlaces.map((enlace) => (
-                <a key={enlace} href="#" className={styles.footerLink}>
-                  {enlace}
-                </a>
-              ))
+              enlaces.map((enlace) => {
+                // Funcionalidad para HOMBRE, MUJER, NIÑOS
+                if (["HOMBRE", "MUJER", "NIÑOS"].includes(titulo)) {
+                  return (
+                    <a
+                      key={enlace}
+                      href="#"
+                      className={styles.footerLink}
+                      onClick={e => {
+                        e.preventDefault();
+                        navigate(`/productos/${titulo.toLowerCase()}/${enlace.toLowerCase()}`);
+                      }}
+                    >
+                      {enlace}
+                    </a>
+                  );
+                }
+                // Por defecto, solo link sin acción
+                return (
+                  <a key={enlace} href="#" className={styles.footerLink}>
+                    {enlace}
+                  </a>
+                );
+              })
             )}
           </div>
         ))}

@@ -16,9 +16,14 @@ const ProductPage = () => {
 
   const tallaQuery = getQueryParam("talla");
 
+  const generosValidos = ["hombre", "mujer", "niños"];
+
+  const isGenero = genero && generosValidos.includes(genero.toLowerCase());
+  const isCategoria = genero && !isGenero;
+
   const [filters, setFilters] = useState({
-    categoria: categoria ? [categoria] : [],
-    genero: genero ? [genero] : [],
+    categoria: (categoria ? [categoria] : (isCategoria ? [genero] : [])),
+    genero: isGenero ? [genero] : [],
     color: [],
     talla: tallaQuery ? [tallaQuery] : [],
     marca: marca ? [capitalize(marca)] : [],
@@ -34,8 +39,8 @@ const ProductPage = () => {
   useEffect(() => {
     setFilters((prev) => ({
       ...prev,
-      categoria: categoria ? [categoria] : [],
-      genero: genero ? [genero] : [],
+      categoria: categoria ? [categoria] : (isCategoria ? [genero] : []),
+      genero: isGenero ? [genero] : [],
       marca: marca ? [capitalize(marca)] : [],
       talla: tallaQuery ? [tallaQuery] : [],
     }));

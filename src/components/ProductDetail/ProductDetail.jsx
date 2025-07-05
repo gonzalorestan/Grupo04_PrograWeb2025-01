@@ -48,6 +48,7 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
       <div className={styles.detailsWrapper}>
         <div className={styles.infoSection}>
           <h2 className={styles.name}>{product.nombre}</h2>
+          <p className={styles.genero}>{capitalize(product.genero)}</p>
           <p className={styles.category}>{product.categoria}</p>
           <p className={styles.price}>S/. {product.precio}</p>
 
@@ -78,5 +79,11 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
     </div>
   );
 };
+
+// Capitalizar género
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 export default ProductDetail;
