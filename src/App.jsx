@@ -22,8 +22,7 @@ import CambiarPassword from "./pages/User/CambiarPassword"
 import VerificarCodigo from "./pages/Login/VerificarCodigo";
 import CambiarPasswordLogin from "./pages/Login/CambiarPassword";
 import SearchPage from "./pages/SearchPage";
-
-import EditarPerfil from "./pages/User/EditarPerfil"
+import MiCuenta from "./pages/User/MiCuenta";
 
 export default function App() {
   const [usuarioActivo, setUsuarioActivo] = useState(() => {
@@ -91,14 +90,14 @@ export default function App() {
           <Route path="/carrito" element={<Carrito carrito={carrito} setCarrito={setCarrito} guardados={guardados} setGuardados={setGuardados} />} />
           <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
           <Route path="/orden-completada" element={<OrdenCompletada />} />
-          <Route path="/user/orders" element={ <OrderUserList /> } />
+          <Route path="/user/orders" element={<MiCuenta />} />
           <Route path="/user/orders/:id" element={<OrderUserDetail /> } />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/user/editar-perfil" element={ <EditarPerfil /> } />
           <Route path="/user/cambiar-password" element={ <CambiarPassword />} />
           <Route path="/verificarcodigo" element={<VerificarCodigo />} />
           <Route path="/cambiarcontraseña" element={<CambiarPasswordLogin />} />
           <Route path="/search" element={<SearchPage onShowProduct={handleShowProduct} />} />
+          <Route path="/user/mi-cuenta" element={ <MiCuenta /> } />
           <Route path="*" element={<h2 style={{ margin: "50px", textAlign: "center" }}>Página no encontrada.</h2>} />
         </Routes>
       </main>
