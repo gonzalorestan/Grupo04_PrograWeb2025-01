@@ -13,7 +13,20 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
 
   const handleAgregar = () => {
     if (selectedSize) {
-      setCarrito((prev) => [...prev, { ...product, talla: selectedSize, cantidad: 1 }]);
+      setCarrito((prev) => {
+        const idx = prev.findIndex(
+          (item) => item.id === product.id && item.talla === selectedSize
+        );
+        if (idx !== -1) {
+          // Si ya existe, aumenta la cantidad
+          return prev.map((item, i) =>
+            i === idx ? { ...item, cantidad: item.cantidad + 1 } : item
+          );
+        } else {
+          // Si no existe, lo agrega
+          return [...prev, { ...product, talla: selectedSize, cantidad: 1 }];
+        }
+      });
       navigate("/carrito");
     }
   };
