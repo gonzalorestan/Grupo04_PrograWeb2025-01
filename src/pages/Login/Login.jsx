@@ -1,29 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../Context/AuthContext';
 
-export default function Login({ onLogin }) {
+export default function Login({ onLogin , actualizarUsuarioActivo }) {
   const navigate = useNavigate();
+  const { login, user, loading } = useAuth();
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    const usuarioEncontrado = usuarios.find(
-      (u) => u.correo === correo && u.password === password
-    );
-
-    if (usuarioEncontrado) {
-      localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
-      if (typeof onLogin === "function") onLogin();
+  useEffect(() => {
+    if (loading) return;
+    if (user) {
       navigate("/");
-    } else {
-      setError("Correo o contraseña incorrectos.");
     }
+  }, [user, loading, navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try{
+      const usuarioLogeado = await login(correo, password);
+      if (usuarioLogeado) {
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuarioLogeado));
+        if (typeof actualizarUsuarioActivo === "function") {
+          actualizarUsuarioActivo(usuarioLogeado);
+        }
+        navigate("/");
+      }
+    } catch (err) {
+      setError(err.mensaje);
+    }
+
+    if (loading) return <div>Cargando...</div>
   };
 
   return (
@@ -54,12 +65,12 @@ export default function Login({ onLogin }) {
 
           {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}
 
-          <a href="#" className="login-forgot">Olvidé mi Contraseña</a>
+          <a onClick={() => navigate("/forgot-password")} className="login-forgot">Olvidé mi Contraseña</a>
 
           <button type="submit" className="login-submit">LOGIN</button>
         </form>
 
-        <a className="login-signup" onClick={() => navigate("/register")}>SIGN UP</a>
+        <a className="login-signup" onClick={() => navigate("/SignUp")}>SIGN UP</a>
       </div>
     </div>
   );
