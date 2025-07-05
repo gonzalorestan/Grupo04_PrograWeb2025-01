@@ -57,6 +57,18 @@ async function findUserByEmail(email) {
 }
 
 export const loginUser = async (email, password) => {
+  if (email === "admin@tuapp.com" && password === "admin123") {
+    return {
+      accessToken: "fakeAdminToken",
+      email: "admin@tuapp.com",
+      firstName: "Admin",
+      lastName: "Principal",
+      image: "admin.png",
+      username: "adminUser",
+      rol: "admin"
+    };
+  }
+
   const user = await findUserByEmail(email);
 
   const response = await fetch(`${API_URL}/auth/login`, {
@@ -80,9 +92,12 @@ export const loginUser = async (email, password) => {
     email: user.email,
     firstName: user.firstName,
     lastName: user.lastName,
-    image: user.image
+    image: user.image,
+    username: user.username,
+    rol: "usuario" 
   };
 };
+
 
 export const getCurrentUser = async (token) => {
   const response = await fetch(`${API_URL}/auth/me`, {
@@ -148,5 +163,6 @@ export const updateUserProfile = async (updateData) => {
     }, 1000);
   });
 };
+
 
 
