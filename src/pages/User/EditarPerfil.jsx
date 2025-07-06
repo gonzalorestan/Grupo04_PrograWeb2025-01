@@ -1,32 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { updateUserProfile } from "../../services/api"; 
 import "./EditarPerfil.css";
 
-export const EditarPerfil = () => {
+const EditarPerfil = ({ modoCompleto }) => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: ""
+    nombre: "",
+    apellido: "",
+    correo: "",
+    dni: "",
+    password: ""
   });
   const [userPlaceholders, setUserPlaceholders] = useState({
-    firstName: "",
-    lastName: "",
-    email: ""
+    nombre: "",
+    apellido: "",
+    correo: "",
+    dni: "",
+    password: ""
   });
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
     newPassword: "",
     confirmNewPassword: ""
   });
+  const [userActual, setUserActual] = useState(null);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("usuarioActivo"));
     if (user) {
       setUserPlaceholders({
-        firstName: user.firstName || "",
-        lastName: user.lastName || "",
-        email: user.email || ""
+        nombre: user.nombre || "",
+        apellido: user.apellido || "",
+        correo: user.correo || "",
+        dni: user.dni || "",
+        password: user.password || ""
       });
+      setUserActual(user);
     }
   }, []);
 
@@ -38,9 +45,9 @@ export const EditarPerfil = () => {
     setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Only send fields that have been changed (not empty)
+    const user = JSON.parse(localStorage.getItem("usuarioActivo"));
     const updateFields = {};
     Object.keys(formData).forEach((key) => {
       if (formData[key]) updateFields[key] = formData[key];
@@ -49,11 +56,16 @@ export const EditarPerfil = () => {
       alert("No hay cambios para guardar");
       return;
     }
-    await updateUserProfile(updateFields);
+    const updatedUser = { ...user, ...updateFields };
+    localStorage.setItem("usuarioActivo", JSON.stringify(updatedUser));
+    // Actualizar en lista de usuarios
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    usuarios = usuarios.map(u => u.correo === user.correo ? updatedUser : u);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
     alert("Datos actualizados correctamente");
-    // Optionally, update placeholders
     setUserPlaceholders((prev) => ({ ...prev, ...updateFields }));
-    setFormData({ firstName: "", lastName: "", email: "" });
+    setFormData({ nombre: "", apellido: "", correo: "", dni: "", password: "" });
+    setUserActual(updatedUser);
   };
 
   const handlePasswordSubmit = (e) => {
@@ -67,11 +79,14 @@ export const EditarPerfil = () => {
       alert("Las contraseñas nuevas no coinciden");
       return;
     }
-    // Simulate password update
     const updatedUser = { ...user, password: passwordData.newPassword };
     localStorage.setItem("usuarioActivo", JSON.stringify(updatedUser));
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    usuarios = usuarios.map(u => u.correo === user.correo ? updatedUser : u);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
     alert("Contraseña actualizada correctamente");
     setPasswordData({ currentPassword: "", newPassword: "", confirmNewPassword: "" });
+    setUserActual(updatedUser);
   };
 
   return (
@@ -83,9 +98,9 @@ export const EditarPerfil = () => {
             <label>Nombre:</label>
             <input
               type="text"
-              name="firstName"
-              value={formData.firstName}
-              placeholder={userPlaceholders.firstName}
+              name="nombre"
+              value={formData.nombre}
+              placeholder={userPlaceholders.nombre}
               onChange={handleChange}
             />
           </div>
@@ -93,9 +108,9 @@ export const EditarPerfil = () => {
             <label>Apellido:</label>
             <input
               type="text"
-              name="lastName"
-              value={formData.lastName}
-              placeholder={userPlaceholders.lastName}
+              name="apellido"
+              value={formData.apellido}
+              placeholder={userPlaceholders.apellido}
               onChange={handleChange}
             />
           </div>
@@ -105,16 +120,25 @@ export const EditarPerfil = () => {
             <label>Correo:</label>
             <input
               type="email"
-              name="email"
-              value={formData.email}
-              placeholder={userPlaceholders.email}
+              name="correo"
+              value={formData.correo}
+              placeholder={userPlaceholders.correo}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group" style={{ width: '100%' }}>
+            <label>DNI:</label>
+            <input
+              type="text"
+              name="dni"
+              value={formData.dni}
+              placeholder={userPlaceholders.dni}
               onChange={handleChange}
             />
           </div>
         </div>
         <button type="submit">Guardar Cambios</button>
       </form>
-
       <div className="password-section">
         <h3>Cambiar Contraseña</h3>
         <form onSubmit={handlePasswordSubmit} className="password-form">
@@ -145,6 +169,17 @@ export const EditarPerfil = () => {
           <button type="submit">Actualizar Contraseña</button>
         </form>
       </div>
+      {modoCompleto && userActual && (
+        <div className="datos-guardados">
+          <h3>Datos guardados en tu cuenta</h3>
+          <ul>
+            <li><strong>Nombre:</strong> {userActual.nombre}</li>
+            <li><strong>Apellido:</strong> {userActual.apellido}</li>
+            <li><strong>Correo:</strong> {userActual.correo}</li>
+            <li><strong>DNI:</strong> {userActual.dni}</li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

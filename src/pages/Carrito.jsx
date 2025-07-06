@@ -2,16 +2,45 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Carrito.module.css";
 import GuestOrLoginModal from "../components/GuestOrLoginModal";
+import { useAuth } from "../pages/Context/AuthContext";
+import { agregarADeseos } from "../utils/deseos";
 
 const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
   const navigate = useNavigate();
   const [showGuestModal, setShowGuestModal] = useState(false);
+  const { user } = useAuth();
+
+  // Sincronizar guardados con localStorage al cargar
+  React.useEffect(() => {
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (usuario && usuario.correo) {
+      const key = `guardadosCarrito_${usuario.correo}`;
+      const guardadosStorage = JSON.parse(localStorage.getItem(key)) || [];
+      setGuardados(guardadosStorage);
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  // Guardar en localStorage cada vez que cambia guardados
+  React.useEffect(() => {
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (usuario && usuario.correo) {
+      const key = `guardadosCarrito_${usuario.correo}`;
+      localStorage.setItem(key, JSON.stringify(guardados));
+    }
+  }, [guardados]);
 
   const moverAGuardados = (id) => {
     const producto = carrito.find((item) => item.id === id);
     if (producto) {
-      setGuardados([...guardados, producto]);
-      setCarrito(carrito.filter((item) => item.id !== id));
+      // Evitar duplicados en guardados por id y talla
+      const yaGuardado = guardados.some(item => item.id === producto.id && item.talla === producto.talla);
+      if (!yaGuardado) {
+        setGuardados([...guardados, producto]);
+        setCarrito(carrito.filter((item) => !(item.id === id && item.talla === producto.talla)));
+      } else {
+        alert("Este producto ya está en guardados.");
+      }
     }
   };
 
@@ -26,8 +55,9 @@ const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
   const eliminar = (id, origen) => {
     if (origen === "carrito") {
       setCarrito(carrito.filter((item) => item.id !== id));
-    } else {
+    } else if (origen === "guardado") {
       setGuardados(guardados.filter((item) => item.id !== id));
+      // Ya no es necesario modificar localStorage aquí, se sincroniza por useEffect
     }
   };
 
@@ -84,7 +114,13 @@ const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
           <p>Subtotal: <span style={{ color: "#c00" }}>S/. {subtotal.toFixed(2)}</span></p>
           <p>Envío: <span style={{ color: "#c00" }}>GRATIS</span></p>
           <h3>Total: <span style={{ color: "#c00" }}>S/. {subtotal.toFixed(2)}</span></h3>
-          <button className={styles.checkoutButton} onClick={() => setShowGuestModal(true)}>
+          <button className={styles.checkoutButton} onClick={() => {
+            if (user) {
+              navigate("/checkout");
+            } else {
+              setShowGuestModal(true);
+            }
+          }}>
             Checkout
           </button>
         </div>

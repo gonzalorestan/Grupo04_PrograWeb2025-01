@@ -148,6 +148,10 @@ tfoot tr {
     opacity: 0.7;
 }
 
+.back-button, .cancel-button {
+  color: black !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .order-detail {

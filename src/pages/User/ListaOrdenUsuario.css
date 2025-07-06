@@ -94,4 +94,7 @@
   .account-actions button:hover {
     background-color: #d5d5d5;
   }
-  
+
+  .account-actions button, .pagination button, .view-button {
+    color: black !important;
+  }

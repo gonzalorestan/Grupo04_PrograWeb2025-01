@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import products from "../../data/products";
+import { agregarADeseos } from "../../utils/deseos";
 import styles from "./ProductDetail.module.css";
 
 const ProductDetail = ({ setCarrito, setGuardados }) => {
@@ -33,7 +34,16 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
 
   const handleGuardar = () => {
     if (selectedSize) {
-      setGuardados((prev) => [...prev, { ...product, talla: selectedSize }]);
+      const productoAGuardar = { ...product, talla: selectedSize };
+      const agregado = agregarADeseos(productoAGuardar);
+      if (agregado) {
+        alert("Producto guardado en tu lista de deseos.");
+        // Redirigir a la lista de deseos
+        navigate("/user/orders");
+      } else {
+        alert("Este producto ya está en tu lista de deseos.");
+        navigate("/user/orders");
+      }
     }
   };
 
@@ -67,7 +77,7 @@ const ProductDetail = ({ setCarrito, setGuardados }) => {
 
           <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
             <button onClick={handleAgregar} className={styles.addButton}>AGREGAR</button>
-            <button onClick={handleGuardar} className={styles.saveButton}>GUARDAR</button>
+            <button onClick={handleGuardar} className={styles.saveButton}>Añadir a la lista de deseos</button>
           </div>
         </div>
         {/* Bloque de descripción dentro de detailsWrapper */}

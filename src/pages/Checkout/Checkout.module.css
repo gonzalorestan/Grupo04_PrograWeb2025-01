@@ -40,7 +40,7 @@
   cursor: pointer;
   border: none;
   background: #333;
-  color: white;
+  color: black;
   border-radius: 5px;
 }
 
@@ -84,7 +84,7 @@
   padding: 0.6rem;
   width: 100%;
   background: #333;
-  color: white;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -111,5 +111,5 @@
 
 .formSection button,
 .metodoPago button {
-  color: white !important;
+  color: black !important;
 }

@@ -61,7 +61,7 @@
     margin-top: 18px;
     padding: 12px;
     background-color: #db2d2d;
-    color: white;
+    color: black !important;
     border: none;
     border-radius: 6px;
     font-size: 1.1rem;
@@ -122,7 +122,7 @@
     margin-top: 22px;
     padding: 12px;
     background-color: #db2d2d;
-    color: white;
+    color: black !important;
     border: none;
     border-radius: 6px;
     font-size: 1.1rem;

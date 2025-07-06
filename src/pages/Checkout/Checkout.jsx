@@ -171,6 +171,25 @@ const Checkout = ({ carrito, setCarrito }) => {
           total={subtotal}
           onClose={() => setMetodoSeleccionado(null)}
           onSuccess={() => {
+            // Guardar compra en localStorage
+            const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+            if (usuario && usuario.correo) {
+              const comprasKey = `compras_${usuario.correo}`;
+              const comprasPrevias = JSON.parse(localStorage.getItem(comprasKey)) || [];
+              const nuevaCompra = {
+                fecha: new Date().toLocaleString(),
+                total: subtotal.toFixed(2),
+                productos: carrito.map(item => ({
+                  nombre: item.nombre,
+                  talla: item.talla,
+                  cantidad: item.cantidad || 1,
+                  precio: (item.precio * (item.cantidad || 1)).toFixed(2),
+                  imagen: item.imagen || ""
+                })),
+                metodoPago: "Tarjeta"
+              };
+              localStorage.setItem(comprasKey, JSON.stringify([nuevaCompra, ...comprasPrevias]));
+            }
             setCarrito([]);
             window.location.href = "/orden-completada";
           }}
@@ -182,8 +201,27 @@ const Checkout = ({ carrito, setCarrito }) => {
           total={subtotal}
           onClose={() => setMetodoSeleccionado(null)}
           onSuccess={() => {
+            // Guardar compra en localStorage
+            const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+            if (usuario && usuario.correo) {
+              const comprasKey = `compras_${usuario.correo}`;
+              const comprasPrevias = JSON.parse(localStorage.getItem(comprasKey)) || [];
+              const nuevaCompra = {
+                fecha: new Date().toLocaleString(),
+                total: subtotal.toFixed(2),
+                productos: carrito.map(item => ({
+                  nombre: item.nombre,
+                  talla: item.talla,
+                  cantidad: item.cantidad || 1,
+                  precio: (item.precio * (item.cantidad || 1)).toFixed(2),
+                  imagen: item.imagen || ""
+                })),
+                metodoPago: "QR"
+              };
+              localStorage.setItem(comprasKey, JSON.stringify([nuevaCompra, ...comprasPrevias]));
+            }
             setCarrito([]);
-            window.location.href = "/orden-completadahttps://tvgo.americatv.com.pe/";
+            window.location.href = "/orden-completada";
           }}
         />
       )}
