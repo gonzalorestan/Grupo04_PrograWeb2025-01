@@ -22,7 +22,7 @@ const ProductPage = () => {
   const isCategoria = genero && !isGenero;
 
   const [filters, setFilters] = useState({
-    categoria: (categoria ? [categoria] : (isCategoria ? [genero] : [])),
+    categoria: (categoria ? [categoria.toLowerCase()] : (isCategoria ? [genero.toLowerCase()] : [])),
     genero: isGenero ? [genero] : [],
     color: [],
     talla: tallaQuery ? [tallaQuery] : [],
@@ -39,7 +39,7 @@ const ProductPage = () => {
   useEffect(() => {
     setFilters((prev) => ({
       ...prev,
-      categoria: categoria ? [categoria] : (isCategoria ? [genero] : []),
+      categoria: categoria ? [categoria.toLowerCase()] : (isCategoria ? [genero.toLowerCase()] : []),
       genero: isGenero ? [genero] : [],
       marca: marca ? [capitalize(marca)] : [],
       talla: tallaQuery ? [tallaQuery] : [],
@@ -62,7 +62,7 @@ const ProductPage = () => {
   const filtered = products.filter((prod) => {
     return (
       (mostrarTodo || !filters.genero.length || filters.genero.includes(prod.genero)) &&
-      (!filters.categoria.length || filters.categoria.includes(prod.categoria)) &&
+      (!filters.categoria.length || filters.categoria.includes(prod.categoria.toLowerCase())) &&
       (!filters.color.length || filters.color.includes(prod.color)) &&
       (!filters.marca.length || filters.marca.some(fm => fm.toLowerCase() === prod.marca.toLowerCase())) &&
       (!filters.talla.length || filters.talla.some((t) => prod.stock[t] > 0))
@@ -158,14 +158,14 @@ const ProductPage = () => {
       <main className={styles.catalogo}>
         <h2>
           {(() => {
-            if (marca) {
-              return `Productos de ${capitalize(marca)}`;
-            } else if (genero && categoria) {
-              return `${capitalize(categoria)} para ${capitalize(genero)}`;
-            } else if (genero) {
-              return `Productos para ${capitalize(genero)}`;
-            } else if (categoria) {
-              return `${capitalize(categoria)}`;
+            if (filters.marca.length > 0) {
+              return `Productos de ${filters.marca.join(", ")}`;
+            } else if (filters.genero.length > 0 && filters.categoria.length > 0) {
+              return `${capitalize(filters.categoria[0])} para ${capitalize(filters.genero[0])}`;
+            } else if (filters.genero.length > 0) {
+              return `Productos para ${capitalize(filters.genero[0])}`;
+            } else if (filters.categoria.length > 0) {
+              return `${capitalize(filters.categoria[0])}`;
             } else {
               return "Todos los productos";
             }

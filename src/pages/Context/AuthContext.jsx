@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, loginUser } from '../../services/api';
+import { testUsers } from '../../data/testUsers';
 
 export const AuthContext = createContext();
 
@@ -29,6 +30,19 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
+    // Primero, buscar en los usuarios de prueba locales
+    const localUser = testUsers.find(u => u.correo === email && u.password === password);
+    if (localUser) {
+      const userData = {
+        email: localUser.correo,
+        firstName: localUser.nombre,
+        rol: localUser.rol,
+      };
+      localStorage.setItem('usuarioActivo', JSON.stringify(userData));
+      setUser(userData);
+      return userData;
+    }
+
     try {
       // ✅ Admin local
       if (email === "admin@tuapp.com" && password === "admin123") {

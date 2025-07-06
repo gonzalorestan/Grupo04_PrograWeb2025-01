@@ -53,6 +53,12 @@
   padding: 3px 6px;
   cursor: pointer;
   background: white;
+  color: #222; /* Siempre texto oscuro */
+}
+
+.tallaItem:hover,
+.tallaItem:focus {
+  color: #222; /* Mantener texto oscuro en hover/focus */
 }
 
 .activeTalla {

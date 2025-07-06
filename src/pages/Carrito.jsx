@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Carrito.module.css";
+import GuestOrLoginModal from "../components/GuestOrLoginModal";
 
 const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
   const navigate = useNavigate();
+  const [showGuestModal, setShowGuestModal] = useState(false);
 
   const moverAGuardados = (id) => {
     const producto = carrito.find((item) => item.id === id);
@@ -82,11 +84,25 @@ const Carrito = ({ carrito, setCarrito, guardados, setGuardados }) => {
           <p>Subtotal: <span style={{ color: "#c00" }}>S/. {subtotal.toFixed(2)}</span></p>
           <p>Envío: <span style={{ color: "#c00" }}>GRATIS</span></p>
           <h3>Total: <span style={{ color: "#c00" }}>S/. {subtotal.toFixed(2)}</span></h3>
-          <button className={styles.checkoutButton} onClick={() => navigate("/checkout")}>
+          <button className={styles.checkoutButton} onClick={() => setShowGuestModal(true)}>
             Checkout
           </button>
         </div>
       </div>
+      {showGuestModal && (
+        <GuestOrLoginModal
+          onClose={() => setShowGuestModal(false)}
+          onGuest={email => {
+            setShowGuestModal(false);
+            // Guardar email de invitado si se requiere
+            navigate("/checkout?guest=" + encodeURIComponent(email));
+          }}
+          onLogin={() => {
+            setShowGuestModal(false);
+            navigate("/login");
+          }}
+        />
+      )}
     </div>
   );
 };

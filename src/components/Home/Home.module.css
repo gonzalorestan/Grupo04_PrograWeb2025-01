@@ -29,6 +29,18 @@
   z-index: 10;
 }
 
+.navButton:focus {
+  outline: none;
+  box-shadow: none;
+  background: none;
+}
+
+.navButton:active {
+  outline: none;
+  box-shadow: none;
+  background: none;
+}
+
 .prev {
   left: 10px;
 }

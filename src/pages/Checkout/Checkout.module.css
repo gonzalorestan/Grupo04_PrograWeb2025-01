@@ -89,3 +89,27 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.formSection input,
+.formSection select,
+.formSection,
+.resumenSection,
+.item,
+.item div,
+.resumenFinal,
+.metodoPago,
+.metodoPago button {
+  color: #111 !important;
+}
+
+.item span,
+.item strong,
+.item h4,
+.item p {
+  color: #111 !important;
+}
+
+.formSection button,
+.metodoPago button {
+  color: white !important;
+}

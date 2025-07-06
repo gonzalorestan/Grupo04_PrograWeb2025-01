@@ -58,7 +58,8 @@ const Checkout = ({ carrito, setCarrito }) => {
     return Object.keys(camposVacios).length === 0;
   };
 
-  const subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
+  // Corregir subtotal para considerar la cantidad de cada producto
+  const subtotal = carrito.reduce((acc, item) => acc + item.precio * (item.cantidad || 1), 0);
 
   const handleGuardar = () => {
     if (validar()) {
@@ -137,13 +138,14 @@ const Checkout = ({ carrito, setCarrito }) => {
         <h2>Resumen</h2>
         <div className={styles.productos}>
           {carrito.map((item) => (
-            <div key={item.id} className={styles.item}>
+            <div key={item.id + '-' + item.talla} className={styles.item}>
               <img src={item.imagen} alt={item.nombre} />
               <div>
                 <h4>{item.nombre}</h4>
                 <p>{item.categoria}</p>
                 <p>Talla: {item.talla}</p>
-                <p style={{ color: "red" }}>S/. {item.precio}</p>
+                <p>Cantidad: <strong>{item.cantidad || 1}</strong></p>
+                <p style={{ color: "red" }}>S/. {(item.precio * (item.cantidad || 1)).toFixed(2)}</p>
               </div>
             </div>
           ))}
