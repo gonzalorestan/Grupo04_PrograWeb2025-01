@@ -69,7 +69,8 @@
 
 .priceBuy {
   display: flex;
-  gap: 0;
+  gap: 20px;
+  align-items: center;
 }
 
 .price {
@@ -77,22 +78,25 @@
   padding: 10px 20px;
   font-weight: 700;
   font-size: 18px;
-  border-right: none;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+  border-right: 1px solid black;
+  border-radius: 4px;
 }
 
 .buyButton {
   border: 1px solid black;
-  background-color: transparent;
+  background-color: white;
+  color: black;
   padding: 10px 30px;
   cursor: pointer;
   font-weight: 700;
   font-size: 18px;
-  border-left: none;
+  border-radius: 4px;
   transition: background-color 0.2s ease;
+  margin-left: 0;
 }
 
 .buyButton:hover {

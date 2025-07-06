@@ -72,6 +72,7 @@
   border: 1px solid #aaa;
   border-radius: 5px;
   background-color: white;
+  color: #222;
   cursor: pointer;
   min-width: 40px;
   transition: background-color 0.2s ease;
