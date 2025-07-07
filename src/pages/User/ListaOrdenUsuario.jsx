@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import "./ListaOrdenUsuario.css";
 import products from '../../data/products';
 import ListaDeseos from "./Guardados";
+import { getOrdersPage } from '../../services/api';
 
-const estadosEnvio = ["En camino", "Completado"];
+const estadosEnvio = ["Pendiente", "En camino", "Completado"];
 
 const ListaOrdenUsuario = () => {
   const [compras, setCompras] = useState([]);
@@ -13,14 +14,25 @@ const ListaOrdenUsuario = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("usuarioActivo"));
-    if (user && user.correo) {
-      const comprasUsuario = JSON.parse(localStorage.getItem(`compras_${user.correo}`)) || [];
-      setCompras(comprasUsuario);
-      // Generar estados de envío aleatorios para cada compra
-      setEstados(comprasUsuario.map(() => estadosEnvio[Math.floor(Math.random() * estadosEnvio.length)]));
-    }
-    setLoading(false);
+    const fetchOrders = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.warn("Token no encontrado");
+          return;
+        }
+
+        const data = await getOrdersPage(1, 10, token);
+        setCompras(data.orders || []);
+        setEstados(data.orders.map(() => estadosEnvio[Math.floor(Math.random() * estadosEnvio.length)]));
+      } catch (error) {
+        console.error("Error al obtener órdenes:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
   }, []);
 
   const cancelarOrden = (idx) => {
@@ -57,6 +69,17 @@ const ListaOrdenUsuario = () => {
 
   if (loading) return <div className="loading">Cargando compras... </div>
 
+  const th = {
+    textAlign: "left",
+    padding: "12px 16px",
+    borderBottom: "2px solid #ccc"
+  };
+
+  const td = {
+    padding: "12px 16px",
+    verticalAlign: "top"
+  };
+
   return (
     <div className="compras-lista" style={{ marginLeft: 40 }}>
       <h1>Mi Cuenta</h1>
@@ -69,48 +92,53 @@ const ListaOrdenUsuario = () => {
         </button>
       </div>
       <h2 style={{ marginTop: 32, marginBottom: 16 }}>Lista de Compras</h2>
-      {compras.length === 0 ? (
-        <p>No tienes compras registradas aún.</p>
+      {Array.isArray(compras) && compras.length > 0 ? (
+        <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 32 }}>
+          <thead>
+            <tr style={{ backgroundColor: "#f0f0f0" }}>
+              <th style={th}>Fecha</th>
+              <th style={th}>Total</th>
+              <th style={th}>Método de Pago</th>
+              <th style={th}>Productos</th>
+              <th style={th}>Estado de Envío</th>
+            </tr>
+          </thead>
+          <tbody>
+            {compras.map((orden, idx) => {
+              const estadoEnvio = estados[idx] || "En camino";
+              return (
+                <tr key={orden.id} style={{ borderBottom: "1px solid #ddd" }}>
+                  <td style={td}>{new Date(orden.createdAt).toLocaleString()}</td>
+                  <td style={td}>S/. {orden.total.toFixed(2)}</td>
+                  <td style={td}>{orden.paymentMethod || "No especificado"}</td>
+                  <td style={td}>
+                    <ul style={{ margin: 0, paddingLeft: 16 }}>
+                      {orden.OrderItems?.map((item, i) => (
+                        <li key={i}>
+                          Producto #{item.ProductId} x{item.quantity} - S/. {(item.price * item.quantity).toFixed(2)}
+                        </li>
+                      ))}
+                    </ul>
+                  </td>
+                  <td style={td}>
+                    <span style={{
+                      backgroundColor: estadoEnvio === "Completado" ? "#4caf50" : "#2196f3",
+                      color: "white",
+                      padding: "6px 12px",
+                      borderRadius: "6px",
+                      fontWeight: "bold",
+                      display: "inline-block"
+                    }}>
+                      {estadoEnvio}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       ) : (
-        <ul className="compras-ul">
-          {compras.map((compra, idx) => {
-            const estadoEnvio = estados[idx] || "En camino";
-            const cancelada = compra.cancelada;
-            return (
-              <li key={idx} className="compra-item" style={{ marginBottom: 24, background: '#f8f8f8', borderRadius: 8, padding: 16 }}>
-                <div><strong>Fecha:</strong> {compra.fecha || "-"}</div>
-                <div><strong>Total:</strong> S/. {compra.total}</div>
-                <div>
-                  <strong>Productos:</strong>
-                  <ul style={{ listStyle: 'none', padding: 0 }}>
-                    {compra.productos.map((prod, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-                        <img src={getImagenProducto(prod)} alt={prod.nombre} style={{ width: 200, height: 160, objectFit: 'contain', marginRight: 24, background: '#fff', borderRadius: 12 }} />
-                        <span>{prod.nombre} (Talla: {prod.talla}) x{prod.cantidad} - S/. {prod.precio}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {compra.metodoPago && <div><strong>Método de pago:</strong> {compra.metodoPago}</div>}
-                <div style={{ display: 'flex', gap: 16, marginTop: 12 }}>
-                  <button
-                    onClick={() => cancelarOrden(idx)}
-                    disabled={estadoEnvio === "Completado" || cancelada}
-                    style={{ background: cancelada ? '#ccc' : '#db2d2d', color: '#fff', border: 'none', borderRadius: 6, padding: '8px 18px', fontWeight: 600, cursor: cancelada ? 'not-allowed' : 'pointer' }}
-                  >
-                    {cancelada ? "Orden Cancelada" : "Cancelar Orden"}
-                  </button>
-                  <button
-                    style={{ background: estadoEnvio === "Completado" ? '#388e3c' : '#1976d2', color: '#fff', border: 'none', borderRadius: 6, padding: '8px 18px', fontWeight: 600 }}
-                    disabled
-                  >
-                    Estado de envío: {estadoEnvio}
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        <p>No tienes compras registradas aún.</p>
       )}
       {/* Sección de lista de deseos debajo de la lista de compras */}
       <ListaDeseos />

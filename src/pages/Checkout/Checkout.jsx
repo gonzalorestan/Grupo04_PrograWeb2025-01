@@ -7,6 +7,7 @@ import QRModal from "../../components/QRModal";
 import departamentosData from "../../data/ubigeo_peru_2016_departamentos.json";
 import provinciasData from "../../data/ubigeo_peru_2016_provincias.json";
 import distritosData from "../../data/ubigeo_peru_2016_distritos.json";
+import { checkout } from "../../services/api";
 
 const Checkout = ({ carrito, setCarrito }) => {
   const [envio, setEnvio] = useState({
@@ -25,6 +26,9 @@ const Checkout = ({ carrito, setCarrito }) => {
 
   const [provinciasFiltradas, setProvinciasFiltradas] = useState([]);
   const [distritosFiltradas, setDistritosFiltradas] = useState([]);
+
+  const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (envio.departamento) {
@@ -64,6 +68,22 @@ const Checkout = ({ carrito, setCarrito }) => {
   const handleGuardar = () => {
     if (validar()) {
       setMostrarMetodoPago(true);
+    }
+  };
+
+  const enviarOrden = async (paymentMethod) => {
+    try {
+      const items = carrito.map((item) => ({
+        productId: item.id,
+        quantity: item.cantidad || 1
+      }));
+
+      await checkout(usuario.id, items, envio, paymentMethod, token);
+
+      setCarrito([]);
+      window.location.href = "/orden-completada";
+    } catch (error) {
+      alert(error.message || "Error al guardar la orden.");
     }
   };
 
@@ -170,29 +190,7 @@ const Checkout = ({ carrito, setCarrito }) => {
         <TarjetaModal
           total={subtotal}
           onClose={() => setMetodoSeleccionado(null)}
-          onSuccess={() => {
-            // Guardar compra en localStorage
-            const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
-            if (usuario && usuario.correo) {
-              const comprasKey = `compras_${usuario.correo}`;
-              const comprasPrevias = JSON.parse(localStorage.getItem(comprasKey)) || [];
-              const nuevaCompra = {
-                fecha: new Date().toLocaleString(),
-                total: subtotal.toFixed(2),
-                productos: carrito.map(item => ({
-                  nombre: item.nombre,
-                  talla: item.talla,
-                  cantidad: item.cantidad || 1,
-                  precio: (item.precio * (item.cantidad || 1)).toFixed(2),
-                  imagen: item.imagen || ""
-                })),
-                metodoPago: "Tarjeta"
-              };
-              localStorage.setItem(comprasKey, JSON.stringify([nuevaCompra, ...comprasPrevias]));
-            }
-            setCarrito([]);
-            window.location.href = "/orden-completada";
-          }}
+          onSuccess={() => enviarOrden("Tarjeta")}
         />
       )}
 
@@ -200,29 +198,7 @@ const Checkout = ({ carrito, setCarrito }) => {
         <QRModal
           total={subtotal}
           onClose={() => setMetodoSeleccionado(null)}
-          onSuccess={() => {
-            // Guardar compra en localStorage
-            const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
-            if (usuario && usuario.correo) {
-              const comprasKey = `compras_${usuario.correo}`;
-              const comprasPrevias = JSON.parse(localStorage.getItem(comprasKey)) || [];
-              const nuevaCompra = {
-                fecha: new Date().toLocaleString(),
-                total: subtotal.toFixed(2),
-                productos: carrito.map(item => ({
-                  nombre: item.nombre,
-                  talla: item.talla,
-                  cantidad: item.cantidad || 1,
-                  precio: (item.precio * (item.cantidad || 1)).toFixed(2),
-                  imagen: item.imagen || ""
-                })),
-                metodoPago: "QR"
-              };
-              localStorage.setItem(comprasKey, JSON.stringify([nuevaCompra, ...comprasPrevias]));
-            }
-            setCarrito([]);
-            window.location.href = "/orden-completada";
-          }}
+          onSuccess={() => enviarOrden("QR")}
         />
       )}
     </div>

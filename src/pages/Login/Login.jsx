@@ -74,7 +74,7 @@ export default function Login({ onLogin, actualizarUsuarioActivo }) {
 
           {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}
 
-          <a onClick={() => navigate("/forgot-password")} className="login-forgot">Olvidé mi Contraseña</a>
+          <a onClick={() => navigate("/forgot-password")} className="login-forgot" style={{ cursor: "pointer" }}>Olvidé mi Contraseña</a>
 
           <button type="submit" className="login-submit">LOGIN</button>
         </form>

@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, loginUser } from '../../services/api';
 import { testUsers } from '../../data/testUsers';
@@ -18,20 +18,29 @@ export const AuthProvider = ({ children }) => {
   }, [navigate]);
 
   useEffect(() => {
+    // verifica y mantiene la sesion activa
     const checkAuth = async () => {
-      const storedUser = localStorage.getItem('usuarioActivo');
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-      setLoading(false);
-    };
+          const token = localStorage.getItem('token');
+          const storedUser = localStorage.getItem('usuarioActivo');
+
+          if (token && storedUser) {
+              try {
+                  const userData = await getCurrentUser(token);
+                  setUser({...userData, ...JSON.parse(storedUser)});
+              } catch (error) {
+                  console.warn('Token invalido, manteniendo sesion local');
+                  setUser(JSON.parse(storedUser));
+              }
+          }
+          setLoading(false);
+      };
 
     checkAuth();
-  }, []);
+  }, [logout]);
 
   const login = async (email, password) => {
     // Primero, buscar en los usuarios de prueba locales
-    const localUser = testUsers.find(u => u.correo === email && u.password === password);
+    /*const localUser = testUsers.find(u => u.correo === email && u.password === password);
     if (localUser) {
       const userData = {
         email: localUser.correo,
@@ -41,11 +50,11 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('usuarioActivo', JSON.stringify(userData));
       setUser(userData);
       return userData;
-    }
+    }*/
 
     try {
       // ✅ Admin local
-      if (email === "admin@tuapp.com" && password === "admin123") {
+      /*if (email === "admin@tuapp.com" && password === "admin123") {
         const adminUser = {
           email: email,
           firstName: "Admin",
@@ -56,20 +65,19 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('usuarioActivo', JSON.stringify(adminUser));
         setUser(adminUser);
         return adminUser;
-      }
+      }*/
 
-      // 🔄 Login normal dummyjson
+      // 🔄 Login normal servidor base de datos
       const data = await loginUser(email, password);
-      localStorage.setItem('token', data.accessToken);
+      localStorage.setItem('token', data.token);
 
       const userData = {
-        email: data.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        image: data.image,
-        id: data.id,
-        username: data.username,
-        rol: "usuario"
+        id: data.user.id,
+        email: data.user.email,
+        firstName: data.user.firstName,
+        lastName: data.user.lastName,
+        username: data.user.username,
+        rol: data.user.rol
       };
 
       localStorage.setItem('usuarioActivo', JSON.stringify(userData));
