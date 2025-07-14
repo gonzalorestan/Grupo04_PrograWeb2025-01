@@ -39,15 +39,15 @@ export const AuthProvider = ({children}) => {
     const login = async (email, password) => {
         try {
             const data = await loginUser(email, password);
-            localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('token', data.token);
 
             const userData = {
-                email: data.email,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                image: data.image,
-                id: data.id,
-                username: data.username
+                id: data.user.id,
+                email: data.user.email,
+                firstName: data.user.firstName,
+                lastName: data.user.lastName,
+                username: data.user.username,
+                rol: data.user.rol
             };
 
             localStorage.setItem('usuarioActivo', JSON.stringify(userData));

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../Context/AuthContext';
-import { registerUser } from "../../services/api";
+import { registerUser, loginUser } from "../../services/api";
 
 export default function SignUp({ onRegister ,actualizarUsuarioActivo }) {
   const navigate = useNavigate();
@@ -11,8 +11,8 @@ export default function SignUp({ onRegister ,actualizarUsuarioActivo }) {
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
+    usuario: "",
     correo: "",
-    dni: "",
     password: "",
     confirmPassword: "",
   });
@@ -34,22 +34,25 @@ export default function SignUp({ onRegister ,actualizarUsuarioActivo }) {
     }
 
     try {
-      await registerUser(form);
 
       const newUser = {
-        nombre: form.nombre,
-        apellido: form.apellido,
-        correo: form.correo,
-        dni: form.dni,
+        firstName: form.nombre,
+        lastName: form.apellido,
+        username: form.usuario,
+        email: form.correo,
         password: form.password,
+        rol: "cliente"
       };
+      
+      await registerUser(newUser);
+      const response = await loginUser(form.correo, form.password);
 
       const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
       usuarios.push(newUser);
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-      localStorage.setItem("usuarioActivo", JSON.stringify(newUser));
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("usuarioActivo", JSON.stringify(response.user));
 
-      actualizarUsuarioActivo(newUser);
+      actualizarUsuarioActivo(response.user);
 
       if (typeof onRegister === "function") onRegister();
           navigate("/");
@@ -96,6 +99,17 @@ export default function SignUp({ onRegister ,actualizarUsuarioActivo }) {
 
           <div className="signup-row">
             <div>
+              <label>Usario</label>
+              <input
+                name="usuario"
+                type="text"
+                value={form.usuario}
+                onChange={handleChange}
+                placeholder="usuario"
+                required
+              />
+            </div>
+            <div>
               <label>Correo</label>
               <input
                 name="correo"
@@ -103,17 +117,6 @@ export default function SignUp({ onRegister ,actualizarUsuarioActivo }) {
                 value={form.correo}
                 onChange={handleChange}
                 placeholder="usuario@gmail.com"
-                required
-              />
-            </div>
-            <div>
-              <label>DNI</label>
-              <input
-                name="dni"
-                type="text"
-                value={form.dni}
-                onChange={handleChange}
-                placeholder="DNI"
                 required
               />
             </div>

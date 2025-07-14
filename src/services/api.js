@@ -1,4 +1,4 @@
-const API_URL = 'https://dummyjson.com';
+const API_URL = 'http://localhost:5000/api';
 
 export const getUsers = async () => {
   const res = await fetch(`${API_URL}/users`);
@@ -37,27 +37,19 @@ export const cancelOrder = (id) => {
   });
 };
 
-export const getOrdersPage = async (page = 1, limit = 5) => {
-  const skip = (page - 1) * limit;
-  const res = await fetch(`${API_URL}/carts?limit=${limit}&skip=${skip}`);
+export const getOrdersPage = async (page = 1, limit = 5, token) => {
+  const res = await fetch(`${API_URL}/orders/my-orders?page=${page}&limit=${limit}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  if (!res.ok) throw new Error('Error al obtener órdenes');
   return res.json();
 };
 
-async function findUserByEmail(email) {
-  const response = await fetch(`${API_URL}/users`);
-  if (!response.ok) {
-    throw new Error('Error al buscar usuario');
-  }
-  const data = await response.json();
-  const user = data.users.find(u => u.email === email);
-  if (!user) {
-    throw new Error('Correo no registrado');
-  }
-  return user;
-}
-
 export const loginUser = async (email, password) => {
-  if (email === "admin@tuapp.com" && password === "admin123") {
+  /*if (email === "admin@tuapp.com" && password === "admin123") {
     return {
       accessToken: "fakeAdminToken",
       email: "admin@tuapp.com",
@@ -95,9 +87,23 @@ export const loginUser = async (email, password) => {
     image: user.image,
     username: user.username,
     rol: "usuario" 
-  };
-};
+  };*/
+  const res = await fetch(`${API_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  });
 
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message);
+  }
+
+  return res.json(); // { token, user }
+};
 
 export const getCurrentUser = async (token) => {
   const response = await fetch(`${API_URL}/auth/me`, {
@@ -116,7 +122,7 @@ export const getCurrentUser = async (token) => {
 };
 
 export const registerUser = async (userData) => {
-  const response = await fetch(`${API_URL}/users/add`, {
+  /*const response = await fetch(`${API_URL}/users/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -133,7 +139,15 @@ export const registerUser = async (userData) => {
     throw new Error('Error al registrar usuario');
   }
 
-  return response.json();
+  return response.json();*/
+  const res = await fetch(`${API_URL}/auth/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(userData)
+  });
+
+  if (!res.ok) throw new Error('Error al registrar usuario');
+  return res.json();
 };
 
 export const requestPasswordReset = async (email) => {
@@ -163,6 +177,25 @@ export const updateUserProfile = async (updateData) => {
     }, 1000);
   });
 };
+
+export const checkout = async (userId, items, shippingAddress, paymentMethod, token) => {
+  const res = await fetch(`${API_URL}/orders`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ userId, items, shippingAddress, paymentMethod })
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || 'Error al procesar la orden');
+  }
+
+  return res.json();
+};
+
 
 
 
