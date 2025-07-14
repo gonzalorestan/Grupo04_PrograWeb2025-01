@@ -1,0 +1,10 @@
+# backend
+/BACK/node_modules
+
+# front
+/FRONT/node_modules
+/FRONT/.pnp
+
+/FRONT/coverage
+
+/FRONT/build

@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  padding: 30px;
+}
+
+.filtros {
+  width: 250px;
+  padding-right: 20px;
+}
+
+.filterItem {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.colorBox {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin: 3px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.activeColor {
+  border: 2px solid black;
+}
+
+.rojo { background: red; }
+.azul { background: blue; }
+.negro { background: black; }
+.amarillo { background: yellow; }
+.verde { background: green; }
+.naranja { background: orange; }
+.rosado { background: pink; }
+.morado { background: purple; }
+.blanco { background: white; }
+.marrón { background: brown; }
+
+.tallaGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tallaItem {
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+  cursor: pointer;
+  background: white;
+}
+
+.activeTalla {
+  background: black;
+  color: white;
+}
+
+.catalogo {
+  flex: 1;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.productCard {
+  text-align: center;
+  border: 1px solid #eee;
+  padding: 15px;
+  background: white;
+}
+
+.productCard img {
+  max-width: 100%;
+  height: auto;
+}

@@ -1,0 +1,20 @@
+/* Guardados.css */
+.guardados-lista {
+  margin-top: 2rem;
+}
+.guardados-ul {
+  list-style: none;
+  padding: 0;
+}
+.guardado-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+.guardado-item img {
+  border-radius: 6px;
+  margin-right: 1rem;
+}
